@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "esnext",
+      "noImplicitAny": false,
+      "sourceMap": true,
+      "outDir": "build",
+      "rootDir": "./src",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "importHelpers": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": ["esnext", "esnext.asynciterable"],
+      "moduleResolution": "node"
+    },
+    "exclude": ["node_modules"]
+  }

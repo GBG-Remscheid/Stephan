@@ -1,0 +1,23 @@
+{
+  "name": "dimitri-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "ts-node src/Main.ts"
+  },
+  "author": "hofmmaxi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^15.12.1",
+    "eslint": "^7.27.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "@typeit/discord": "^5.0.12",
+    "discord.js": "github:discordjs/discord.js",
+    "dotenv": "^10.0.0",
+    "reflect-metadata": "^0.1.13"
+  }
+}
