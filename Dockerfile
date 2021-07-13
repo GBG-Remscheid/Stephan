@@ -1,10 +1,11 @@
-FROM --platform=arm64 node:latest
+FROM node:latest
 
-WORKDIR /usr/local/DimitriTS
+WORKDIR /usr/src/DimitriTS
 
-COPY . /usr/local/DimitriTS/
+COPY package*.json .
 
-RUN apt update & apt upgrade -y
-RUN npm i -g ts-node & npm ci
+RUN npm i --only=producion
 
-CMD ["npm", "start"]
+COPY . .
+
+CMD ["npm", "run", "dev"]
