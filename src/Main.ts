@@ -1,14 +1,12 @@
 import "reflect-metadata";
 import * as dotenv from "dotenv"
-import { Client } from "@typeit/discord";
+import { Client } from "discordx";
 import { Intents } from "discord.js";
-import { NotBot } from "./Guards/NotBot";
-import { Prefix } from "./Guards/Prefix";
 
 dotenv.config()
 
 export class Main {
-    public static _client: Client;
+    private static _client: Client;
 
     static get Client(): Client {
         return this._client;
@@ -20,7 +18,7 @@ export class Main {
                 Intents.FLAGS.GUILDS,
                 Intents.FLAGS.GUILD_MESSAGES,
                 Intents.FLAGS.GUILD_VOICE_STATES,
-                Intents.FLAGS.GUILD_EMOJIS,
+                Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
                 Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
                 Intents.FLAGS.DIRECT_MESSAGES,
                 Intents.FLAGS.DIRECT_MESSAGE_TYPING,
@@ -38,28 +36,24 @@ export class Main {
                 `${__dirname}/Events/**/*.ts`,
                 `${__dirname}/Events/**/*.js`,
             ],
-                /* guards: [NotBot, Prefix('hmm')] */
-            });
-
-            console.log(__dirname);
-
-
+            /* guards: [NotBot, Prefix('hmm')] */
+        });
 
         await this._client.login(process.env.BOT_TOKEN);
 
         this._client.once("ready", async () => {
-            await this._client.clearSlashes();
-            await this._client.initSlashes();
+            await this._client.clearApplicationCommands();
+            await this._client.initApplicationCommands();
 
             console.log(`Bot is now online. Logged in as ${this._client.user.username}.`);
+            this._client.user.setPresence({ activities: [{ name: 'the students 👁👁', type: "WATCHING" }] })
         });
 
-        this._client.on("interaction", async interaction => {
-
-            await this._client.executeSlash(interaction);
+        this._client.on("interactionCreate", async interaction => {
+            this._client.executeInteraction(interaction);
         });
 
-            this._client.on("debug", console.log);
+        this._client.on("debug", console.log);
     }
 }
 
