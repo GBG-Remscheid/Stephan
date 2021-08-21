@@ -1,18 +1,24 @@
 {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "target": "ESNext",
-      "noImplicitAny": false,
-      "sourceMap": true,
-      "outDir": "build",
-      "rootDir": "./src",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "importHelpers": true,
-      "forceConsistentCasingInFileNames": true,
-      "lib": ["esnext", "esnext.asynciterable"],
-      "moduleResolution": "Node",
-      "resolveJsonModule": true
-    },
-    "exclude": ["node_modules"]
-  }
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "outDir": "build",
+    "rootDir": "./src",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": [
+      "esnext",
+      "esnext.asynciterable"
+    ],
+    "moduleResolution": "Node",
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "package*.json"
+  ]
+}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/main.js",
   "scripts": {
-    "dev": "ts-node src/Main.ts",
+    "dev": "nodemon",
     "start": "node build/Main.js"
   },
   "author": "hofmmaxi",
@@ -13,11 +13,11 @@
     "@types/node": "^15.12.1",
     "eslint": "^7.27.0",
     "tslib": "^2.2.0",
-    "typescript": "^4.4.0-dev.20210711"
+    "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@typeit/discord": "^5.0.13",
-    "discord.js": "github:discordjs/discord.js",
+    "discord.js": "^13.1.0",
+    "discordx": "^5.2.6",
     "dotenv": "^10.0.0",
     "reflect-metadata": "^0.1.13"
   }
