@@ -29,7 +29,7 @@ export class Main {
                 Intents.FLAGS.GUILD_INVITES,
                 Intents.FLAGS.GUILD_BANS,
             ],
-            /* slashGuilds: ["768975702187704360"], */
+            botGuilds: ["768975702187704360"],
             classes: [
                 `${__dirname}/Commands/**/*.ts`,
                 `${__dirname}/Commands/**/*.js`,
