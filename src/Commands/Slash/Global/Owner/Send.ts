@@ -16,7 +16,7 @@ export abstract class Send {
         interaction: CommandInteraction
     ) {
         const user = await interaction.guild.members.fetch(targetId);
-        if (!user) return interaction.reply({ content: "This is user is not on this server.", ephemeral: true })
+        if (!user) return interaction.reply({ content: "This user is not on this server.", ephemeral: true })
 
         try {
             user.send(message)
