@@ -2,7 +2,7 @@
   "name": "stephan",
   "version": "1.0.0",
   "description": "",
-  "main": "build/main.js",
+  "main": "build/Main.js",
   "scripts": {
     "dev": "nodemon",
     "start": "node build/Main.js"
@@ -10,7 +10,6 @@
   "author": "hofmmaxi",
   "license": "ISC",
   "devDependencies": {
-    "@types/mongoose": "^5.11.97",
     "@types/ms": "^0.7.31",
     "@types/node": "^16.11.6",
     "eslint": "^8.1.0",

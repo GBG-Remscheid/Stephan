@@ -1,11 +1,14 @@
 FROM node:latest
 
-WORKDIR /usr/src/DimitriTS
+WORKDIR /usr/src/Stephan
 
-COPY package*.json .
+COPY package*.json ./
 
-RUN npm i --only=producion
+RUN npm i --only=production
+RUN npm i -g tsc
 
-COPY . .
+COPY . ./
 
-CMD ["npm", "run", "dev"]
+RUN tsc
+
+CMD ["npm", "run", "start"]
