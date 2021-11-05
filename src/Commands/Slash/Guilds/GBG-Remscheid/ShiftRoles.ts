@@ -165,10 +165,10 @@ export abstract class RoleShift {
         @SlashOption("add", { required: false, description: 'The role, that should be added.', type: "ROLE" })
         addRole1: Snowflake,
 
-        @SlashOption("removeOpt", { required: false, description: 'A second optional role, that should be removed.', type: "ROLE" })
+        @SlashOption("remove-opt", { required: false, description: 'A second optional role, that should be removed.', type: "ROLE" })
         remRole2: Snowflake,
 
-        @SlashOption("addOpt", { required: false, description: 'A second optional role, that should be added.', type: "ROLE" })
+        @SlashOption("add-opt", { required: false, description: 'A second optional role, that should be added.', type: "ROLE" })
         addRole2: Snowflake,
 
         interaction: CommandInteraction,
