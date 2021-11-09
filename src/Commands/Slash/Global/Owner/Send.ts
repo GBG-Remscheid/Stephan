@@ -1,9 +1,9 @@
 import { Snowflake } from "discord-api-types";
 import { CommandInteraction } from "discord.js";
-import { Discord, Guild, Slash, SlashOption } from "discordx";
+import { Discord, Permission, Slash, SlashOption } from "discordx";
 
 @Discord()
-@Guild("768975702187704360")
+@Permission({ id: "463044315007156224", type: "USER", permission: true })
 export abstract class Send {
     @Slash("send", { description: "Send a message to a user" })
     async send(
