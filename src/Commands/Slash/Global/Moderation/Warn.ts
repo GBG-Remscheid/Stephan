@@ -20,7 +20,7 @@ export abstract class Warn {
         const { createdAt, guild, channel, user, member } = interaction;
         const target = guild.members.cache.get(targetId);
 
-        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply("You don't have `MANAGE_MESSAGES` permissions to use this command.");
+        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply({ content: "You don't have `MANAGE_MESSAGES` permissions to use this command.", ephemeral: true });
 
         if (target.user.bot) return interaction.reply("You can't warn a bot, you idiot.");
         if (target === member) return interaction.reply("You can't warn yourself.");

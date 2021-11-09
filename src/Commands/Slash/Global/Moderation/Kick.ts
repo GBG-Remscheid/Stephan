@@ -21,7 +21,7 @@ export abstract class Kick {
         const target = await guild.members.fetch(targetId);
         if (!target) return interaction.reply({ content: "The user you want to kick couldn't be fetched.", ephemeral: true });
 
-        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.KICK_MEMBERS)) return interaction.reply("You don't have `KICK_MEMBERS` permissions to use this command.");
+        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.KICK_MEMBERS)) return interaction.reply({ content: "You don't have `KICK_MEMBERS` permissions to use this command.", ephemeral: true });
 
         if (target.user.bot) return interaction.reply({ content: "You can't ban a bot.", ephemeral: true });
         if (target === member) return interaction.reply({ content: "You can't kick yourself.", ephemeral: true });

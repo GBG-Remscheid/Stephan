@@ -49,7 +49,7 @@ export abstract class Mute {
             }
         }
 
-        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply("You don't have `MANAGE_MESSAGES` permissions to use this command.");
+        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply({ content: "You don't have `MANAGE_MESSAGES` permissions to use this command.", ephemeral: true });
 
         if (target.user.bot) return interaction.reply({ content: "You can't mute a bot.", ephemeral: true });
         if (target === member) return interaction.reply({ content: "You can't mute yourself.", ephemeral: true });

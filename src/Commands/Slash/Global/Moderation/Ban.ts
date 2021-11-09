@@ -26,7 +26,7 @@ export abstract class Ban {
 
         const banhammer = 'https://i.imgur.com/u4B5RRF.png';
 
-        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply("You don't have `BAN_MEMBERS` permissions to use this command.");
+        if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply({ content: "You don't have `BAN_MEMBERS` permissions to use this command.", ephemeral: true });
 
         if (target.user.bot) return interaction.reply({ content: "You can't ban a bot.", ephemeral: true });
         if (target === member) return interaction.reply({ content: "You can't ban yourself.", ephemeral: true });

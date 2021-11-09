@@ -19,7 +19,7 @@ export abstract class Unmute {
 
         const muterole = guild.roles.cache.find(muterole => muterole.name === 'Muted');
 
-        if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.MANAGE_ROLES)) return interaction.reply("You don't have `MANAGE_ROLES` permissions to use this command.");
+        if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.MANAGE_ROLES)) return interaction.reply({ content: "You don't have `MANAGE_ROLES` permissions to use this command.", ephemeral: true });
 
         if (target.user.bot) return interaction.reply("You can't warn a bot, you idiot.");
         if (target === member) return interaction.reply("You can't warn yourself.");

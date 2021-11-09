@@ -16,7 +16,7 @@ export abstract class Unban {
         const target = await interaction.guild.bans.remove(targetId);
         if (!target) return interaction.reply({ content: "The given user couldn't be fetched.", ephemeral: true })
 
-        if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply("You don't have `BAN_MEMBERS` permissions to use this command.");
+        if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply({ content: "You don't have `BAN_MEMBERS` permissions to use this command.", ephemeral: true });
 
         if (target.bot) return interaction.reply("You can't warn a bot, you idiot.");
         if (target === member.user) return interaction.reply("You can't warn yourself.");
