@@ -29,7 +29,7 @@ export class Main {
                 Intents.FLAGS.GUILD_INVITES,
                 Intents.FLAGS.GUILD_BANS,
             ],
-            botGuilds: ["768975702187704360"],
+            // botGuilds: ["768975702187704360"],
             classes: [
                 `${__dirname}/Commands/**/*.ts`,
                 `${__dirname}/Commands/**/*.js`,
@@ -40,6 +40,7 @@ export class Main {
         });
 
         await this._client.login(process.env.BOT_TOKEN);
+
 
         this._client.once("ready", async () => {
             await this._client.clearApplicationCommands();
@@ -61,5 +62,5 @@ Main.start().catch(err => console.error(err)
 );
 
 process.on('unhandledRejection', error => {
-	console.error('Unhandled promise rejection:', error);
+    console.error('Unhandled promise rejection:', error);
 });
