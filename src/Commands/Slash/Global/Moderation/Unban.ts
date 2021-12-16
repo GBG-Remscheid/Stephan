@@ -1,4 +1,4 @@
-import { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types";
 import { CommandInteraction, GuildMember, MessageEmbed, Permissions } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 
@@ -12,8 +12,9 @@ export abstract class Unban {
 
         interaction: CommandInteraction
     ) {
-        const { member, guild } = interaction;
-        const target = await interaction.guild.bans.remove(targetId);
+        const { member, guild, user } = interaction;
+        if (!guild) return interaction.reply({ content: "Your server couldn't be fetched while executing your interaction.", ephemeral: true });
+        const target = await guild.bans.remove(targetId);
         if (!target) return interaction.reply({ content: "The given user couldn't be fetched.", ephemeral: true })
 
         if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply({ content: "You don't have `BAN_MEMBERS` permissions to use this command.", ephemeral: true });
@@ -23,16 +24,16 @@ export abstract class Unban {
         if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
 
         const guildEmbed = new MessageEmbed()
-            .setAuthor(`Unbanned by ${interaction.user.username}`, interaction.user.avatarURL({ dynamic: true }))
+            .setAuthor(`Unbanned by ${user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
             .setTimestamp()
             .setColor("GREEN")
             .setDescription(`${target.username} has been successfully unbanned. ✅`)
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(`Unbanned by ${interaction.user.username}`, interaction.user.avatarURL({ dynamic: true }))
+            .setAuthor(`Unbanned by ${user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
             .setTimestamp()
             .setColor("GREEN")
-            .setDescription(`You've been unbanned from **${interaction.guild.name}**.`)
+            .setDescription(`You've been unbanned from **${guild.name}**.`)
 
         target.send({ embeds: [dmEmbed] }).catch(() => {
             interaction.reply({ content: "There was an error while sending a DM to the user." })

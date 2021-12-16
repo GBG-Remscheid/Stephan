@@ -1,5 +1,5 @@
-import { Snowflake } from "discord-api-types";
-import { CommandInteraction, GuildMember, MessageEmbed, Permissions, TextChannel } from "discord.js";
+import type { Snowflake } from "discord-api-types";
+import { CommandInteraction, GuildMember, MessageEmbed, Permissions, Role, TextChannel } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import moment from "moment";
 
@@ -21,12 +21,13 @@ export abstract class Mute {
         interaction: CommandInteraction
     ) {
         const { channel, createdAt, guild, member, user } = interaction;
+        if (!guild) return interaction.reply({ content: "Your server couldn't be fetched while executing your interaction.", ephemeral: true });
 
         const target = await guild.members.fetch(targetId);
         if (!target) return interaction.reply({ content: "There was an error while fetching the user.", ephemeral: true });
 
-        const mDuration = moment.duration(duration, 'days');
-        const milliseconds = mDuration.asMilliseconds();
+        let mDuration: moment.Duration;
+        let milliseconds: number;
 
         let muterole = guild.roles.cache.find(muterole => muterole.name === 'Muted');
 
@@ -37,15 +38,18 @@ export abstract class Mute {
                     name: 'Muted',
                     color: '#818386',
                     permissions: []
-                })
-                guild.channels.cache.forEach(async (channel: TextChannel) => {
-                    await channel.permissionOverwrites.create(muterole, {
-                        SEND_MESSAGES: false,
-                        ADD_REACTIONS: false
-                    });
                 });
-            } catch (e) {
-                console.log(e.stack);
+                guild.channels.cache.forEach(async (channel) => {
+                    if (channel instanceof TextChannel) {
+                        await channel.permissionOverwrites.create((<Role>muterole), {
+                            SEND_MESSAGES: false,
+                            ADD_REACTIONS: false
+                        });
+                    }
+                    return
+                });
+            } catch (error) {
+                if (error instanceof Error) return console.error(error);
             }
         }
 
@@ -69,7 +73,7 @@ export abstract class Mute {
                 { name: '**Mute Reason:**', value: `\`${reason}\`` },
                 { name: '**Mute Time:**', value: `\`${moment(createdAt).format('DD. MMMM YYYY, HH:mm')}\`` },
                 { name: '**Channel:**', value: `${channel}` },
-                { name: '**Mute Duration:**', value: `${duration ? `${duration} day(s)` : 'Infinte'}`, inline: true }
+                { name: '**Mute Duration:**', value: `${duration ? `${duration} day(s)` : 'Infinite'}`, inline: true }
             ])
 
         const dmEmbed = new MessageEmbed()
@@ -87,17 +91,20 @@ export abstract class Mute {
             interaction.reply("There was an error while sending a DM to the user.");
             setTimeout(() => interaction.deleteReply(), 5000)
         })
-        if (duration) {
+        if (duration && muterole) {
+
+            mDuration = moment.duration(duration, 'days');
+            milliseconds = mDuration.asMilliseconds();
 
             target.roles.add(muterole).catch(() => {
                 interaction.reply("There was an error while adding the muterole.");
                 setTimeout(() => interaction.deleteReply(), 5000)
-            });;
-            setTimeout(() => target.roles.remove(muterole).catch(() => {
+            });
+            setTimeout(() => target.roles.remove(muterole as Role).catch(() => {
                 interaction.reply("There was an error while removing the muterole.");
                 setTimeout(() => interaction.deleteReply(), 5000)
             }), milliseconds);
-        } else {
+        } else if (muterole) {
             target.roles.add(muterole);
         }
         return

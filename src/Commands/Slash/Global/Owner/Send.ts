@@ -1,4 +1,4 @@
-import { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types";
 import { CommandInteraction } from "discord.js";
 import { Discord, Permission, Slash, SlashOption } from "discordx";
 
@@ -16,7 +16,10 @@ export abstract class Send {
 
         interaction: CommandInteraction
     ) {
-        const user = await interaction.guild.members.fetch(targetId);
+        const { guild } = interaction;
+        if (!guild) return interaction.reply({ content: "Your server couldn't be fetched while executing your interaction.", ephemeral: true });
+
+        const user = await guild.members.fetch(targetId);
         if (!user) return interaction.reply({ content: "This user is not on this server.", ephemeral: true })
 
         try {

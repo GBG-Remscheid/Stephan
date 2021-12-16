@@ -1,4 +1,4 @@
-import { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types";
 import { CommandInteraction, GuildMember, MessageEmbed, Permissions, TextChannel } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import moment from "moment";
@@ -18,7 +18,9 @@ export abstract class Warn {
         interaction: CommandInteraction
     ) {
         const { createdAt, guild, channel, user, member } = interaction;
-        const target = guild.members.cache.get(targetId);
+        if (!guild) return interaction.reply({ content: "Your server couldn't be fetched while executing your interaction.", ephemeral: true });
+        const target = await guild.members.fetch(targetId);
+        if (!target) return interaction.reply({ content: "The user couldn't be fetched while executing your interaction.", ephemeral: true });
 
         if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply({ content: "You don't have `MANAGE_MESSAGES` permissions to use this command.", ephemeral: true });
 
@@ -45,7 +47,7 @@ export abstract class Warn {
         const dmEmbed = new MessageEmbed()
             .setAuthor(`Your Warning`, target.user.displayAvatarURL({ dynamic: true }))
             .setColor('#FF0C00')
-            .setThumbnail(guild.iconURL({ dynamic: true }))
+            .setThumbnail(guild.iconURL({ dynamic: true }) ?? 'https://cdn.discordapp.com/embed/avatars/0.png')
             .setFooter(`Warning by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
             .setTimestamp()
             .setDescription(`**You have been warned on ${guild.name}**\n`)

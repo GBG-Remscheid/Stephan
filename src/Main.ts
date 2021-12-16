@@ -1,10 +1,15 @@
 import "reflect-metadata";
-import * as dotenv from "dotenv"
+import { config } from 'dotenv';
 import { Client } from "discordx";
 import { Intents } from "discord.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-dotenv.config()
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
+config({
+    path: process.env.NODE_ENV === 'development' ? '.env.dev' : '.env'
+})
 export class Main {
     private static _client: Client;
 
@@ -29,7 +34,7 @@ export class Main {
                 Intents.FLAGS.GUILD_INVITES,
                 Intents.FLAGS.GUILD_BANS,
             ],
-            // botGuilds: ["768975702187704360"],
+            botGuilds: process.env.NODE_ENV === 'development' ? ["768975702187704360"] : [],
             classes: [
                 `${__dirname}/Commands/**/*.ts`,
                 `${__dirname}/Commands/**/*.js`,
@@ -39,7 +44,7 @@ export class Main {
             /* guards: [NotBot, Prefix('hmm')] */
         });
 
-        await this._client.login(process.env.BOT_TOKEN);
+        await this._client.login(process.env.BOT_TOKEN ?? "");
 
 
         this._client.once("ready", async () => {
@@ -47,8 +52,8 @@ export class Main {
             await this._client.initApplicationCommands();
             await this._client.initApplicationPermissions();
 
-            console.log(`Bot is now online. Logged in as ${this._client.user.username}.`);
-            this._client.user.setPresence({ activities: [{ name: 'the students 👁👁', type: "WATCHING" }] })
+            console.log(`Bot is now online. Logged in as ${this._client.user!.username}.`);
+            this._client.user!.setPresence({ activities: [{ name: 'the students 👁👁', type: "WATCHING" }] })
         });
 
         this._client.on("interactionCreate", async interaction => {

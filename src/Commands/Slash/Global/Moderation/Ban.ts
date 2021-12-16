@@ -1,4 +1,4 @@
-import { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types";
 import { CommandInteraction, GuildMember, MessageEmbed, Permissions } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import moment from "moment";
@@ -21,6 +21,7 @@ export abstract class Ban {
         interaction: CommandInteraction
     ) {
         const { channel, createdAt, guild, member, user } = interaction;
+        if (!guild) return interaction.reply({ content: "Your server couldn't be fetched while executing your interaction.", ephemeral: true });
         const target = await guild.members.fetch(targetId);
         if (!target) return interaction.reply({ content: 'The user you selected could not be fetched.', ephemeral: true })
 

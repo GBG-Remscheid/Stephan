@@ -3,29 +3,34 @@
   "version": "1.0.0",
   "description": "",
   "main": "build/Main.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon",
+    "build": "tsc",
+    "dev": "node --loader ts-node/esm/transpile-only src/Main.ts",
+    "serve": "nodemon --exec node --loader ts-node/esm/transpile-only src/Main.ts",
     "start": "node build/Main.js"
   },
   "author": "hofmmaxi",
   "license": "ISC",
   "devDependencies": {
     "@types/ms": "^0.7.31",
-    "@types/node": "^16.11.6",
-    "eslint": "^8.1.0",
+    "@types/node": "^16.11.13",
+    "eslint": "^8.4.1",
+    "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.1-rc"
+    "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@discordx/music": "^3.0.5",
-    "@discordx/utilities": "^3.0.4",
+    "@discordx/importer": "^1.1.2",
+    "@discordx/utilities": "^3.1.5",
     "discord.js": "^13.3.1",
-    "discordx": "^8.1.0",
+    "discordx": "^9.0.1",
     "dotenv": "^10.0.0",
     "moment": "^2.29.1",
-    "mongodb": "^4.1.3",
-    "mongoose": "^6.0.12",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.1.2",
     "ms": "^2.1.3",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "webuntis": "^1.15.4"
   }
 }

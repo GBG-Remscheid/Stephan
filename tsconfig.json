@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
-    "target": "ES6",
-    "noImplicitAny": false,
+    "module": "ESNext",
+    "target": "ESNext",
+    "strict": true,
     "sourceMap": true,
     "outDir": "build",
     "rootDir": "./src",
@@ -11,12 +11,13 @@
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "esnext",
-      "esnext.asynciterable"
-    ],
     "moduleResolution": "Node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "ESNext",
+      "ESNext.AsyncIterable"
+    ],
   },
   "exclude": [
     "node_modules",
