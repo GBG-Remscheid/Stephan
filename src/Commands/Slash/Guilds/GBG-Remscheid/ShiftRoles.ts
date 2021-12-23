@@ -1,4 +1,5 @@
-import { CommandInteraction, GuildMember, Role, Snowflake, User } from "discord.js";
+import { CommandInteraction, Role } from "discord.js";
+import type { Snowflake } from 'discord.js';
 import { Discord, Guild, Permission, Slash, SlashGroup, SlashOption } from "discordx";
 
 
@@ -14,11 +15,12 @@ export abstract class RoleShift {
 
         await interaction.reply('Starting to shift roles...')
         try {
-            // interaction.guild.members.cache.map(member =>
-            const members: GuildMember[] = [];
-            members.push(interaction.guild.members.cache.get('463044315007156224'))
-            members.push(interaction.guild.members.cache.get('428119121423761410'))
-            members.map((member) =>
+            interaction.guild?.members.cache.map(member =>
+                /* This is only for testing purposes */
+                // const members: GuildMember[] = [];
+                // members.push(interaction.guild.members.cache.get('463044315007156224'))
+                // members.push(interaction.guild.members.cache.get('428119121423761410'))
+                // members.map((member) =>
                 member.roles.cache.map(async (role: Role) => {
                     switch (role.id) {
                         // 5 => 6
@@ -126,26 +128,28 @@ export abstract class RoleShift {
                             member.roles.remove('876808753930965012')
                             /**
                              * Checks if a role is already present for the current year and if not, 
-                             * it creates a role with the `Abi <current year>` schema and assigns it to all students that finished.
+                             * it creates a role with the `Abi 20xxx` schema and assigns it to all students that finished.
                              */
-                            const abiRole = interaction.guild.roles.cache.find(role => role.name === `Abi ${new Date().getFullYear()}`) || null;
-                            if (interaction.guild.roles.cache.find(role => role.name === `Abi ${new Date().getFullYear()}`)) {
-                                member.roles.add(abiRole)
+                            const abiRole = interaction.guild?.roles.cache.find(role => role.name === `Abi ${new Date().getFullYear()}`) || null;
+                            if (interaction.guild?.roles.cache.find(role => role.name === `Abi ${new Date().getFullYear()}`)) {
+                                if (abiRole) member.roles.add(abiRole);
                             } else {
-                                const abiRole = interaction.guild.roles.create({ name: `Abi ${new Date().getFullYear()}`, color: "RANDOM" })
-                                member.roles.add(await abiRole)
+                                if (interaction.guild) {
+                                    const abiRole = await interaction.guild.roles.create({ name: `Abi ${new Date().getFullYear()}`, color: "RANDOM" });
+                                    member.roles.add(abiRole);
+                                }
                             }
                             break;
                         default:
-                            return interaction.editReply('Roles are shifting...')
-                    }
+                            return interaction.editReply('Roles are shifting...');
+                    };
                 })
-            )
+            );
         } catch (error) {
-            return interaction.editReply('There was an error while shifting the roles.')
-        }
-        return interaction.editReply('All roles got shifted successfully.')
-    }
+            return interaction.editReply('There was an error while shifting the roles.');
+        };
+        return interaction.editReply('All roles got shifted successfully.');
+    };
 
 
 
@@ -176,24 +180,26 @@ export abstract class RoleShift {
 
         await interaction.reply("Roles are shifting...")
         try {
-            const member = interaction.guild.members.cache.get(user);
+            const member = interaction.guild?.members.cache.get(user);
 
             let addRoles = [];
             let remRoles = [];
 
             if (remRole1) remRoles.push(remRole1);
-            if (remRole2) remRoles.push(remRole2)
+            if (remRole2) remRoles.push(remRole2);
 
-            if (addRole1) addRoles.push(addRole1)
-            if (addRole2) addRoles.push(addRole2)
+            if (addRole1) addRoles.push(addRole1);
+            if (addRole2) addRoles.push(addRole2);
 
-            await member.roles.remove(remRoles);
-            if (addRoles.length) await member.roles.add(addRoles)
+            if (member) {
+                await member.roles.remove(remRoles);
+                if (addRoles.length) await member.roles.add(addRoles);
+            };
 
 
-            interaction.editReply("All roles got shifted successfully.")
+            interaction.editReply("All roles got shifted successfully.");
         } catch (error) {
-            interaction.editReply("There was an error while shifting the roles.")
+            interaction.editReply("There was an error while shifting the roles.");
             console.log(error);
         }
     }

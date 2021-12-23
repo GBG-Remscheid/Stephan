@@ -1,5 +1,5 @@
 import { ButtonComponent, Discord, Guild, Permission, Slash, SlashChoice, SlashOption } from "discordx";
-import { ButtonInteraction, CommandInteraction, GuildMember, MessageActionRow, MessageButton, MessageEmbed, Snowflake, TextChannel } from "discord.js";
+import { ButtonInteraction, CommandInteraction, GuildMember, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
 
 enum ClassChoices {
     "Klasse 5a" = "Klasse 5A",
@@ -22,12 +22,13 @@ enum ClassChoices {
     "Stufe EF" = "Stufe EF",
     "Stufe Q1" = "Stufe Q1",
     "Stufe Q2" = "Stufe Q2"
-}
+};
 
-const me: Snowflake = "463044315007156224";
-const maggsi: Snowflake = '428119121423761410';
-
-const embed = new MessageEmbed()
+let requestUser: GuildMember | undefined;
+let embed = new MessageEmbed();
+let embedMessage: Message;
+let buttonReply: Message;
+let row: MessageActionRow;
 
 const enum VerificationStatus {
     Denied = "Denied ❌",
@@ -54,72 +55,82 @@ export abstract class Verify {
 
         interaction: CommandInteraction,
     ) {
-        const user = interaction.user;
-        const member: GuildMember = await interaction.guild.members.fetch(user);
-        if (member.roles.cache.has("755464917834006678")) return interaction.reply({ content: `You've been already verified.`, ephemeral: true })
-        const channel = interaction.guild.channels.cache.get("863391600687317003");
-        embed
-            .setColor("RANDOM")
+        const { user } = interaction;
+
+        requestUser = await interaction.guild?.members.fetch(user);
+        if (!requestUser) return interaction.reply({ content: "There was an error while fetching your user.", ephemeral: true });
+
+        if (requestUser.roles.cache.has("755464917834006678")) return interaction.reply({ content: `You've been already verified.`, ephemeral: true });
+
+        const verificationChannel = interaction.guild?.channels.cache.get("863391600687317003");
+        if (!verificationChannel || verificationChannel.type !== "GUILD_TEXT") return interaction.reply({ content: "There was an error while fetching the verification channel.", ephemeral: true });
+
+        interaction.reply({ content: "Your request has been sent to the verification channel. Please wait for a response.", ephemeral: true });
+
+        embed = new MessageEmbed()
             .setTimestamp()
-            .setThumbnail(user.displayAvatarURL({ dynamic: true }))
-            .setTitle(`Verification Request from ${firstName} ${surname}.`)
-            .addField(`Name`, `${firstName} ${surname}`)
-            .addField('Klasse o. Stufe', `${choice}`)
-            .addField("Spitzname", nickname ?? "Kein Spitzname")
-            .setDescription(`**Status**: ${VerificationStatus.Pending}`)
+            .setFooter(`Request issued by ${requestUser.displayName}`, requestUser.user.avatarURL({ dynamic: true }) ?? requestUser.user.defaultAvatarURL)
+            .setColor("#B97425")
+            .setThumbnail(requestUser.user.avatarURL({ dynamic: true }) ?? requestUser.user.defaultAvatarURL)
+            .setTitle(`Verification Request by **${firstName} ${surname}**`)
+            .setDescription(`Status: ${VerificationStatus.Pending}`)
+            .addFields([
+                { name: "Name", value: `${firstName} ${surname}` },
+                { name: "Klasse o. Stufe", value: choice },
+                { name: "Spitzname", value: nickname ?? "-" },
+            ]);
+
+        if (verificationChannel.isText()) {
+            embedMessage = await verificationChannel.send({ embeds: [embed] })
+        } else {
+            return interaction.reply({ content: "There was an error while sending the verification request.", ephemeral: true });
+        };
 
         const acceptButton = new MessageButton()
-            .setLabel("Accept")
+            .setCustomId("accept")
+            .setDisabled(false)
             .setEmoji("✅")
+            .setLabel("Accept")
             .setStyle("SUCCESS")
-            .setCustomId("accept-button")
 
         const denyButton = new MessageButton()
+            .setCustomId("deny")
+            .setDisabled(false)
+            .setEmoji("❌")
             .setLabel("Deny")
-            .setEmoji("🚫")
             .setStyle("DANGER")
-            .setCustomId("deny-button")
 
-        const row = new MessageActionRow().addComponents([acceptButton, denyButton])
+        row = new MessageActionRow().addComponents([acceptButton, denyButton]);
+        buttonReply = await embedMessage.reply({ content: "Click one of the buttons below to accept or deny the request.", components: [row] });
 
-        interaction.reply("Deine Verifizierungs-Anfrage wurde gesendet. :white_check_mark:");
-        setTimeout(() => interaction.deleteReply(), 5000)
-        const messageEmbed = await (<TextChannel>channel).send({ embeds: [embed] });
-
-        const filter = ((i: ButtonInteraction) => {
-            i.deferUpdate();
-            return i.user.id === me || i.user.id === maggsi;
-        });
-
-        const collector = messageEmbed.createMessageComponentCollector({ filter, componentType: "BUTTON", time: 10000 })
-        collector.on("collect", (i: ButtonInteraction) => {
-            i.reply(`${i.user.username} clicked the button.`)
-        })
-
-        messageEmbed.reply({ content: "Click the buttons to accept or deny the request.", components: [row] })
-
-    }
+    };
 
 
-    @ButtonComponent("accept-button", { guilds: ['755432683579900035'] })
-    async accBtn(
-        interaction: ButtonInteraction,
+    @ButtonComponent("accept", { guilds: ["755432683579900035"] })
+    async accept(
+        interaction: ButtonInteraction
     ) {
-        //TODO: Finish accept button component
-        const member: GuildMember = await interaction.guild.members.fetch(interaction.user);
-        member.roles.add("755464917834006678");
-        // embed.setDescription(`**Status**: ${VerificationStatus.Accepted}`)
-        interaction.user.send(`Your verification request for **${interaction.guild.name}** has been accepted.`);
-        // setTimeout(() => interaction.reply("Request accepted"), 5000);
-    }
+        if (requestUser) requestUser.roles.add("755464917834006678");
 
-    @ButtonComponent("deny-button", { guilds: ['755432683579900035'] })
-    denyBtn(
-        interaction: ButtonInteraction,
+        const embedEdit = embed
+            .setDescription(`Status: ${VerificationStatus.Accepted}`)
+            .setColor("#00FF00");
+        embedMessage.edit({ embeds: [embedEdit] });
+        buttonReply.delete();
+        interaction.reply({ content: "You've accepted the verification request.", ephemeral: true });
+        return requestUser?.send(`Your verification request for **${interaction.guild?.name}** has been accepted.`);
+    };
+
+    @ButtonComponent("deny", { guilds: ["755432683579900035"] })
+    async deny(
+        interaction: ButtonInteraction
     ) {
-        //TODO: Finish deny button component
-        embed.setDescription(`**Status**: ${VerificationStatus.Denied}`)
-        setTimeout(() => interaction.reply("Request denied"), 5000);
-        interaction.user.send(`Sorry, your verification request for **${interaction.guild.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`)
-    }
-}
+        const embedEdit = embed
+            .setDescription(`Status: ${VerificationStatus.Denied}`)
+            .setColor("#FF0000");
+        embedMessage.edit({ embeds: [embedEdit] });
+        buttonReply.delete();
+        interaction.reply({ content: "You've denied the verification request.", ephemeral: true });
+        return requestUser?.send(`Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`);
+    };
+};
