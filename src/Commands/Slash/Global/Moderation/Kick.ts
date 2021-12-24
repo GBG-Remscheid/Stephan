@@ -8,10 +8,10 @@ import moment from "moment";
 export abstract class Kick {
     @Slash("kick", { description: "Kick a user from your server" })
     async kick(
-        @SlashOption("user", { description: "The user you want to kick", required: true, type: "USER" })
+        @SlashOption("user", { description: "The user you want to kick", type: "USER" })
         targetId: Snowflake,
 
-        @SlashOption("reason", { description: "Your reason for kicking the user.", required: true, type: "STRING" })
+        @SlashOption("reason", { description: "Your reason for kicking the user.", type: "STRING" })
         reason: string,
 
         interaction: CommandInteraction
@@ -24,7 +24,7 @@ export abstract class Kick {
 
         if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.KICK_MEMBERS)) return interaction.reply({ content: "You don't have `KICK_MEMBERS` permissions to use this command.", ephemeral: true });
 
-        if (target.user.bot) return interaction.reply({ content: "You can't ban a bot.", ephemeral: true });
+        if (target.user.bot) return interaction.reply({ content: "You can't kick a bot.", ephemeral: true });
         if (target === member) return interaction.reply({ content: "You can't kick yourself.", ephemeral: true });
         if (target.id === guild.ownerId) return interaction.reply({ content: "You can't kick the server owner.", ephemeral: true });
 

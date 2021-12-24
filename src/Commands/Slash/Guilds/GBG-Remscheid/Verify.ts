@@ -43,11 +43,11 @@ export abstract class Verify {
     @Slash("verify")
     @Guild("755432683579900035")
     async verify(
-        @SlashOption("vorname", { description: "Dein Vorname", required: true, type: "STRING" })
+        @SlashOption("vorname", { description: "Dein Vorname", type: "STRING" })
         firstName: string,
-        @SlashOption("nachname", { description: "Dein Nachname", required: true, type: "STRING" })
+        @SlashOption("nachname", { description: "Dein Nachname", type: "STRING" })
         surname: string,
-        @SlashOption("klasse", { description: "Deine Klasse/Stufe", required: true, type: "STRING" })
+        @SlashOption("klasse", { description: "Deine Klasse/Stufe", type: "STRING" })
         @SlashChoice(ClassChoices)
         choice: string,
         @SlashOption("spitzname", { description: "Dein optionaler Spitzname", type: "STRING" })

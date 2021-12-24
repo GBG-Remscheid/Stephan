@@ -8,10 +8,10 @@ import moment from "moment";
 export abstract class Warn {
     @Slash("warn", { description: "Sends a warning to a user" })
     async warn(
-        @SlashOption("target", { description: 'The user that should be warned', required: true, type: 'USER' })
+        @SlashOption("target", { description: 'The user that should be warned', type: 'USER' })
         targetId: Snowflake,
 
-        @SlashOption("reason", { description: 'The reason for the warning', required: true, type: "STRING" })
+        @SlashOption("reason", { description: 'The reason for the warning', type: "STRING" })
         reason: string,
 
 
@@ -24,9 +24,9 @@ export abstract class Warn {
 
         if (!(<GuildMember>member).permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return interaction.reply({ content: "You don't have `MANAGE_MESSAGES` permissions to use this command.", ephemeral: true });
 
-        if (target.user.bot) return interaction.reply("You can't warn a bot, you idiot.");
-        if (target === member) return interaction.reply("You can't warn yourself.");
-        if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
+        if (target.user.bot) return interaction.reply({ content: "You can't warn a bot.", ephemeral: true });
+        if (target === member) return interaction.reply({ content: "You can't warn yourself.", ephemeral: true });
+        if (target.id === guild.ownerId) return interaction.reply({ content: "You can't warn the server owner.", ephemeral: true });
 
         const guildEmbed = new MessageEmbed()
             .setTitle("**Warning**")

@@ -160,10 +160,10 @@ export abstract class RoleShift {
      */
     async shiftDown(
 
-        @SlashOption("user", { required: true, description: 'The specific user that should be downshifted.', type: "USER" })
+        @SlashOption("user", { description: 'The specific user that should be downshifted.', type: "USER" })
         user: Snowflake,
 
-        @SlashOption("remove", { required: true, description: 'The role, that should be removed.', type: "ROLE" })
+        @SlashOption("remove", { description: 'The role, that should be removed.', type: "ROLE" })
         remRole1: Snowflake,
 
         @SlashOption("add", { required: false, description: 'The role, that should be added.', type: "ROLE" })

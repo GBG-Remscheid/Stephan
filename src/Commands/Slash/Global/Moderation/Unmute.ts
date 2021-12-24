@@ -7,7 +7,7 @@ import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 export abstract class Unmute {
     @Slash("unmute", { description: "Unmute a previously muted user, who has the 'Muted' role." })
     async unmute(
-        @SlashOption("user", { description: "The user you're unmuting.", required: true, type: "USER" })
+        @SlashOption("user", { description: "The user you're unmuting.", type: "USER" })
         targetId: Snowflake,
 
         interaction: CommandInteraction
@@ -23,8 +23,8 @@ export abstract class Unmute {
 
         if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.MANAGE_ROLES)) return interaction.reply({ content: "You don't have `MANAGE_ROLES` permissions to use this command.", ephemeral: true });
 
-        if (target.user.bot) return interaction.reply("You can't mute a bot, you idiot.");
-        if (target === member) return interaction.reply("You can't mute yourself.");
+        if (target.user.bot) return interaction.reply({ content: "You can't mute a bot.", ephemeral: true });
+        if (target === member) return interaction.reply({ content: "You can't unmute yourself.", ephemeral: true });
         if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
 
         const guildEmbed = new MessageEmbed()

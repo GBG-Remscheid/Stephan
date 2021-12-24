@@ -8,10 +8,10 @@ import moment from "moment";
 export abstract class Mute {
     @Slash("mute", { description: "Mute a specific user on your server for a specific time." })
     async mute(
-        @SlashOption("user", { description: "The user you'd like to mute", required: true, type: "USER" })
+        @SlashOption("user", { description: "The user you'd like to mute", type: "USER" })
         targetId: Snowflake,
 
-        @SlashOption("reason", { description: "The reason for your mute", required: true, type: "STRING" })
+        @SlashOption("reason", { description: "The reason for your mute", type: "STRING" })
         reason: string,
 
         @SlashOption("days", { description: "The duration for your mute", required: false, type: "INTEGER" })
@@ -25,6 +25,9 @@ export abstract class Mute {
 
         const target = await guild.members.fetch(targetId);
         if (!target) return interaction.reply({ content: "There was an error while fetching the user.", ephemeral: true });
+        if (target.user.bot) return interaction.reply({ content: "You can't warn a bot.", ephemeral: true });
+        if (target === member) return interaction.reply({ content: "You can't mute yourself.", ephemeral: true });
+        if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
 
         let mDuration: moment.Duration;
         let milliseconds: number;

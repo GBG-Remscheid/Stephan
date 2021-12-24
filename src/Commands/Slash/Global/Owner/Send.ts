@@ -8,10 +8,10 @@ import { Discord, Permission, Slash, SlashOption } from "discordx";
 export abstract class Send {
     @Slash("send", { description: "Send a message to a user" })
     async send(
-        @SlashOption("user", { description: "The user user the message is going to be send to.", required: true, type: "USER" })
+        @SlashOption("user", { description: "The user user the message is going to be send to.", type: "USER" })
         targetId: Snowflake,
 
-        @SlashOption("message", { description: "The message you want to send.", required: true, type: "STRING" })
+        @SlashOption("message", { description: "The message you want to send.", type: "STRING" })
         message: string,
 
         interaction: CommandInteraction

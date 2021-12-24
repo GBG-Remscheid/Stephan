@@ -8,10 +8,10 @@ import moment from "moment";
 export abstract class Ban {
     @Slash("ban", { description: "Ban a specific user from a server (tmp or infinite)." })
     async ban(
-        @SlashOption("user", { description: "The user that should be banned", required: true, type: "USER" })
+        @SlashOption("user", { description: "The user that should be banned", type: "USER" })
         targetId: Snowflake,
 
-        @SlashOption("reason", { description: "The ban reason", required: true, type: "STRING" })
+        @SlashOption("reason", { description: "The ban reason", type: "STRING" })
         reason: string,
 
         @SlashOption("days", { description: "The optional duration for a temporary ban", required: false, type: "INTEGER" })

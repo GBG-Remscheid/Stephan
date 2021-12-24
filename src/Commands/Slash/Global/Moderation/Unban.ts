@@ -7,7 +7,7 @@ import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 export abstract class Unban {
     @Slash("unban", { description: "Unban a banned user" })
     async unban(
-        @SlashOption("user-id", { description: "The user you want to unban", required: true, type: "USER" })
+        @SlashOption("user-id", { description: "The user you want to unban", type: "USER" })
         targetId: Snowflake,
 
         interaction: CommandInteraction
@@ -19,9 +19,9 @@ export abstract class Unban {
 
         if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply({ content: "You don't have `BAN_MEMBERS` permissions to use this command.", ephemeral: true });
 
-        if (target.bot) return interaction.reply("You can't warn a bot, you idiot.");
-        if (target === member.user) return interaction.reply("You can't warn yourself.");
-        if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
+        if (target.bot) return interaction.reply({ content: "You can't unban a bot", ephemeral: true });
+        if (target === member.user) return interaction.reply({ content: "You can't unban yourself.", ephemeral: true });
+        if (target.id === guild.ownerId) return interaction.reply({ content: "You can't unban the server owner.", ephemeral: true });
 
         const guildEmbed = new MessageEmbed()
             .setAuthor(`Unbanned by ${user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
