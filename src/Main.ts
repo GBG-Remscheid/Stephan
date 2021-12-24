@@ -4,6 +4,7 @@ import { Client } from "discordx";
 import { Intents } from "discord.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { importx } from "@discordx/importer";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -35,15 +36,10 @@ export class Main {
                 Intents.FLAGS.GUILD_BANS,
             ],
             botGuilds: process.env.NODE_ENV === 'development' ? ["768975702187704360"] : [],
-            classes: [
-                `${__dirname}/Commands/**/*.ts`,
-                `${__dirname}/Commands/**/*.js`,
-                `${__dirname}/Events/**/*.ts`,
-                `${__dirname}/Events/**/*.js`,
-            ],
-            /* guards: [NotBot, Prefix('hmm')] */
+            presence: { activities: [{ name: 'the students 👁👁', type: "WATCHING" }] },
+            failIfNotExists: true,
         });
-
+        await importx(`${__dirname}/{Commands,Events}/**/*{.ts,.js}`);
         await this._client.login(process.env.BOT_TOKEN ?? "");
 
 
@@ -52,8 +48,7 @@ export class Main {
             await this._client.initApplicationCommands();
             await this._client.initApplicationPermissions();
 
-            console.log(`Bot is now online. Logged in as ${this._client.user!.username}.`);
-            this._client.user!.setPresence({ activities: [{ name: 'the students 👁👁', type: "WATCHING" }] })
+            console.log(`Bot is now online. Logged in as ${this._client.user?.username}.`);
         });
 
         this._client.on("interactionCreate", async interaction => {
