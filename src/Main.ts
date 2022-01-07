@@ -38,6 +38,7 @@ export class Main {
             botGuilds: process.env.NODE_ENV === 'development' ? ["768975702187704360"] : [],
             presence: { activities: [{ name: 'the students 👁👁', type: "WATCHING" }] },
             failIfNotExists: true,
+            silent: false
         });
         await importx(`${__dirname}/{Commands,Events}/**/*{.ts,.js}`);
         await this._client.login(process.env.BOT_TOKEN ?? "");
