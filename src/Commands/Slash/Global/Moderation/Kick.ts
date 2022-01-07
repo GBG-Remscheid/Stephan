@@ -30,9 +30,9 @@ export abstract class Kick {
 
 
         const serverEmbed = new MessageEmbed()
-            .setAuthor("Kick Info", target.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor({ name: "Kick Info", iconURL: target.user.displayAvatarURL({ dynamic: true }) })
             .setColor("#FF0C00")
-            .setFooter(`Kick executed by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Kick executed by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .addFields([
                 { name: '**Kicked User:**', value: `${target.user}` },
@@ -45,9 +45,9 @@ export abstract class Kick {
             ]);
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(`Your Kick Info`, target.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor({ name: `Your Kick Info`, iconURL: target.user.displayAvatarURL({ dynamic: true }) })
             .setColor('#FF0C00')
-            .setFooter(`Kick executed by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Kick executed by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .setDescription(
                 `**You have been kicked from ${guild.name}**\n`,

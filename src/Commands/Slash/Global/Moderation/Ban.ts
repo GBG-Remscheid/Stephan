@@ -35,10 +35,10 @@ export abstract class Ban {
 
 
         const serverEmbed = new MessageEmbed()
-            .setAuthor("Ban Info", target.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor({ name: "Ban Info", iconURL: target.user.displayAvatarURL({ dynamic: true }) })
             .setColor("#FF0C00")
             .setThumbnail(banhammer)
-            .setFooter(`Ban executed by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Ban executed by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .addFields([
                 { name: '**Banned User:**', value: `${target.user}` },
@@ -52,10 +52,10 @@ export abstract class Ban {
             ])
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(`Your Ban Info`, target.user.displayAvatarURL({ dynamic: true }))
+            .setAuthor({ name: `Your Ban Info`, iconURL: target.user.displayAvatarURL({ dynamic: true }) })
             .setColor('#FF0C00')
             .setThumbnail(banhammer)
-            .setFooter(`Ban executed by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Ban executed by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .setDescription(
                 `**You have been banned from ${guild.name}**\n`,

@@ -27,14 +27,16 @@ export abstract class Unmute {
         if (target === member) return interaction.reply({ content: "You can't unmute yourself.", ephemeral: true });
         if (target.id === guild.ownerId) return interaction.reply({ content: "You can't mute the server owner.", ephemeral: true });
 
+        if (!target.isCommunicationDisabled()) return interaction.reply({ content: "That user isn't muted.", ephemeral: true });
+
         const guildEmbed = new MessageEmbed()
-            .setAuthor(`Unmuted by ${interaction.user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
+            .setAuthor({ name: `Unmuted by ${interaction.user.username}`, iconURL: user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL })
             .setTimestamp()
             .setColor("GREEN")
             .setDescription(`${target.user.username} has been successfully unmuted. ✅`)
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(`Unmuted by ${interaction.user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
+            .setAuthor({ name: `Unmuted by ${interaction.user.username}`, iconURL: user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL })
             .setTimestamp()
             .setColor("GREEN")
             .setDescription(`You've been unmuted from **${guild.name}**.`)
@@ -43,10 +45,7 @@ export abstract class Unmute {
             interaction.reply({ content: "There was an error while sending a DM to the user." })
             setTimeout(() => interaction.deleteReply(), 5000)
         });
-        target.roles.remove(muterole).catch(() => {
-            interaction.reply("There was an error while removing the muterole.");
-            setTimeout(() => interaction.deleteReply(), 5000)
-        });
+        target.timeout(null);
         interaction.reply({ embeds: [guildEmbed] });
         return;
     }

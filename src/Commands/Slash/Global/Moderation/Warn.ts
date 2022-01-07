@@ -32,7 +32,7 @@ export abstract class Warn {
             .setTitle("**Warning**")
             .setColor("#FF0C00")
             .setThumbnail(target.user.displayAvatarURL({ dynamic: true }))
-            .setFooter(`Warning by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Warning by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .addFields([
                 { name: '**Warned User:**', value: `\`${target.user}\`` },
@@ -48,7 +48,7 @@ export abstract class Warn {
             .setAuthor(`Your Warning`, target.user.displayAvatarURL({ dynamic: true }))
             .setColor('#FF0C00')
             .setThumbnail(guild.iconURL({ dynamic: true }) ?? 'https://cdn.discordapp.com/embed/avatars/0.png')
-            .setFooter(`Warning by ${user.username}`, user.displayAvatarURL({ dynamic: true }))
+            .setFooter({ text: `Warning by ${user.username}`, iconURL: user.displayAvatarURL({ dynamic: true }) })
             .setTimestamp()
             .setDescription(`**You have been warned on ${guild.name}**\n`)
             .addField('**Reason:**', `\`${reason}\``)

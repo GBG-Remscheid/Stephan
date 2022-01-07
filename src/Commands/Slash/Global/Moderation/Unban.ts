@@ -20,17 +20,17 @@ export abstract class Unban {
         if (!(<GuildMember>interaction.member).permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return interaction.reply({ content: "You don't have `BAN_MEMBERS` permissions to use this command.", ephemeral: true });
 
         if (target.bot) return interaction.reply({ content: "You can't unban a bot", ephemeral: true });
-        if (target === member.user) return interaction.reply({ content: "You can't unban yourself.", ephemeral: true });
+        if (target === member?.user) return interaction.reply({ content: "You can't unban yourself.", ephemeral: true });
         if (target.id === guild.ownerId) return interaction.reply({ content: "You can't unban the server owner.", ephemeral: true });
 
         const guildEmbed = new MessageEmbed()
-            .setAuthor(`Unbanned by ${user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
+            .setAuthor({ name: `Unbanned by ${user.username}`, iconURL: user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL })
             .setTimestamp()
             .setColor("GREEN")
             .setDescription(`${target.username} has been successfully unbanned. ✅`)
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(`Unbanned by ${user.username}`, user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL)
+            .setAuthor({ name: `Unbanned by ${user.username}`, iconURL: user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL })
             .setTimestamp()
             .setColor("GREEN")
             .setDescription(`You've been unbanned from **${guild.name}**.`)
