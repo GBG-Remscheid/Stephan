@@ -5,6 +5,7 @@ import { Intents } from "discord.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { importx } from "@discordx/importer";
+import io from "@pm2/io";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -66,3 +67,8 @@ Main.start().catch(err => console.error(err)
 process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
 });
+
+io.init({
+    tracing: true,
+    profiling: true,
+})
