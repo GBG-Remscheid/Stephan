@@ -1,5 +1,5 @@
 import { CommandInteraction, Role } from "discord.js";
-import type { Snowflake } from 'discord.js';
+import type { Snowflake } from 'discord-api-types';
 import { Discord, Guild, Permission, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
 
