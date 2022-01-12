@@ -1,8 +1,10 @@
+import { Category } from "@discordx/utilities";
 import type { Snowflake } from "discord-api-types";
 import { CommandInteraction, GuildMember, MessageEmbed, Permissions } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 
 @Discord()
+@Category("Moderation")
 @SlashGroup("mod")
 export abstract class Unmute {
     @Slash("unmute", { description: "Unmute a previously muted user, who has the 'Muted' role." })

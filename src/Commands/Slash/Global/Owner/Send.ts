@@ -1,3 +1,4 @@
+import { Category } from "@discordx/utilities";
 import type { Snowflake } from "discord-api-types";
 import { CommandInteraction } from "discord.js";
 import { Discord, Permission, Slash, SlashOption } from "discordx";
@@ -5,6 +6,7 @@ import { Discord, Permission, Slash, SlashOption } from "discordx";
 @Discord()
 @Permission({ id: "463044315007156224", type: "USER", permission: true })
 @Permission({ id: "428119121423761410", type: "USER", permission: true })
+@Category("Owner")
 export abstract class Send {
     @Slash("send", { description: "Send a message to a user" })
     async send(

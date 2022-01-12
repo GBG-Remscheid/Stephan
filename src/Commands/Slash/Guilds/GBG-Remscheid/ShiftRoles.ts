@@ -1,9 +1,11 @@
 import { CommandInteraction, Role } from "discord.js";
 import type { Snowflake } from 'discord.js';
 import { Discord, Guild, Permission, Slash, SlashGroup, SlashOption } from "discordx";
+import { Category } from "@discordx/utilities";
 
 
 @Discord()
+@Category("Utilities")
 @SlashGroup("role-shift", "Shifts all members' roles.")
 @Guild("755432683579900035")
 @Permission({ id: '755432968901754951', type: "ROLE", permission: true })
@@ -14,6 +16,7 @@ export abstract class RoleShift {
     ) {
 
         await interaction.reply('Starting to shift roles...')
+        await interaction.deferReply();
         try {
             interaction.guild?.members.cache.map(member =>
                 /* This is only for testing purposes */

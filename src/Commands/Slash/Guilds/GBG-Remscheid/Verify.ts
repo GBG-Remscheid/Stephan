@@ -1,5 +1,6 @@
 import { ButtonComponent, Discord, Guild, Permission, Slash, SlashChoice, SlashOption } from "discordx";
 import { ButtonInteraction, CommandInteraction, GuildMember, Message, MessageActionRow, MessageButton, MessageEmbed } from "discord.js";
+import { Category } from "@discordx/utilities";
 
 enum ClassChoices {
     "Klasse 5a" = "Klasse 5A",
@@ -36,6 +37,7 @@ const enum VerificationStatus {
     Pending = "Pending 🕐"
 }
 @Discord()
+@Category("Utilities")
 @Permission({ id: "755464917834006678", type: "ROLE", permission: false })
 @Permission({ id: '463044315007156224', type: "USER", permission: true })
 @Permission({ id: '428119121423761410', type: "USER", permission: true })

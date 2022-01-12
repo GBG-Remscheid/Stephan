@@ -3,12 +3,14 @@ import { Discord, Slash, SlashGroup } from "discordx";
 import Webuntis from 'webuntis';
 import { config } from 'dotenv';
 import moment from "moment";
+import { Category } from "@discordx/utilities";
 
 config();
 
 const untis = new Webuntis(process.env.SCHOOL ?? "", process.env.USERNAME ?? "", process.env.PASSWORD ?? "", process.env.BASEURL ?? "");
 
 @Discord()
+@Category("Untis")
 @SlashGroup("untis")
 export default class Holidays {
     @Slash("ferien")

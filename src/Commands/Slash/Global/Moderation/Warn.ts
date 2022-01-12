@@ -1,9 +1,11 @@
+import { Category } from "@discordx/utilities";
 import type { Snowflake } from "discord-api-types";
 import { CommandInteraction, GuildMember, MessageEmbed, Permissions, TextChannel } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import moment from "moment";
 
 @Discord()
+@Category("Moderation")
 @SlashGroup("mod")
 export abstract class Warn {
     @Slash("warn", { description: "Sends a warning to a user" })
