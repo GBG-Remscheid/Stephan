@@ -6,6 +6,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { importx } from "@discordx/importer";
 import io from "@pm2/io";
+import { NotBot } from "./Guards/Global/NotBot.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -37,6 +38,9 @@ export class Main {
                 Intents.FLAGS.GUILD_BANS,
             ],
             botGuilds: process.env.NODE_ENV === 'development' ? ["768975702187704360"] : [],
+            guards: [
+                NotBot
+            ],
             presence: { activities: [{ name: 'the students 👁👁', type: "WATCHING" }] },
             failIfNotExists: true,
             silent: false
