@@ -43,7 +43,7 @@ export abstract class Vertretung {
         @SlashChoice(Klassen)
         klasse: string,
 
-        @SlashOption("tag", { description: "Anbfragetag (heute oder morgen)", type: "STRING" })
+        @SlashOption("tag", { description: "Abfragetag (heute oder morgen)", type: "STRING" })
         @SlashChoice(Tag)
         tag: string,
 
