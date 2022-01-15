@@ -1,9 +1,8 @@
 *.env*
-.idea
+.idea/
 dist/
 build/
-.vscode
+.vscode/
 .DS_Store
-node_modules
+node_modules/
 **/*.js
-botconfig.tmp.json

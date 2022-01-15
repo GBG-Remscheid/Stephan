@@ -1,8 +1,12 @@
-node_modules
-.vscode
+.DS_Store
+.git/
+.github/
+.idea/
+.vscode/
+build/
+node_modules/
+.env.dev
 .env.example
 .eslintrc.json
 .gitignore
-.DS_Store
-.git
-.idea
+nodemon.json
