@@ -7,7 +7,10 @@ export const NotGuild: GuardFunction<CommandInteraction> = async (
     next
 ) => {
     if (!interaction.guild) {
-        return interaction.reply({ content: "This command can only be used in a server.", ephemeral: true });
+        return interaction.reply({
+            content: "This command can only be used in a server.",
+            ephemeral: true,
+        });
     } else {
         await next();
     }

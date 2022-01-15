@@ -109,7 +109,7 @@ export abstract class Ban {
                     value: `\`${target.id}\``,
                 },
                 { name: "**Banned By:**", value: `${user}` },
-                { inline: true, name: "**User ID:**", value: `\`${user.id}\``, },
+                { inline: true, name: "**User ID:**", value: `\`${user.id}\`` },
                 { name: "**Ban Reason:**", value: `\`${reason}\`` },
                 {
                     name: "**Ban Time:**",
@@ -148,7 +148,7 @@ export abstract class Ban {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         duration
-            ? target.ban({ days: duration, reason: reason, })
+            ? target.ban({ days: duration, reason: reason })
             : target.ban({ reason: reason });
         return;
     }

@@ -17,7 +17,9 @@ import { Category } from "@discordx/utilities";
 @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
 export abstract class RoleShift {
     @Slash("up", { description: "Shift up the roles of all members." })
-    async shiftUp(interaction: CommandInteraction): Promise<void | APIMessage | Message<boolean>> {
+    async shiftUp(
+        interaction: CommandInteraction
+    ): Promise<void | APIMessage | Message<boolean>> {
         await interaction.reply("Starting to shift roles...");
         await interaction.deferReply();
         try {
@@ -178,7 +180,9 @@ export abstract class RoleShift {
                                         `Abi ${new Date().getFullYear()}`
                                 )
                             ) {
-                                if (abiRole) { member.roles.add(abiRole); }
+                                if (abiRole) {
+                                    member.roles.add(abiRole);
+                                }
                             } else {
                                 if (interaction.guild) {
                                     const newAbiRole =
@@ -253,15 +257,25 @@ export abstract class RoleShift {
             const addRoles = [];
             const remRoles = [];
 
-            if (remRole1) { remRoles.push(remRole1); }
-            if (remRole2) { remRoles.push(remRole2); }
+            if (remRole1) {
+                remRoles.push(remRole1);
+            }
+            if (remRole2) {
+                remRoles.push(remRole2);
+            }
 
-            if (addRole1) { addRoles.push(addRole1); }
-            if (addRole2) { addRoles.push(addRole2); }
+            if (addRole1) {
+                addRoles.push(addRole1);
+            }
+            if (addRole2) {
+                addRoles.push(addRole2);
+            }
 
             if (member) {
                 await member.roles.remove(remRoles);
-                if (addRoles.length) { await member.roles.add(addRoles); }
+                if (addRoles.length) {
+                    await member.roles.add(addRoles);
+                }
             }
 
             interaction.editReply("All roles got shifted successfully.");

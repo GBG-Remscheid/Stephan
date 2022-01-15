@@ -113,16 +113,14 @@ export abstract class Warn {
             ]);
 
         const dmEmbed = new MessageEmbed()
-            .setAuthor(
-                {
-                    iconURL: target.user.displayAvatarURL({ dynamic: true }),
-                    name: "Your Warning",
-                }
-            )
+            .setAuthor({
+                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                name: "Your Warning",
+            })
             .setColor("#FF0C00")
             .setThumbnail(
                 guild.iconURL({ dynamic: true }) ??
-                "https://cdn.discordapp.com/embed/avatars/0.png"
+                    "https://cdn.discordapp.com/embed/avatars/0.png"
             )
             .setFooter({
                 iconURL: user.displayAvatarURL({ dynamic: true }),

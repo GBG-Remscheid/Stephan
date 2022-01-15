@@ -40,7 +40,7 @@ export abstract class UserInfo {
             .setColor("RANDOM")
             .setThumbnail(
                 targetMember.user.displayAvatarURL({ dynamic: true }) ??
-                targetMember.user.defaultAvatarURL
+                    targetMember.user.defaultAvatarURL
             )
             .setFooter({
                 iconURL:
@@ -71,15 +71,16 @@ export abstract class UserInfo {
                     name: "Server Avatar",
                     value: targetMember.avatar
                         ? `[Link to avatar](${targetMember.avatarURL({
-                            dynamic: true,
-                        })})`
+                              dynamic: true,
+                          })})`
                         : "none",
                 },
                 {
                     name: "Global Avatar",
-                    value: `[Link to avatar](${targetMember.user.avatarURL({ dynamic: true }) ??
+                    value: `[Link to avatar](${
+                        targetMember.user.avatarURL({ dynamic: true }) ??
                         targetMember.user.defaultAvatarURL
-                        })`,
+                    })`,
                 },
             ]);
 

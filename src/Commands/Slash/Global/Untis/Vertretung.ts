@@ -43,7 +43,6 @@ const formatLessonName = (name: string | undefined) => {
     return name?.replace(regex, "");
 };
 
-
 @Discord()
 @SlashGroup("untis")
 export abstract class Vertretung {
@@ -111,9 +110,10 @@ export abstract class Vertretung {
                         embed
                             .addField(
                                 "Fach",
-                                `\`\`\`${formatLessonName(lesson.sg) ??
-                                lesson.su.map(l => l.name) ??
-                                "N/A"
+                                `\`\`\`${
+                                    formatLessonName(lesson.sg) ??
+                                    lesson.su.map(l => l.name) ??
+                                    "N/A"
                                 }\`\`\``,
                                 true
                             )

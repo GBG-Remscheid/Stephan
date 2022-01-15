@@ -120,12 +120,12 @@ export abstract class Verify {
             .setFooter(
                 `Request issued by ${requestUser.displayName}`,
                 requestUser.user.avatarURL({ dynamic: true }) ??
-                requestUser.user.defaultAvatarURL
+                    requestUser.user.defaultAvatarURL
             )
             .setColor("#B97425")
             .setThumbnail(
                 requestUser.user.avatarURL({ dynamic: true }) ??
-                requestUser.user.defaultAvatarURL
+                    requestUser.user.defaultAvatarURL
             )
             .setTitle(`Verification Request by **${firstName} ${surname}**`)
             .setDescription(`Status: ${VerificationStatus.Pending}`)
@@ -169,7 +169,9 @@ export abstract class Verify {
 
     @ButtonComponent("accept", { guilds: ["755432683579900035"] })
     accept(interaction: ButtonInteraction): Promise<Message> | undefined {
-        if (requestUser) { requestUser.roles.add("755464917834006678"); }
+        if (requestUser) {
+            requestUser.roles.add("755464917834006678");
+        }
 
         const embedEdit = embed
             .setDescription(`Status: ${VerificationStatus.Accepted}`)
