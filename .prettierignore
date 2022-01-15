@@ -1,0 +1,13 @@
+.github
+.vscode
+build/
+node_modules/
+.dockerignore
+.env
+.env.dev
+.env.example
+.eslintrc.json
+.gitignore
+.prettierrc.json
+nodemon.json
+package*.json

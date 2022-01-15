@@ -7,7 +7,7 @@ export const NotBot: GuardFunction<CommandInteraction> = async (
     next
 ) => {
     if (interaction.user.bot) {
-        return
+        return;
     } else {
         await next();
     }
