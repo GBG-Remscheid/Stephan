@@ -4,7 +4,7 @@ WORKDIR /usr/src/Stephan
 
 COPY package*.json ./
 
-RUN npm i --only=production
+RUN npm i
 RUN npm i -g typescript
 
 COPY . ./
