@@ -134,6 +134,6 @@ export abstract class Vertretung {
                     interaction.editReply({ embeds: [embed] });
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => console.error(err));
     }
 }

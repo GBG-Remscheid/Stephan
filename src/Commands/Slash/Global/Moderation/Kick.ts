@@ -6,7 +6,7 @@ import {
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
-import { NotGuild } from "../../../../Guards/Global/NotGuild";
+import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
 import type { Snowflake } from "discord-api-types";
 import moment from "moment";
 
