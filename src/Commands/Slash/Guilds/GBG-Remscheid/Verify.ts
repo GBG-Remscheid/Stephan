@@ -117,11 +117,12 @@ export abstract class Verify {
 
         embed = new MessageEmbed()
             .setTimestamp()
-            .setFooter(
-                `Request issued by ${requestUser.displayName}`,
-                requestUser.user.avatarURL({ dynamic: true }) ??
-                    requestUser.user.defaultAvatarURL
-            )
+            .setFooter({
+                iconURL:
+                    requestUser.user.avatarURL({ dynamic: true }) ??
+                    requestUser.user.defaultAvatarURL,
+                text: `Request issued by ${requestUser.displayName}`,
+            })
             .setColor("#B97425")
             .setThumbnail(
                 requestUser.user.avatarURL({ dynamic: true }) ??
@@ -168,9 +169,13 @@ export abstract class Verify {
     }
 
     @ButtonComponent("accept", { guilds: ["755432683579900035"] })
-    accept(interaction: ButtonInteraction): Promise<Message> | undefined {
+    accept(interaction: ButtonInteraction): Promise<void> {
         if (requestUser) {
             requestUser.roles.add("755464917834006678");
+
+            requestUser.send(
+                `Your verification request for **${interaction.guild?.name}** has been accepted.`
+            );
         }
 
         const embedEdit = embed
@@ -178,28 +183,28 @@ export abstract class Verify {
             .setColor("#00FF00");
         embedMessage.edit({ embeds: [embedEdit] });
         buttonReply.delete();
-        interaction.reply({
+        return interaction.reply({
             content: "You've accepted the verification request.",
             ephemeral: true,
         });
-        return requestUser?.send(
-            `Your verification request for **${interaction.guild?.name}** has been accepted.`
-        );
     }
 
     @ButtonComponent("deny", { guilds: ["755432683579900035"] })
-    deny(interaction: ButtonInteraction): Promise<Message> | undefined {
+    deny(interaction: ButtonInteraction): Promise<void> {
+        if (requestUser) {
+            requestUser.send(
+                `Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`
+            );
+        }
+
         const embedEdit = embed
             .setDescription(`Status: ${VerificationStatus.Denied}`)
             .setColor("#FF0000");
         embedMessage.edit({ embeds: [embedEdit] });
         buttonReply.delete();
-        interaction.reply({
+        return interaction.reply({
             content: "You've denied the verification request.",
             ephemeral: true,
         });
-        return requestUser?.send(
-            `Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`
-        );
     }
 }
