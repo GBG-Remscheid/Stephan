@@ -105,7 +105,11 @@ export abstract class Vertretung {
                 console.log(ausfall.map(lesson => lesson.su));
 
                 if (ausfall.map(lesson => lesson.substText).length > 0) {
-                    embed.setTitle("Heute entfällt der der Unterricht für:");
+                    embed.setTitle(
+                        `${
+                            tag === Tag.heute ? "Heute" : "Morgen"
+                        } entfällt der der Unterricht für:`
+                    );
                     ausfall.map(lesson => {
                         embed
                             .addField(

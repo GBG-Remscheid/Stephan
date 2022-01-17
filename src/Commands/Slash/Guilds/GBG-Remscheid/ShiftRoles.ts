@@ -283,7 +283,7 @@ export abstract class RoleShift {
             interaction.editReply(
                 "There was an error while shifting the roles."
             );
-            console.log(error);
+            console.error(error);
         }
     }
 }
