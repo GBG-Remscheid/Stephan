@@ -76,6 +76,9 @@ process.on("unhandledRejection", error => {
 });
 
 io.init({
+    metrics: {
+        http: true,
+    },
     profiling: true,
     tracing: true,
 });
