@@ -37,7 +37,7 @@
     "@pm2/io": "^5.0.0",
     "discord.js": "^13.6.0",
     "discordx": "^9.1.12",
-    "dotenv": "^13.0.1",
+    "dotenv": "^14.2.0",
     "moment": "^2.29.1",
     "mongodb": "^4.3.0",
     "mongoose": "^6.1.7",
