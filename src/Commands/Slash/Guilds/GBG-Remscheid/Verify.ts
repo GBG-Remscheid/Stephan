@@ -19,30 +19,34 @@ import {
 import { Category } from "@discordx/utilities";
 
 enum ClassChoices {
-    "Klasse 5a" = "Klasse 5A",
-    "Klasse 5b" = "Klasse 5B",
-    "Klasse 5c" = "Klasse 5C",
-    "Klasse 6a" = "Klasse 6A",
-    "Klasse 6b" = "Klasse 6B",
-    "Klasse 6c" = "Klasse 6C",
-    "Klasse 6d" = "Klasse 6D",
-    "Klasse 7a" = "Klasse 7A",
-    "Klasse 7b" = "Klasse 7B",
-    "Klasse 7c" = "Klasse 7C",
-    "Klasse 8a" = "Klasse 8A",
-    "Klasse 8b" = "Klasse 8B",
-    "Klasse 8c" = "Klasse 8C",
-    "Klasse 9a" = "Klasse 9A",
-    "Klasse 9b" = "Klasse 9B",
-    "Klasse 9c" = "Klasse 9C",
-    "Klasse 9d" = "Klasse 9D",
-    "Stufe EF" = "Stufe EF",
-    "Stufe Q1" = "Stufe Q1",
-    "Stufe Q2" = "Stufe Q2",
+    "5a" = "813879297735262299",
+    "5b" = "813879337530032188",
+    "5c" = "813879359881740298",
+    "5d" = "813879398763200554",
+    "6a" = "813885168942841896",
+    "6b" = "813885287611498527",
+    "6c" = "813885359720235008",
+    "6d" = "876828582775767041",
+    "7a" = "813885651463700500",
+    "7b" = "813885716727595018",
+    "7c" = "813885764667572327",
+    "7d" = "876851320458457160",
+    "8a" = "813885864291074079",
+    "8b" = "813885924106436658",
+    "8c" = "813885977147736064",
+    "8d" = "876851408958275655",
+    "9a" = "876808321900871760",
+    "9b" = "876866717454860299",
+    "9c" = "876866762031915029",
+    "9d" = "876851442093277224",
+    "EF" = "755433966500184105",
+    "Q1" = "755433930089431061",
+    "Q2" = "876808753930965012",
 }
 
 let requestUser: GuildMember;
 let aNickname: string;
+let roleChoice: string;
 let embed = new MessageEmbed();
 let embedMessage: Message;
 let buttonReply: Message;
@@ -85,6 +89,7 @@ export abstract class Verify {
     ): Promise<void> {
         const { user } = interaction;
         aNickname = nickname;
+        roleChoice = choice;
 
         if (interaction.guild) {
             requestUser = await interaction.guild.members.fetch(user);
@@ -136,7 +141,13 @@ export abstract class Verify {
             .setDescription(`Status: ${VerificationStatus.Pending}`)
             .addFields([
                 { name: "Name", value: `${firstName} ${surname}` },
-                { name: "Klasse o. Stufe", value: choice },
+                {
+                    name: "Klasse o. Stufe",
+                    value:
+                        interaction.guild?.roles.cache.find(
+                            r => r.id === choice
+                        )?.name ?? "",
+                },
                 { name: "Spitzname", value: nickname ?? "-" },
             ]);
 
@@ -176,7 +187,38 @@ export abstract class Verify {
     accept(interaction: ButtonInteraction): Promise<void> {
         if (requestUser) {
             requestUser.roles.add("755464917834006678");
-            console.log(aNickname);
+            if (
+                interaction.guild?.roles.cache
+                    .find(r => r.id === roleChoice)
+                    ?.name.startsWith("5")
+            ) {
+                requestUser.roles.add("755434201301647380");
+            } else if (
+                interaction.guild?.roles.cache
+                    .find(r => r.id === roleChoice)
+                    ?.name.startsWith("6")
+            ) {
+                requestUser.roles.add("755434171458912356");
+            } else if (
+                interaction.guild?.roles.cache
+                    .find(r => r.id === roleChoice)
+                    ?.name.startsWith("7")
+            ) {
+                requestUser.roles.add("755434140534440076");
+            } else if (
+                interaction.guild?.roles.cache
+                    .find(r => r.id === roleChoice)
+                    ?.name.startsWith("8")
+            ) {
+                requestUser.roles.add("755434101141405797");
+            } else if (
+                interaction.guild?.roles.cache
+                    .find(r => r.id === roleChoice)
+                    ?.name.startsWith("9")
+            ) {
+                requestUser.roles.add("755434011190624307");
+            }
+            requestUser.roles.add(roleChoice);
 
             if (aNickname) {
                 requestUser.setNickname(aNickname);
