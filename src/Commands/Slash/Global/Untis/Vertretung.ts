@@ -134,7 +134,7 @@ export abstract class Vertretung {
                     });
                     interaction.editReply({ embeds: [embed] });
                 } else {
-                    embed.setDescription("Heute fällt bei dir nichts aus! 🕙");
+                    embed.setDescription(`${tag === Tag.heute ? "Heute" : "Morgen"} fällt bei dir nichts aus! 🕙`);
                     interaction.editReply({ embeds: [embed] });
                 }
             })
