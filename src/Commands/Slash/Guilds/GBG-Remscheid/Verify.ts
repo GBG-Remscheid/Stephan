@@ -41,7 +41,8 @@ enum ClassChoices {
     "Stufe Q2" = "Stufe Q2",
 }
 
-let requestUser: GuildMember | undefined;
+let requestUser: GuildMember;
+let aNickname: string;
 let embed = new MessageEmbed();
 let embedMessage: Message;
 let buttonReply: Message;
@@ -83,8 +84,11 @@ export abstract class Verify {
         interaction: CommandInteraction
     ): Promise<void> {
         const { user } = interaction;
+        aNickname = nickname;
 
-        requestUser = await interaction.guild?.members.fetch(user);
+        if (interaction.guild) {
+            requestUser = await interaction.guild.members.fetch(user);
+        }
         if (!requestUser) {
             return interaction.reply({
                 content: "There was an error while fetching your user.",
@@ -172,6 +176,11 @@ export abstract class Verify {
     accept(interaction: ButtonInteraction): Promise<void> {
         if (requestUser) {
             requestUser.roles.add("755464917834006678");
+            console.log(aNickname);
+
+            if (aNickname) {
+                requestUser.setNickname(aNickname);
+            }
 
             requestUser.send(
                 `Your verification request for **${interaction.guild?.name}** has been accepted.`
