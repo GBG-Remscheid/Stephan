@@ -102,13 +102,16 @@ export abstract class Vertretung {
                 }
 
                 const ausfall = timetable.filter(lesson => lesson.substText);
+                const raumtausch = timetable.filter(
+                    lesson => lesson.ro.length > 1
+                );
                 console.log(ausfall.map(lesson => lesson.su));
 
                 if (ausfall.map(lesson => lesson.substText).length > 0) {
                     embed.setTitle(
                         `${
                             tag === Tag.heute ? "Heute" : "Morgen"
-                        } entfällt der der Unterricht für:`
+                        } entfällt der Unterricht für:`
                     );
                     ausfall.map(lesson => {
                         embed
@@ -134,8 +137,35 @@ export abstract class Vertretung {
                     });
                     interaction.editReply({ embeds: [embed] });
                 } else {
-                    embed.setDescription(`${tag === Tag.heute ? "Heute" : "Morgen"} fällt bei dir nichts aus! 🕙`);
+                    embed.setDescription(
+                        `${
+                            tag === Tag.heute ? "Heute" : "Morgen"
+                        } fällt bei dir nichts aus! 🕙`
+                    );
                     interaction.editReply({ embeds: [embed] });
+                }
+
+                if (raumtausch.length > 0) {
+                    embed.addField(
+                        "Außerdem gibt es Raumtausch für:",
+                        "\u200B"
+                    );
+                    raumtausch.map(aLesson => {
+                        embed
+                            .addField(
+                                "Fach",
+                                `\`\`\`${
+                                    formatLessonName(aLesson.sg) ??
+                                    aLesson.su.map(l => l.name) ??
+                                    "N/A"
+                                }\`\`\``
+                            )
+                            .addField(
+                                "Raum",
+                                `\`\`\`${aLesson.ro[0].name} --> ${aLesson.ro[1].name}\`\`\``,
+                                true
+                            );
+                    });
                 }
             })
             .catch(err => console.error(err));
