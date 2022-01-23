@@ -81,6 +81,7 @@ export abstract class Verify {
         choice: string,
         @SlashOption("spitzname", {
             description: "Dein optionaler Spitzname",
+            required: false,
             type: "STRING",
         })
         nickname: string,
