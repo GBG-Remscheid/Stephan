@@ -71,10 +71,6 @@ export class Main {
 
 Main.start().catch(err => console.error(err));
 
-process.on("unhandledRejection", error => {
-    console.error("Unhandled promise rejection:", error);
-});
-
 io.init({
     metrics: {
         http: true,
