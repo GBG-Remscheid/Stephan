@@ -44,7 +44,7 @@ export class Main {
                 Intents.FLAGS.GUILD_BANS,
             ],
             presence: {
-                activities: [{ name: "the students 👁👁", type: "WATCHING" }],
+                activities: [{ name: "the students 👁👁", type: "WATCHING" }, { name: "deine Mum an", type: "WATCHING" }],
             },
             silent: false,
         });
