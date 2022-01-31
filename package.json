@@ -46,7 +46,7 @@
     "mongoose": "^6.1.8",
     "ms": "^2.1.3",
     "reflect-metadata": "^0.1.13",
-    "webuntis": "^1.17.1"
+    "webuntis": "^1.18.0"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.6",
