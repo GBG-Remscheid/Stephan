@@ -40,7 +40,7 @@
     "@pm2/io": "^5.0.0",
     "discord.js": "^13.6.0",
     "discordx": "^9.1.12",
-    "dotenv": "^14.3.2",
+    "dotenv": "^15.0.0",
     "moment": "^2.29.1",
     "mongodb": "^4.3.1",
     "mongoose": "^6.1.8",
