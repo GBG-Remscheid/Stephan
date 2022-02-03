@@ -5,8 +5,7 @@
 .vscode/
 build/
 node_modules/
-.env.dev
-.env.example
+.env*
 .eslintrc.json
 .gitignore
 nodemon.json

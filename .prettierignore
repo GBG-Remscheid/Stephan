@@ -3,9 +3,7 @@
 build/
 node_modules/
 .dockerignore
-.env
-.env.dev
-.env.example
+.env*
 .eslintrc.json
 .gitignore
 .prettierrc.json
