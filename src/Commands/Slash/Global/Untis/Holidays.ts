@@ -23,7 +23,7 @@ export default class Holidays {
         untis.login().then(async () => {
             let daysLeft = "";
             let date: Date = new Date();
-            const startDate = (await untis.getHolidays()).at(1)?.startDate;
+            const startDate = (await untis.getHolidays()).at(3)?.startDate;
 
             const dateString = startDate?.toString();
             const year = dateString?.substring(0, 4);
