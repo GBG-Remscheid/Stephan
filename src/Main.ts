@@ -11,7 +11,7 @@ import io from "@pm2/io";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 config({
-    path: process.env.NODE_ENV === "development" ? ".env.dev" : ".env",
+    path: process.env.NODE_ENV === "development" ? ".env" : ".env.production",
 });
 export class Main {
     private static _client: Client;
