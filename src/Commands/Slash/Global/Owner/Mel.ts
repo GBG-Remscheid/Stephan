@@ -23,12 +23,29 @@ export abstract class Mel {
 
         const randomGIF = catGIFs[Math.floor(Math.random() * catGIFs.length)];
 
-        return interaction.reply({
-            content: `Mel & maggsii sind am tollsten <3 \nNoch \`69\` - ${
-                69 - daysLeft
-            } Tage bis wir uns sehen. <33333`,
-            ephemeral: true,
-            files: [randomGIF],
-        });
+        if (daysLeft === 69) {
+            return interaction.reply({
+                content:
+                    "Mel & maggsii sind am tollsten <3 \nHeute sehen wir uns. <33333",
+                ephemeral: true,
+                files: [randomGIF],
+            });
+        } else if (daysLeft > 69) {
+            return interaction.reply({
+                content: `Mel & maggsii sind am tollsten <3 \nWir haben uns gesehen vor \`69\` - ${
+                    69 + daysLeft
+                } Tagen. <33333`,
+                ephemeral: true,
+                files: [randomGIF],
+            });
+        } else {
+            return interaction.reply({
+                content: `Mel & maggsii sind am tollsten <3 \nNoch \`69\` - ${
+                    69 - daysLeft
+                } Tage bis wir uns sehen. <33333`,
+                ephemeral: true,
+                files: [randomGIF],
+            });
+        }
     }
 }
