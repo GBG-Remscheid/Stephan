@@ -1,14 +1,16 @@
-FROM --platform=linux/amd64 node:latest
+FROM --platform=linux/amd64 node:latest AS builder
 
 WORKDIR /usr/src/Stephan
 
-COPY package*.json ./
+COPY . .
 
-RUN npm i
-RUN npm i -g typescript
+RUN npm ci &&  npx tsc
 
-COPY . ./
+FROM node:alpine
 
-RUN tsc
+COPY --from=builder /usr/src/Stephan/build /usr/src/Stephan/package*.json ./
 
-CMD ["npm", "run", "start"]
+RUN apk add python3 automake autoconf libtool make gcc g++
+RUN npm ci --only=production --ignore-scripts && npm cache clean --force
+
+CMD ["node", "Main.js"]
