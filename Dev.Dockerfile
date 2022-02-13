@@ -1,14 +1,13 @@
-FROM node:latest
+FROM node:17
 
 WORKDIR /usr/src/Stephan
 
 COPY package*.json ./
 
-RUN npm i
-RUN npm i -g typescript
+RUN npm ci
 
 COPY . ./
 
-RUN tsc
+RUN npx tsc
 
 CMD ["npm", "run", "start"]
