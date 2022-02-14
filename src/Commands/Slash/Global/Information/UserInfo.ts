@@ -1,5 +1,17 @@
-import { CommandInteraction, GuildMember, MessageEmbed } from "discord.js";
-import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
+import {
+    CommandInteraction,
+    GuildMember,
+    MessageEmbed,
+    // UserContextMenuInteraction,
+} from "discord.js";
+import {
+    // ContextMenu,
+    Discord,
+    Guard,
+    Slash,
+    SlashGroup,
+    SlashOption,
+} from "discordx";
 import { Category } from "@discordx/utilities";
 import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
 import type { Snowflake } from "discord-api-types";
@@ -7,9 +19,10 @@ import type { Snowflake } from "discord-api-types";
 @Discord()
 @Category("Information")
 @Guard(NotGuild)
-@SlashGroup("info")
+@SlashGroup({ name: "info" })
 export abstract class UserInfo {
     @Slash("user")
+    @SlashGroup({ name: "info" })
     async userInfo(
         @SlashOption("user", {
             description: "The user you want to get information about",
@@ -86,4 +99,10 @@ export abstract class UserInfo {
 
         interaction.reply({ embeds: [embed] });
     }
+
+    // @ContextMenu("USER", "User info")
+    // info(interaction: UserContextMenuInteraction): void {
+    //     const {} = interaction;
+    //     const target = interaction.targetMember;
+    // }
 }

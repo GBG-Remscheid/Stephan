@@ -16,9 +16,10 @@ const untis = new Webuntis(
 
 @Discord()
 @Category("Untis")
-@SlashGroup("untis")
+@SlashGroup({ description: "utils to get infos from untis", name: "untis" })
 export default class Holidays {
     @Slash("ferien")
+    @SlashGroup({ name: "untis" })
     holidays(interaction: CommandInteraction): void {
         untis.login().then(async () => {
             let daysLeft = "";

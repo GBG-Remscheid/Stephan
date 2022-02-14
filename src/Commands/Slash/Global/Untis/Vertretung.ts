@@ -44,9 +44,10 @@ const formatLessonName = (name: string | undefined) => {
 };
 
 @Discord()
-@SlashGroup("untis")
+@SlashGroup({ description: "utils to get infos from untis", name: "untis" })
 export abstract class Vertretung {
     @Slash("vertretung")
+    @SlashGroup({ name: "untis" })
     // FIXME: Raumtausch still doesn't work
     async vertretung(
         @SlashOption("klasse")
@@ -124,6 +125,11 @@ export abstract class Vertretung {
                                 }\`\`\``,
                                 true
                             )
+                            // .addField(
+                            //     "Lehrer",
+                            //     `\`\`\`${lesson.te.map(l => l.longname)}\`\`\``,
+                            //     true
+                            // )
                             .addField(
                                 "Anmerkung",
                                 `\`\`\`${lesson.substText ?? "N/A"}\`\`\``,

@@ -13,11 +13,12 @@ import moment from "moment";
 @Discord()
 @Category("Moderation")
 @Guard(NotGuild)
-@SlashGroup("mod")
+@SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Mute {
     @Slash("mute", {
         description: "Mute a specific user on your server for a specific time.",
     })
+    @SlashGroup({ name: "mod" })
     async mute(
         @SlashOption("user", {
             description: "The user you'd like to mute",

@@ -13,11 +13,12 @@ import moment from "moment";
 @Discord()
 @Category("Moderation")
 @Guard(NotGuild)
-@SlashGroup("mod")
+@SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Ban {
     @Slash("ban", {
         description: "Ban a specific user from a server (tmp or infinite).",
     })
+    @SlashGroup({ name: "mod" })
     async ban(
         @SlashOption("user", {
             description: "The user that should be banned",

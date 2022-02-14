@@ -12,9 +12,10 @@ import type { Snowflake } from "discord-api-types";
 @Discord()
 @Category("Moderation")
 @Guard(NotGuild)
-@SlashGroup("mod")
+@SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Unban {
     @Slash("unban", { description: "Unban a banned user" })
+    @SlashGroup({ name: "mod" })
     async unban(
         @SlashOption("user-id", {
             description: "The user you want to unban",

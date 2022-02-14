@@ -12,11 +12,12 @@ import { Category } from "@discordx/utilities";
 
 @Discord()
 @Category("Utilities")
-@SlashGroup("role-shift", "Shifts all members' roles.")
+@SlashGroup({ description: "Shifts all members' roles.", name: "role-shift" })
 @Guild("755432683579900035")
 @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
 export abstract class RoleShift {
     @Slash("up", { description: "Shift up the roles of all members." })
+    @SlashGroup({ name: "role-shift" })
     async shiftUp(
         interaction: CommandInteraction
     ): Promise<void | APIMessage | Message<boolean>> {
@@ -210,6 +211,7 @@ export abstract class RoleShift {
     }
 
     @Slash("down", { description: "Edit a specific user's roles." })
+    @SlashGroup({ name: "role-shift" })
     /**
      * Shifts a specific user's roles down
      * @param {User} user The user whose roles should be downshifted
