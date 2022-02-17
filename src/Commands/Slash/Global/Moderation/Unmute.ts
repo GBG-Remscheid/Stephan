@@ -18,7 +18,7 @@ export abstract class Unmute {
         description:
             "Unmute a previously muted user, who has the 'Muted' role.",
     })
-    @SlashGroup({ name: "mod" })
+    @SlashGroup("mod")
     async unmute(
         @SlashOption("user", {
             description: "The user you're unmuting.",

@@ -18,7 +18,7 @@ export abstract class Ban {
     @Slash("ban", {
         description: "Ban a specific user from a server (tmp or infinite).",
     })
-    @SlashGroup({ name: "mod" })
+    @SlashGroup("mod")
     async ban(
         @SlashOption("user", {
             description: "The user that should be banned",

@@ -16,7 +16,7 @@ import moment from "moment";
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Kick {
     @Slash("kick", { description: "Kick a user from your server" })
-    @SlashGroup({ name: "mod" })
+    @SlashGroup("mod")
     async kick(
         @SlashOption("user", {
             description: "The user you want to kick",

@@ -18,7 +18,7 @@ export abstract class Mute {
     @Slash("mute", {
         description: "Mute a specific user on your server for a specific time.",
     })
-    @SlashGroup({ name: "mod" })
+    @SlashGroup("mod")
     async mute(
         @SlashOption("user", {
             description: "The user you'd like to mute",

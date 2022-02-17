@@ -17,7 +17,7 @@ import { Category } from "@discordx/utilities";
 @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
 export abstract class RoleShift {
     @Slash("up", { description: "Shift up the roles of all members." })
-    @SlashGroup({ name: "role-shift" })
+    @SlashGroup("role-shift")
     async shiftUp(
         interaction: CommandInteraction
     ): Promise<void | APIMessage | Message<boolean>> {
@@ -211,7 +211,7 @@ export abstract class RoleShift {
     }
 
     @Slash("down", { description: "Edit a specific user's roles." })
-    @SlashGroup({ name: "role-shift" })
+    @SlashGroup("role-shift")
     /**
      * Shifts a specific user's roles down
      * @param {User} user The user whose roles should be downshifted
