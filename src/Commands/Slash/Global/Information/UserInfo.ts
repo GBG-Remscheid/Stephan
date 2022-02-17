@@ -22,7 +22,7 @@ import type { Snowflake } from "discord-api-types";
 @SlashGroup({ name: "info" })
 export abstract class UserInfo {
     @Slash("user")
-    @SlashGroup({ name: "info" })
+    @SlashGroup("info")
     async userInfo(
         @SlashOption("user", {
             description: "The user you want to get information about",

@@ -17,7 +17,7 @@ import moment from "moment";
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Warn {
     @Slash("warn", { description: "Sends a warning to a user" })
-    @SlashGroup({ name: "mod" })
+    @SlashGroup("mod")
     async warn(
         @SlashOption("target", {
             description: "The user that should be warned",

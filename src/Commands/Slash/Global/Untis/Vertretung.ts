@@ -47,7 +47,7 @@ const formatLessonName = (name: string | undefined) => {
 @SlashGroup({ description: "utils to get infos from untis", name: "untis" })
 export abstract class Vertretung {
     @Slash("vertretung")
-    @SlashGroup({ name: "untis" })
+    @SlashGroup("untis")
     // FIXME: Raumtausch still doesn't work
     async vertretung(
         @SlashOption("klasse")
@@ -125,11 +125,13 @@ export abstract class Vertretung {
                                 }\`\`\``,
                                 true
                             )
-                            // .addField(
-                            //     "Lehrer",
-                            //     `\`\`\`${lesson.te.map(l => l.longname)}\`\`\``,
-                            //     true
-                            // )
+                            .addField(
+                                "Lehrer",
+                                `\`\`\`${lesson.te.map(
+                                    teacher => teacher.name
+                                )}\`\`\``,
+                                true
+                            )
                             .addField(
                                 "Anmerkung",
                                 `\`\`\`${lesson.substText ?? "N/A"}\`\`\``,
