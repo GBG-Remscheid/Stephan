@@ -168,6 +168,5 @@ export abstract class Mute {
             );
             setTimeout(() => interaction.deleteReply(), 5000);
         });
-        return;
     }
 }

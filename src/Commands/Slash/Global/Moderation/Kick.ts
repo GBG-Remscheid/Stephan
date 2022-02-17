@@ -132,6 +132,5 @@ export abstract class Kick {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         target.kick(reason);
-        return;
     }
 }

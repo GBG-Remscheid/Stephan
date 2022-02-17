@@ -133,6 +133,5 @@ export abstract class Warn {
 
         interaction.reply({ embeds: [guildEmbed] });
         target.send({ embeds: [dmEmbed] });
-        return;
     }
 }

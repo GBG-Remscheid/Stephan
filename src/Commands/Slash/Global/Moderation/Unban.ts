@@ -101,6 +101,5 @@ export abstract class Unban {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         interaction.reply({ embeds: [guildEmbed] });
-        return;
     }
 }

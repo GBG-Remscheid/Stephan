@@ -22,7 +22,6 @@ export default class Holidays {
     @SlashGroup("untis")
     holidays(interaction: CommandInteraction): void {
         untis.login().then(async () => {
-            let daysLeft = "";
             let date: Date = new Date();
             const startDate = (await untis.getHolidays()).at(3)?.startDate;
 
@@ -38,7 +37,7 @@ export default class Holidays {
                     parseInt(day)
                 );
             }
-            daysLeft = moment
+            const daysLeft = moment
                 .duration(date.valueOf() - new Date().valueOf())
                 .asDays()
                 .toFixed(0);

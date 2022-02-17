@@ -113,6 +113,5 @@ export abstract class Unmute {
         });
         target.timeout(null);
         interaction.reply({ embeds: [guildEmbed] });
-        return;
     }
 }

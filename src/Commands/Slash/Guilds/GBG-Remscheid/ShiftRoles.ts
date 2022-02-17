@@ -20,7 +20,7 @@ export abstract class RoleShift {
     @SlashGroup("role-shift")
     async shiftUp(
         interaction: CommandInteraction
-    ): Promise<void | APIMessage | Message<boolean>> {
+    ): Promise<void | APIMessage | Message> {
         await interaction.reply("Starting to shift roles...");
         await interaction.deferReply();
         try {
@@ -213,8 +213,13 @@ export abstract class RoleShift {
     @Slash("down", { description: "Edit a specific user's roles." })
     @SlashGroup("role-shift")
     /**
-     * Shifts a specific user's roles down
+     * Shifts down a specific user's roles
      * @param {User} user The user whose roles should be downshifted
+     * @param {Role} remRole1 The role, that should be removed
+     * @param {Role} addRole1 The role, that should be added
+     * @param {Role} remRole2 A second optional role, that should be removed
+     * @param {Role} addRole2 A second optional role, that should be added
+     * @param {CommandInteraction} interaction The interaction of the command
      */
     async shiftDown(
         @SlashOption("user", {

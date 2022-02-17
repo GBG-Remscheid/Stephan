@@ -122,7 +122,7 @@ export abstract class Ban {
                 {
                     inline: true,
                     name: "**Ban Duration:**",
-                    value: `${duration ? `${duration} day(s)` : "Infinte"}`,
+                    value: `${duration ? `${duration} day(s)` : "Infinite"}`,
                 },
             ]);
 
@@ -151,6 +151,5 @@ export abstract class Ban {
         duration
             ? target.ban({ days: duration, reason: reason })
             : target.ban({ reason: reason });
-        return;
     }
 }
