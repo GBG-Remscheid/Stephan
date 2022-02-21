@@ -41,7 +41,7 @@
     "@pm2/io": "^5.0.0",
     "@prisma/client": "^3.9.2",
     "discord.js": "^13.6.0",
-    "discordx": "^9.2.7",
+    "discordx": "^9.3.2",
     "dotenv": "^16.0.0",
     "moment": "^2.29.1",
     "ms": "^2.1.3",
