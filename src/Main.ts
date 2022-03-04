@@ -3,8 +3,8 @@ import { Client } from "discordx";
 import { Intents } from "discord.js";
 import { NotBot } from "./Guards/Global/NotBot.js";
 import { config } from "dotenv";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { importx } from "@discordx/importer";
 import io from "@pm2/io";
 
