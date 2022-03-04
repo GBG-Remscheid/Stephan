@@ -1,15 +1,17 @@
 import { Discord, Permission, Slash } from "discordx";
 import { CommandInteraction } from "discord.js";
-import moment from "moment";
+/* import moment from "moment"; */
 
 @Discord()
 @Permission({ id: "374590194034409472", permission: true, type: "USER" })
 @Permission({ id: "463044315007156224", permission: true, type: "USER" })
+@Permission(false)
 export abstract class Mel {
     @Slash("mel")
     mel(interaction: CommandInteraction): Promise<void> {
         // days until 24.02.2022
-        const daysLeft = moment("2022-02-24").diff(moment(), "days");
+        /* const daysLeft = moment("2022-02-24").diff(moment(), "days"); */
+
         const catGIFs = [
             "https://c.tenor.com/JRFXgb1TBx8AAAAC/cat-cats.gif",
             "https://i.imgur.com/r8SbhWp.gif",
@@ -22,8 +24,12 @@ export abstract class Mel {
         ];
 
         const randomGIF = catGIFs[Math.floor(Math.random() * catGIFs.length)];
+        return interaction.reply({
+            content: "mel & maggsii sind am tollsten <3",
+            files: [randomGIF],
+        });
 
-        if (daysLeft === 69) {
+        /* if (daysLeft === 69) {
             return interaction.reply({
                 content:
                     "Mel & maggsii sind am tollsten <3 \nHeute sehen wir uns. <33333",
@@ -46,6 +52,6 @@ export abstract class Mel {
                 ephemeral: true,
                 files: [randomGIF],
             });
-        }
+        } */
     }
 }
