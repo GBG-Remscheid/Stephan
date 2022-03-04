@@ -26,6 +26,7 @@ export abstract class Mel {
         const randomGIF = catGIFs[Math.floor(Math.random() * catGIFs.length)];
         return interaction.reply({
             content: "mel & maggsii sind am tollsten <3",
+            ephemeral: true,
             files: [randomGIF],
         });
 
