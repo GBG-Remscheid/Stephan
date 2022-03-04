@@ -38,14 +38,14 @@ const untis = new WebUntis(
     process.env.BASEURL ?? ""
 );
 
-const formatLessonName = (name: string | undefined) => {
-    const regex = RegExp(/_(([E-Q]|[5-9])([1-2]|[a-d]|F)){1,4}/g);
-    return name?.replace(regex, "");
-};
-
 @Discord()
 @SlashGroup({ description: "utils to get infos from untis", name: "untis" })
 export abstract class Vertretung {
+    private formatLessonName = (name: string | undefined) => {
+        const regex = RegExp(/_(([E-Q]|[5-9])([1-2]|[a-d]|F)){1,4}/g);
+        return name?.replace(regex, "");
+    };
+
     @Slash("vertretung")
     @SlashGroup("untis")
     // FIXME: Raumtausch still doesn't work
@@ -119,7 +119,7 @@ export abstract class Vertretung {
                             .addField(
                                 "Fach",
                                 `\`\`\`${
-                                    formatLessonName(lesson.sg) ??
+                                    this.formatLessonName(lesson.sg) ??
                                     lesson.su.map(l => l.name) ??
                                     "N/A"
                                 }\`\`\``,
@@ -163,7 +163,7 @@ export abstract class Vertretung {
                             .addField(
                                 "Fach",
                                 `\`\`\`${
-                                    formatLessonName(aLesson.sg) ??
+                                    this.formatLessonName(aLesson.sg) ??
                                     aLesson.su.map(l => l.name) ??
                                     "N/A"
                                 }\`\`\``
