@@ -60,8 +60,8 @@ const enum VerificationStatus {
 @Discord()
 @Category("Utilities")
 @Permission({ id: "755464917834006678", permission: false, type: "ROLE" })
-@Permission({ id: "463044315007156224", permission: true, type: "USER" })
-@Permission({ id: "428119121423761410", permission: true, type: "USER" })
+// @Permission({ id: "463044315007156224", permission: true, type: "USER" })
+// @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 export abstract class Verify {
     @Slash("verify")
     @Guild("755432683579900035")
