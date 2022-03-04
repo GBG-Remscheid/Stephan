@@ -6,7 +6,6 @@ import type { Snowflake } from "discord-api-types";
 @Discord()
 @Permission({ id: "463044315007156224", permission: true, type: "USER" })
 @Permission({ id: "428119121423761410", permission: true, type: "USER" })
-@Permission(false)
 @Category("Owner")
 export abstract class Send {
     @Slash("send", { description: "Send a message to a user" })

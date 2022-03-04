@@ -15,7 +15,6 @@ import { Category } from "@discordx/utilities";
 @SlashGroup({ description: "Shifts all members' roles.", name: "role-shift" })
 @Guild("755432683579900035")
 @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
-@Permission(false)
 export abstract class RoleShift {
     @Slash("up", { description: "Shift up the roles of all members." })
     @SlashGroup("role-shift")

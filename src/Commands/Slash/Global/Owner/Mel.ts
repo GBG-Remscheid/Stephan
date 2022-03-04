@@ -5,7 +5,6 @@ import { CommandInteraction } from "discord.js";
 @Discord()
 @Permission({ id: "374590194034409472", permission: true, type: "USER" })
 @Permission({ id: "463044315007156224", permission: true, type: "USER" })
-@Permission(false)
 export abstract class Mel {
     @Slash("mel")
     mel(interaction: CommandInteraction): Promise<void> {
