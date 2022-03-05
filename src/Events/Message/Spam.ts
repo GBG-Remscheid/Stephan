@@ -33,10 +33,6 @@ export abstract class Spam {
                 )
                 .catch((error: Error) => {
                     console.error(error);
-                    message.channel.send(
-                        "There was an error while muting the user."
-                    );
-                    setTimeout(() => message.delete(), 5000);
                 });
 
             if (isMuted) {
