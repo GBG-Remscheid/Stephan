@@ -1,5 +1,6 @@
 import "reflect-metadata";
-import { Client } from "discordx";
+import { Client, DIService } from "discordx";
+import { container, singleton } from "tsyringe";
 import { Intents } from "discord.js";
 import { NotBot } from "./Guards/Global/NotBot.js";
 import { config } from "dotenv";
@@ -13,6 +14,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 config({
     path: process.env.NODE_ENV === "development" ? ".env" : ".env.production",
 });
+
+DIService.container = container;
+@singleton()
 export class Main {
     private static _client: Client;
 

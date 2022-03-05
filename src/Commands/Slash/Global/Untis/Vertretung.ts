@@ -1,8 +1,8 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashGroup, SlashOption } from "discordx";
-import WebUntis, { Lesson } from "webuntis";
-import { config } from "dotenv";
-config();
+import { container, injectable } from "tsyringe";
+import { Env } from "../../../../Utils/Env.js";
+import { Lesson } from "webuntis";
 
 enum Klassen {
     "5a" = "296",
@@ -31,16 +31,12 @@ enum Tag {
     morgen = "morgen",
 }
 
-const untis = new WebUntis(
-    process.env.SCHOOL ?? "",
-    process.env.USERNAME ?? "",
-    process.env.PASSWORD ?? "",
-    process.env.BASEURL ?? ""
-);
-
 @Discord()
 @SlashGroup({ description: "utils to get infos from untis", name: "untis" })
-export abstract class Vertretung {
+@injectable()
+export class Vertretung {
+    constructor(private readonly env: Env) {}
+
     private formatLessonName = (name: string | undefined) => {
         const regex = RegExp(/_(([E-Q]|[5-9])([1-2]|[a-d]|F)){1,4}/g);
         return name?.replace(regex, "");
@@ -63,6 +59,8 @@ export abstract class Vertretung {
 
         interaction: CommandInteraction
     ): Promise<void> {
+        const untis = container.resolve(Env).untis;
+
         await interaction.deferReply();
 
         let timetable: Lesson[];
@@ -176,6 +174,6 @@ export abstract class Vertretung {
                     });
                 }
             })
-            .catch(err => console.error(err));
+            .catch((err: Error) => console.error(err));
     }
 }

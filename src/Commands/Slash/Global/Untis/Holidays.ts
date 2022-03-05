@@ -1,29 +1,24 @@
 import { CommandInteraction, MessageEmbed } from "discord.js";
 import { Discord, Slash, SlashGroup } from "discordx";
+import { container, injectable } from "tsyringe";
 import { Category } from "@discordx/utilities";
-import Webuntis from "webuntis";
-import { config } from "dotenv";
+import { Env } from "../../../../Utils/Env.js";
 import moment from "moment";
-
-config();
-
-const untis = new Webuntis(
-    process.env.SCHOOL ?? "",
-    process.env.USERNAME ?? "",
-    process.env.PASSWORD ?? "",
-    process.env.BASEURL ?? ""
-);
 
 @Discord()
 @Category("Untis")
 @SlashGroup({ description: "utils to get infos from untis", name: "untis" })
-export default class Holidays {
+@injectable()
+export class Holidays {
+    constructor(private readonly env: Env) {}
+
     @Slash("ferien")
     @SlashGroup("untis")
     holidays(interaction: CommandInteraction): void {
+        const untis = container.resolve(Env).untis;
         untis.login().then(async () => {
             let date: Date = new Date();
-            const startDate = (await untis.getHolidays()).at(3)?.startDate;
+            const startDate = (await untis.getHolidays()).at(5)?.startDate;
 
             const dateString = startDate?.toString();
             const year = dateString?.substring(0, 4);
