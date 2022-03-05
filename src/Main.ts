@@ -52,7 +52,12 @@ export class Main {
             silent: false,
         });
         await importx(`${__dirname}/{Commands,Events}/**/*{.ts,.js}`);
-        await this._client.login(process.env.BOT_TOKEN ?? "");
+        if (!process.env.BOT_TOKEN) {
+            throw new Error(
+                "Could not find BOT_TOKEN in your environment variables! Did you add it to your .env file?"
+            );
+        }
+        await this._client.login(process.env.BOT_TOKEN);
 
         this._client.once("ready", async () => {
             await this._client.clearApplicationCommands();
