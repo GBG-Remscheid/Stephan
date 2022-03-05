@@ -1,10 +1,14 @@
-import { Discord, Slash, SlashOption } from "discordx";
+import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
+import { Category } from "@discordx/utilities";
 import { CommandInteraction } from "discord.js";
 import { SpamMeta } from "discord-spams";
 
 @Discord()
+@Category("Moderation")
+@SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class ReportSpam {
     @Slash("report-spam-link", { description: "Add a link to the spam list" })
+    @SlashGroup("mod")
     report(
         @SlashOption("link", {
             description: "the link that should be added to them spam list",
