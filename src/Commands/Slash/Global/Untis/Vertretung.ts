@@ -123,13 +123,13 @@ export class Vertretung {
                                 }\`\`\``,
                                 true
                             )
-                            .addField(
-                                "Lehrer",
-                                `\`\`\`${lesson.te.map(
-                                    teacher => teacher.name
-                                )}\`\`\``,
-                                true
-                            )
+                            // .addField(
+                            //     "Lehrer",
+                            //     `\`\`\`${lesson.te.map(
+                            //         teacher => teacher.name
+                            //     )}\`\`\``,
+                            //     true
+                            // )
                             .addField(
                                 "Anmerkung",
                                 `\`\`\`${lesson.substText ?? "N/A"}\`\`\``,
