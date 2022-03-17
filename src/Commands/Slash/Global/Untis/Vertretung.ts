@@ -90,11 +90,11 @@ export class Vertretung {
                     );
                 } else if (tag === Tag.morgen) {
                     const date = new Date();
-                    const tommorow = date.setDate(date.getDate() + 1);
-                    const tommorowDate = new Date(tommorow);
+                    const tomorrow = date.setDate(date.getDate() + 1);
+                    const tomorrowDate = new Date(tomorrow);
 
                     timetable = await untis.getTimetableFor(
-                        tommorowDate,
+                        tomorrowDate,
                         parseInt(klasse),
                         1
                     );
@@ -136,7 +136,7 @@ export class Vertretung {
                                 true
                             )
                             .addField("\u200B", "\u200B", true);
-                        /* Alternative deisgn idea */
+                        /* Alternative design idea */
                         // embed.addField("Fach", "Grund", true)
                         //     .addField(`\`${lesson.sg ?? ""}\``, `\`${lesson.substText ?? ""}\``, true)
                         //     .addField('\u200B', '\u200B', true)
