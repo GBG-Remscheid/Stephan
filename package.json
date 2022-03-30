@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-esm src/Main.ts",
-    "format": "prettier --write .",
+    "dev": "nodemon --exec ts-node-esm src/Main.ts",
+    "start:dev": "ts-node-esm src/Main.ts",
+    "start:prod": "node build/Main.js",
     "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
     "lint": "eslint ./",
-    "serve": "nodemon --exec ts-node-esm src/Main.ts",
-    "start": "node build/Main.js",
+    "lint:fix": "eslint --fix ./",
     "prepare": "is-ci || husky install"
   },
   "author": "hofmmaxi",
