@@ -4,32 +4,60 @@ import { container, injectable } from "tsyringe";
 import { Env } from "../../../../Utils/Env.js";
 import { Lesson } from "webuntis";
 
-enum Klassen {
-    "5a" = "296",
-    "5b" = "301",
-    "5c" = "306",
-    "6a" = "311",
-    "6b" = "316",
-    "6c" = "321",
-    "6d" = "326",
-    "7a" = "331",
-    "7b" = "336",
-    "7c" = "341",
-    "8a" = "346",
-    "8b" = "351",
-    "8c" = "356",
-    "9a" = "366",
-    "9b" = "371",
-    "9c" = "376",
-    "EF" = "401",
-    "Q1" = "466",
-    "Q2" = "481",
-}
+const Klassen = [
+    { name: "5a", value: "296" },
+    { name: "5b", value: "301" },
+    { name: "5c", value: "306" },
+    { name: "6a", value: "311" },
+    { name: "6b", value: "316" },
+    { name: "6c", value: "321" },
+    { name: "6d", value: "326" },
+    { name: "7a", value: "331" },
+    { name: "7b", value: "336" },
+    { name: "7c", value: "341" },
+    { name: "8a", value: "346" },
+    { name: "8b", value: "351" },
+    { name: "8c", value: "356" },
+    { name: "9a", value: "366" },
+    { name: "9b", value: "371" },
+    { name: "9c", value: "376" },
+    { name: "EF", value: "401" },
+    { name: "Q1", value: "466" },
+    { name: "Q2", value: "481" },
+];
 
-enum Tag {
-    heute = "heute",
-    morgen = "morgen",
-}
+const Tag = [
+    { name: "heute", value: "heute" },
+    { name: "morgen", value: "morgen" },
+];
+
+const formatLessonTime = (lesson: Lesson) => {
+    const start = lesson.startTime;
+    switch (start.toString()) {
+        case "745":
+            return "1. Std.";
+        case "835":
+            return "2. Std.";
+        case "920":
+            return "3. Std.";
+        case "1030":
+            return "4. Std.";
+        case "1130":
+            return "5. Std.";
+        case "1220":
+            return "6. Std.";
+        case "1310":
+            return "7. Std.";
+        case "1400":
+            return "8. Std.";
+        case "1450":
+            return "9. Std.";
+        case "1600":
+            return "10. Std.";
+        default:
+            return "---";
+    }
+};
 
 @Discord()
 @SlashGroup({ description: "utils to get infos from untis", name: "untis" })
@@ -47,14 +75,14 @@ export class Vertretung {
     // FIXME: Raumtausch still doesn't work
     async vertretung(
         @SlashOption("klasse")
-        @SlashChoice(Klassen)
+        @SlashChoice(...Klassen)
         klasse: string,
 
         @SlashOption("tag", {
             description: "Abfragetag (heute oder morgen)",
             type: "STRING",
         })
-        @SlashChoice(Tag)
+        @SlashChoice(...Tag)
         tag: string,
 
         interaction: CommandInteraction
@@ -83,12 +111,12 @@ export class Vertretung {
         untis
             .login()
             .then(async () => {
-                if (tag === Tag.heute) {
+                if (tag === Tag[0].value) {
                     timetable = await untis.getTimetableForToday(
                         parseInt(klasse),
                         1
                     );
-                } else if (tag === Tag.morgen) {
+                } else if (tag === Tag[1].value) {
                     const date = new Date();
                     const tomorrow = date.setDate(date.getDate() + 1);
                     const tomorrowDate = new Date(tomorrow);
@@ -104,16 +132,21 @@ export class Vertretung {
                 const raumtausch = timetable.filter(
                     lesson => lesson.ro.length > 1
                 );
-                console.log(ausfall.map(lesson => lesson.su));
+                console.log(ausfall.map(lesson => lesson.startTime));
 
                 if (ausfall.map(lesson => lesson.substText).length > 0) {
                     embed.setTitle(
                         `${
-                            tag === Tag.heute ? "Heute" : "Morgen"
+                            tag === Tag[0].value ? "Heute" : "Morgen"
                         } entfällt der Unterricht für:`
                     );
                     ausfall.map(lesson => {
                         embed
+                            .addField(
+                                "Stunde",
+                                `\`\`\`${formatLessonTime(lesson)}\`\`\``,
+                                true
+                            )
                             .addField(
                                 "Fach",
                                 `\`\`\`${
@@ -135,7 +168,7 @@ export class Vertretung {
                                 `\`\`\`${lesson.substText ?? "N/A"}\`\`\``,
                                 true
                             )
-                            .addField("\u200B", "\u200B", true);
+                            .addField("\u200B", "\u200B");
                         /* Alternative design idea */
                         // embed.addField("Fach", "Grund", true)
                         //     .addField(`\`${lesson.sg ?? ""}\``, `\`${lesson.substText ?? ""}\``, true)
@@ -145,7 +178,7 @@ export class Vertretung {
                 } else {
                     embed.setDescription(
                         `${
-                            tag === Tag.heute ? "Heute" : "Morgen"
+                            tag === Tag[0].value ? "Heute" : "Morgen"
                         } fällt bei dir nichts aus! 🕙`
                     );
                     interaction.editReply({ embeds: [embed] });
