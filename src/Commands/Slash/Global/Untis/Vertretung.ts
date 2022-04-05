@@ -38,7 +38,7 @@ const formatLessonTime = (lesson: Lesson) => {
             return "1. Std.";
         case "835":
             return "2. Std.";
-        case "920":
+        case "940":
             return "3. Std.";
         case "1030":
             return "4. Std.";
@@ -95,7 +95,7 @@ export class Vertretung {
 
         const embed = new MessageEmbed()
             .setTimestamp()
-            .setThumbnail("https://neu.gbgrs.de/images/logo/gbglogo1024.png")
+            .setThumbnail("https://gbgrs.de/images/logo/gbglogo1024.png")
             .setURL("https://dsbmobile.de/")
             .setFooter({
                 iconURL:
@@ -126,13 +126,26 @@ export class Vertretung {
                         parseInt(klasse),
                         1
                     );
+                } else {
+                    interaction.reply({
+                        content:
+                            "Die Infos zum Stundenplan konnten nicht abgerufen werden.",
+                        ephemeral: true,
+                    });
                 }
 
                 const ausfall = timetable.filter(lesson => lesson.substText);
                 const raumtausch = timetable.filter(
                     lesson => lesson.ro.length > 1
                 );
-                console.log(ausfall.map(lesson => lesson.startTime));
+                console.log(
+                    ausfall.map(
+                        lesson =>
+                            `${lesson.startTime}: ${lesson.su.map(
+                                subject => subject.name
+                            )}`
+                    )
+                );
 
                 if (ausfall.map(lesson => lesson.substText).length > 0) {
                     embed.setTitle(
