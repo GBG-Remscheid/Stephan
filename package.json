@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon --exec ts-node-esm src/Main.ts",
+    "dev": "NODE_ENV=development nodemon --exec ts-node-esm src/Main.ts",
     "start:dev": "ts-node-esm src/Main.ts",
     "start:prod": "node build/Main.js",
     "format:check": "prettier --check .",
