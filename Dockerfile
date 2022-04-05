@@ -16,6 +16,8 @@ RUN apk add --no-cache python3 automake autoconf libtool make gcc g++
 
 RUN npm ci --only=production --ignore-scripts && npm cache clean --force
 
+RUN apk del python3 automake autoconf libtool make gcc g++
+
 USER node
 
 CMD ["node", "Main.js"]
