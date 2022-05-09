@@ -47,6 +47,15 @@ export abstract class UserInfo {
                 ephemeral: true,
             });
         }
+        let joinedTimestamp: number;
+        if (targetMember.joinedTimestamp) {
+            joinedTimestamp = targetMember.joinedTimestamp;
+        } else {
+            return interaction.reply({
+                content: "This user is not a member of this server anymore.",
+                ephemeral: true,
+            });
+        }
 
         const embed = new MessageEmbed()
             .setTimestamp()
@@ -75,10 +84,7 @@ export abstract class UserInfo {
                 },
                 {
                     name: "Joined Server",
-                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                    value: `<t:${(targetMember.joinedTimestamp! / 1000).toFixed(
-                        0
-                    )}:R>`,
+                    value: `<t:${(joinedTimestamp / 1000).toFixed(0)}:R>`,
                 },
                 {
                     name: "Server Avatar",
