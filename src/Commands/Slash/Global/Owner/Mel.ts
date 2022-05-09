@@ -3,6 +3,7 @@ import { CommandInteraction } from "discord.js";
 /* import moment from "moment"; */
 
 @Discord()
+@Permission(false)
 @Permission({ id: "374590194034409472", permission: true, type: "USER" })
 @Permission({ id: "463044315007156224", permission: true, type: "USER" })
 export abstract class Mel {

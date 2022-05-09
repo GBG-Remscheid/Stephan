@@ -4,6 +4,7 @@ import { CommandInteraction } from "discord.js";
 import type { Snowflake } from "discord-api-types";
 
 @Discord()
+@Permission(false)
 @Permission({ id: "463044315007156224", permission: true, type: "USER" })
 @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 @Category("Owner")
