@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "is-ci": "^3.0.1",
     "prettier": "^2.6.2",
     "prisma": "^3.13.0",
