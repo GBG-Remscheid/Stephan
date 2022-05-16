@@ -37,7 +37,7 @@
     "@discordjs/voice": "^0.9.0",
     "@discordx/di": "^2.0.1",
     "@discordx/importer": "^1.1.9",
-    "@discordx/music": "^4.0.0",
+    "@discordx/music": "^4.0.1",
     "@discordx/pagination": "^2.1.1",
     "@discordx/utilities": "^4.2.4",
     "@pm2/io": "^5.0.0",
