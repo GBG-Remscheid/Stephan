@@ -1,4 +1,4 @@
-import type { APIMessage, Snowflake } from "discord-api-types";
+import type { APIMessage, Snowflake } from "discord-api-types/v10";
 import { CommandInteraction, Message, Role } from "discord.js";
 import {
     Discord,

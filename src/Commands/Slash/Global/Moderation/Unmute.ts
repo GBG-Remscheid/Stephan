@@ -7,7 +7,7 @@ import {
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
 import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
-import type { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types/v10";
 
 @Discord()
 @Category("Moderation")

@@ -1,7 +1,7 @@
 import { Discord, Permission, Slash, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
 import { CommandInteraction } from "discord.js";
-import type { Snowflake } from "discord-api-types";
+import type { Snowflake } from "discord-api-types/v10";
 
 @Discord()
 @Permission(false)
