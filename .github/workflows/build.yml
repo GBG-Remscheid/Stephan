@@ -25,7 +25,7 @@ jobs:
       - name: Install Node v${{ matrix.node_version }} on ${{ matrix.os }}
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.os }}
+          node-version: ${{ matrix.node_version }}
 
       - name: install dependencies 🔄
         run: npm install
