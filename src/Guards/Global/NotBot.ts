@@ -1,4 +1,8 @@
-import type { ArgsOf, GuardFunction } from "discordx";
+import {
+    type ArgsOf,
+    type GuardFunction,
+    SimpleCommandMessage,
+} from "discordx";
 import {
     ButtonInteraction,
     CommandInteraction,
@@ -8,7 +12,6 @@ import {
     SelectMenuInteraction,
     VoiceState,
 } from "discord.js";
-import { SimpleCommandMessage } from "discordx";
 
 export const NotBot: GuardFunction<
     | ArgsOf<"messageCreate" | "messageReactionAdd" | "voiceStateUpdate">

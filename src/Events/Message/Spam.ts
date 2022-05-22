@@ -1,5 +1,4 @@
-import { Discord, On } from "discordx";
-import type { ArgsOf } from "discordx";
+import { type ArgsOf, Discord, On } from "discordx";
 import { SpamMeta } from "discord-spams";
 
 @Discord()
