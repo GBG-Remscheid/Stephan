@@ -1,10 +1,10 @@
-import { Discord, Slash, SlashOption } from "discordx";
-import { Category } from "@discordx/utilities";
 import {
     ApplicationCommandOptionType,
     CommandInteraction,
     InteractionResponse,
 } from "discord.js";
+import { Discord, Slash, SlashOption } from "discordx";
+import { Category } from "@discordx/utilities";
 import type { Snowflake } from "discord-api-types/v10";
 
 @Discord()

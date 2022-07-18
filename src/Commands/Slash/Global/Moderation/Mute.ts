@@ -157,9 +157,9 @@ export abstract class Mute {
             .addFields([
                 { name: "**Reason:**", value: reason },
                 {
+                    inline: true,
                     name: "**Mute Duration:**",
                     value: `${duration} day(s)`,
-                    inline: true,
                 },
                 {
                     name: "**Mute End:**",

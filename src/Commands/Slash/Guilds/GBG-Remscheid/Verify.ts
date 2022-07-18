@@ -1,12 +1,4 @@
 import {
-    ButtonComponent,
-    Discord,
-    Guild,
-    Slash,
-    SlashChoice,
-    SlashOption,
-} from "discordx";
-import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
     ButtonBuilder,
@@ -19,6 +11,14 @@ import {
     InteractionResponse,
     Message,
 } from "discord.js";
+import {
+    ButtonComponent,
+    Discord,
+    Guild,
+    Slash,
+    SlashChoice,
+    SlashOption,
+} from "discordx";
 import { Category } from "@discordx/utilities";
 
 const classChoices = [

@@ -1,5 +1,5 @@
-import { Discord, Slash } from "discordx";
 import { CommandInteraction, InteractionResponse } from "discord.js";
+import { Discord, Slash } from "discordx";
 /* import moment from "moment"; */
 
 @Discord()

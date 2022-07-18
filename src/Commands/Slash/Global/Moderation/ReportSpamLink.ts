@@ -1,6 +1,6 @@
+import { CommandInteraction, InteractionResponse } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
-import { CommandInteraction, InteractionResponse } from "discord.js";
 import { SpamMeta } from "discord-spams";
 
 @Discord()

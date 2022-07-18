@@ -5,7 +5,6 @@ import {
     GuildMember,
     InteractionResponse,
     PermissionFlagsBits,
-    Permissions,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";

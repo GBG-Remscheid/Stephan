@@ -161,27 +161,27 @@ export class Vertretung {
                     ausfall.map(lesson => {
                         embed.addFields([
                             {
+                                inline: true,
                                 name: "Stunde",
                                 value: `\`\`\`${formatLessonTime(
                                     lesson
                                 )}\`\`\``,
-                                inline: true,
                             },
                             {
+                                inline: true,
                                 name: "Fach",
                                 value: `\`\`\`${
                                     this.formatLessonName(lesson.sg) ??
                                     lesson.su.map(l => l.name) ??
                                     "N/A"
                                 }\`\`\``,
-                                inline: true,
                             },
                             {
+                                inline: true,
                                 name: "Anmerkung",
                                 value: `\`\`\`${
                                     lesson.substText ?? "N/A"
                                 }\`\`\``,
-                                inline: true,
                             },
                             {
                                 name: "\u200B",
@@ -228,9 +228,9 @@ export class Vertretung {
                                 }\`\`\``,
                             },
                             {
+                                inline: true,
                                 name: "Raum",
                                 value: `\`\`\`${aLesson.ro[0].name} --> ${aLesson.ro[1].name}\`\`\``,
-                                inline: true,
                             },
                         ]);
                     });

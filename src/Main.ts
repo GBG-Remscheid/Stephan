@@ -1,7 +1,7 @@
 import "reflect-metadata";
+import { ActivityType, GatewayIntentBits } from "discord.js";
 import { Client, DIService } from "discordx";
 import { container, singleton } from "tsyringe";
-import { ActivityType, GatewayIntentBits } from "discord.js";
 import { NotBot } from "@discordx/utilities";
 import { config } from "dotenv";
 import { dirname } from "node:path";
