@@ -1,20 +1,18 @@
 import type { APIMessage, Snowflake } from "discord-api-types/v10";
-import { CommandInteraction, Message, Role } from "discord.js";
 import {
-    Discord,
-    Guild,
-    Permission,
-    Slash,
-    SlashGroup,
-    SlashOption,
-} from "discordx";
+    ApplicationCommandOptionType,
+    CommandInteraction,
+    Message,
+    Role,
+} from "discord.js";
+import { Discord, Guild, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
 
 @Discord()
 @Category("Utilities")
 @SlashGroup({ description: "Shifts all members' roles.", name: "role-shift" })
 @Guild("755432683579900035")
-@Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
+// @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
 export abstract class RoleShift {
     @Slash("up", { description: "Shift up the roles of all members." })
     @SlashGroup("role-shift")
@@ -188,7 +186,7 @@ export abstract class RoleShift {
                                 if (interaction.guild) {
                                     const newAbiRole =
                                         await interaction.guild.roles.create({
-                                            color: "RANDOM",
+                                            color: "Random",
                                             name: `Abi ${new Date().getFullYear()}`,
                                         });
                                     member.roles.add(newAbiRole);
@@ -224,34 +222,34 @@ export abstract class RoleShift {
     async shiftDown(
         @SlashOption("user", {
             description: "The specific user that should be downshifted.",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         user: Snowflake,
 
         @SlashOption("remove", {
             description: "The role, that should be removed.",
-            type: "ROLE",
+            type: ApplicationCommandOptionType.Role,
         })
         remRole1: Snowflake,
 
         @SlashOption("add", {
             description: "The role, that should be added.",
             required: false,
-            type: "ROLE",
+            type: ApplicationCommandOptionType.Role,
         })
         addRole1: Snowflake,
 
         @SlashOption("remove-opt", {
             description: "A second optional role, that should be removed.",
             required: false,
-            type: "ROLE",
+            type: ApplicationCommandOptionType.Role,
         })
         remRole2: Snowflake,
 
         @SlashOption("add-opt", {
             description: "A second optional role, that should be added.",
             required: false,
-            type: "ROLE",
+            type: ApplicationCommandOptionType.Role,
         })
         addRole2: Snowflake,
 

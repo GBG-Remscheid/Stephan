@@ -1,7 +1,10 @@
 import {
+    ApplicationCommandOptionType,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
+    InteractionResponse,
+    PermissionFlagsBits,
     Permissions,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
@@ -22,25 +25,25 @@ export abstract class Ban {
     async ban(
         @SlashOption("user", {
             description: "The user that should be banned",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         @SlashOption("reason", {
             description: "The ban reason",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
         @SlashOption("days", {
             description: "The optional duration for a temporary ban",
             required: false,
-            type: "INTEGER",
+            type: ApplicationCommandOptionType.Integer,
         })
         duration: number,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { channel, createdAt, guild, member, user } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -61,7 +64,7 @@ export abstract class Ban {
 
         if (
             !(<GuildMember>member).permissions.has(
-                Permissions.FLAGS.BAN_MEMBERS
+                PermissionFlagsBits.BanMembers
             )
         ) {
             return interaction.reply({
@@ -90,15 +93,15 @@ export abstract class Ban {
             });
         }
 
-        const serverEmbed = new MessageEmbed()
+        const serverEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Ban Info",
             })
             .setColor("#FF0C00")
             .setThumbnail(banhammer)
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Ban executed by ${user.username}`,
             })
             .setTimestamp()
@@ -126,22 +129,21 @@ export abstract class Ban {
                 },
             ]);
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Your Ban Info",
             })
             .setColor("#FF0C00")
             .setThumbnail(banhammer)
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Ban executed by ${user.username}`,
             })
             .setTimestamp()
             .setDescription(`**You have been banned from ${guild.name}**\n`)
-            .addField("**Reason:**", `${reason}`);
+            .addFields([{ name: "**Reason:**", value: reason }]);
 
-        interaction.reply({ embeds: [serverEmbed] });
         target.send({ embeds: [dmEmbed] }).catch(() => {
             interaction.reply(
                 "There was an error while sending a DM to the user."
@@ -149,7 +151,8 @@ export abstract class Ban {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         duration
-            ? target.ban({ days: duration, reason: reason })
+            ? target.ban({ deleteMessageDays: duration, reason: reason })
             : target.ban({ reason: reason });
+        return interaction.reply({ embeds: [serverEmbed] });
     }
 }

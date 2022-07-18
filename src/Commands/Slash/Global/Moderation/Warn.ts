@@ -1,8 +1,10 @@
 import {
+    ApplicationCommandOptionType,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
-    Permissions,
+    InteractionResponse,
+    PermissionFlagsBits,
     TextChannel,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
@@ -21,18 +23,18 @@ export abstract class Warn {
     async warn(
         @SlashOption("target", {
             description: "The user that should be warned",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         @SlashOption("reason", {
             description: "The reason for the warning",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { createdAt, guild, channel, user, member } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -52,7 +54,7 @@ export abstract class Warn {
 
         if (
             !(<GuildMember>member).permissions.has(
-                Permissions.FLAGS.MANAGE_MESSAGES
+                PermissionFlagsBits.ManageMessages
             )
         ) {
             return interaction.reply({
@@ -81,12 +83,12 @@ export abstract class Warn {
             });
         }
 
-        const guildEmbed = new MessageEmbed()
+        const guildEmbed = new EmbedBuilder()
             .setTitle("**Warning**")
             .setColor("#FF0C00")
-            .setThumbnail(target.user.displayAvatarURL({ dynamic: true }))
+            .setThumbnail(target.user.displayAvatarURL())
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Warning by ${user.username}`,
             })
             .setTimestamp()
@@ -113,25 +115,25 @@ export abstract class Warn {
                 },
             ]);
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Your Warning",
             })
             .setColor("#FF0C00")
             .setThumbnail(
-                guild.iconURL({ dynamic: true }) ??
+                guild.iconURL() ??
                     "https://cdn.discordapp.com/embed/avatars/0.png"
             )
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Warning by ${user.username}`,
             })
             .setTimestamp()
             .setDescription(`**You have been warned on ${guild.name}**\n`)
-            .addField("**Reason:**", `\`${reason}\``);
+            .addFields([{ name: "**Reason:**", value: `\`${reason}\`` }]);
 
-        interaction.reply({ embeds: [guildEmbed] });
         target.send({ embeds: [dmEmbed] });
+        return interaction.reply({ embeds: [guildEmbed] });
     }
 }

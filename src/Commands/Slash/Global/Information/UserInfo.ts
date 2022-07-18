@@ -1,7 +1,9 @@
 import {
+    ApplicationCommandOptionType,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
+    InteractionResponse,
     // UserContextMenuInteraction,
 } from "discord.js";
 import {
@@ -27,12 +29,12 @@ export abstract class UserInfo {
         @SlashOption("user", {
             description: "The user you want to get information about",
             required: false,
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         target: Snowflake,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { member, guild } = interaction;
 
         let targetMember: GuildMember | null = null;
@@ -57,11 +59,11 @@ export abstract class UserInfo {
             });
         }
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setTimestamp()
-            .setColor("RANDOM")
+            .setColor("Random")
             .setThumbnail(
-                targetMember.user.displayAvatarURL({ dynamic: true }) ??
+                targetMember.user.displayAvatarURL() ??
                     targetMember.user.defaultAvatarURL
             )
             .setFooter({
@@ -89,21 +91,19 @@ export abstract class UserInfo {
                 {
                     name: "Server Avatar",
                     value: targetMember.avatar
-                        ? `[Link to avatar](${targetMember.avatarURL({
-                              dynamic: true,
-                          })})`
+                        ? `[Link to avatar](${targetMember.avatarURL()})`
                         : "none",
                 },
                 {
                     name: "Global Avatar",
                     value: `[Link to avatar](${
-                        targetMember.user.avatarURL({ dynamic: true }) ??
+                        targetMember.user.avatarURL() ??
                         targetMember.user.defaultAvatarURL
                     })`,
                 },
             ]);
 
-        interaction.reply({ embeds: [embed] });
+        return interaction.reply({ embeds: [embed] });
     }
 
     // @ContextMenu("USER", "User info")

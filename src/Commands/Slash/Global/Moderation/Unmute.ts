@@ -1,8 +1,11 @@
 import {
+    ApplicationCommandOptionType,
+    Colors,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
-    Permissions,
+    InteractionResponse,
+    PermissionFlagsBits,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
@@ -22,12 +25,12 @@ export abstract class Unmute {
     async unmute(
         @SlashOption("user", {
             description: "The user you're unmuting.",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { guild, member, user } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -47,7 +50,7 @@ export abstract class Unmute {
 
         if (
             !(<GuildMember>interaction.member).permissions.has(
-                Permissions.FLAGS.MODERATE_MEMBERS
+                PermissionFlagsBits.ModerateMembers
             )
         ) {
             return interaction.reply({
@@ -83,26 +86,24 @@ export abstract class Unmute {
             });
         }
 
-        const guildEmbed = new MessageEmbed()
+        const guildEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL:
-                    user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL,
+                iconURL: user.avatarURL() ?? user.defaultAvatarURL,
                 name: `Unmuted by ${interaction.user.username}`,
             })
             .setTimestamp()
-            .setColor("GREEN")
+            .setColor(Colors.Green)
             .setDescription(
                 `${target.user.username} has been successfully unmuted. ✅`
             );
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL:
-                    user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL,
+                iconURL: user.avatarURL() ?? user.defaultAvatarURL,
                 name: `Unmuted by ${interaction.user.username}`,
             })
             .setTimestamp()
-            .setColor("GREEN")
+            .setColor(Colors.Green)
             .setDescription(`You've been unmuted from **${guild.name}**.`);
 
         target.send({ embeds: [dmEmbed] }).catch(() => {
@@ -112,6 +113,6 @@ export abstract class Unmute {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         target.timeout(null);
-        interaction.reply({ embeds: [guildEmbed] });
+        return interaction.reply({ embeds: [guildEmbed] });
     }
 }

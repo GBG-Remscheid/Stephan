@@ -1,8 +1,10 @@
 import {
+    ApplicationCommandOptionType,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
-    Permissions,
+    InteractionResponse,
+    PermissionFlagsBits,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
@@ -20,18 +22,18 @@ export abstract class Kick {
     async kick(
         @SlashOption("user", {
             description: "The user you want to kick",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         @SlashOption("reason", {
             description: "Your reason for kicking the user.",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { channel, createdAt, guild, member, user } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -51,7 +53,7 @@ export abstract class Kick {
 
         if (
             !(<GuildMember>member).permissions.has(
-                Permissions.FLAGS.KICK_MEMBERS
+                PermissionFlagsBits.KickMembers
             )
         ) {
             return interaction.reply({
@@ -80,14 +82,14 @@ export abstract class Kick {
             });
         }
 
-        const serverEmbed = new MessageEmbed()
+        const serverEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Kick Info",
             })
             .setColor("#FF0C00")
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Kick executed by ${user.username}`,
             })
             .setTimestamp()
@@ -110,21 +112,20 @@ export abstract class Kick {
                 { name: "**Channel:**", value: `${channel}` },
             ]);
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Your Kick Info",
             })
             .setColor("#FF0C00")
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Kick executed by ${user.username}`,
             })
             .setTimestamp()
             .setDescription(`**You have been kicked from ${guild.name}**\n`)
-            .addField("**Reason:**", `${reason}`);
+            .addFields([{ name: "**Reason:**", value: reason }]);
 
-        interaction.reply({ embeds: [serverEmbed] });
         target.send({ embeds: [dmEmbed] }).catch(() => {
             interaction.reply(
                 "There was an error while sending a DM to the user."
@@ -132,5 +133,6 @@ export abstract class Kick {
             setTimeout(() => interaction.deleteReply(), 5000);
         });
         target.kick(reason);
+        return interaction.reply({ embeds: [serverEmbed] });
     }
 }

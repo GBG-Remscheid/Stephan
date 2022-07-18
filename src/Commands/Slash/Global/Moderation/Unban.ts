@@ -1,8 +1,11 @@
 import {
+    ApplicationCommandOptionType,
+    Colors,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
-    Permissions,
+    InteractionResponse,
+    PermissionFlagsBits,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
@@ -19,12 +22,12 @@ export abstract class Unban {
     async unban(
         @SlashOption("user-id", {
             description: "The user you want to unban",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { member, guild, user } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -43,7 +46,7 @@ export abstract class Unban {
 
         if (
             !(<GuildMember>interaction.member).permissions.has(
-                Permissions.FLAGS.BAN_MEMBERS
+                PermissionFlagsBits.BanMembers
             )
         ) {
             return interaction.reply({
@@ -72,26 +75,24 @@ export abstract class Unban {
             });
         }
 
-        const guildEmbed = new MessageEmbed()
+        const guildEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL:
-                    user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL,
+                iconURL: user.avatarURL() ?? user.defaultAvatarURL,
                 name: `Unbanned by ${user.username}`,
             })
             .setTimestamp()
-            .setColor("GREEN")
+            .setColor(Colors.Green)
             .setDescription(
                 `${target.username} has been successfully unbanned. ✅`
             );
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL:
-                    user.avatarURL({ dynamic: true }) ?? user.defaultAvatarURL,
+                iconURL: user.avatarURL() ?? user.defaultAvatarURL,
                 name: `Unbanned by ${user.username}`,
             })
             .setTimestamp()
-            .setColor("GREEN")
+            .setColor(Colors.Green)
             .setDescription(`You've been unbanned from **${guild.name}**.`);
 
         target.send({ embeds: [dmEmbed] }).catch(() => {
@@ -100,6 +101,6 @@ export abstract class Unban {
             });
             setTimeout(() => interaction.deleteReply(), 5000);
         });
-        interaction.reply({ embeds: [guildEmbed] });
+        return interaction.reply({ embeds: [guildEmbed] });
     }
 }

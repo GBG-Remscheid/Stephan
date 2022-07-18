@@ -1,4 +1,8 @@
-import { CommandInteraction, MessageEmbed } from "discord.js";
+import {
+    ApplicationCommandOptionType,
+    CommandInteraction,
+    EmbedBuilder,
+} from "discord.js";
 import { Discord, Slash, SlashChoice, SlashGroup, SlashOption } from "discordx";
 import { container, injectable } from "tsyringe";
 import { Env } from "../../../../Utils/Env.js";
@@ -80,7 +84,7 @@ export class Vertretung {
 
         @SlashOption("tag", {
             description: "Abfragetag (heute oder morgen)",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...Tag)
         tag: string,
@@ -93,20 +97,21 @@ export class Vertretung {
 
         let timetable: Lesson[];
 
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder({
+            author: {
+                name: "Die Informationen von Untis können manchmal nicht stimmen. Frag am besten direkt bei deinem Fachlehrer nach, wenn du dir unsicher bist.",
+            },
+        })
             .setTimestamp()
             .setThumbnail("https://gbgrs.de/images/logo/gbglogo1024.png")
             .setURL("https://dsbmobile.de/")
             .setFooter({
                 iconURL:
-                    interaction.user.avatarURL({ dynamic: true }) ??
+                    interaction.user.avatarURL() ??
                     interaction.user.defaultAvatarURL,
                 text: `Requested by ${interaction.user.username}`,
             })
-            .setColor("RANDOM")
-            .setAuthor({
-                name: "Die Informationen von Untis können manchmal nicht stimmen. Frag am besten direkt bei deinem Fachlehrer nach, wenn du dir unsicher bist.",
-            });
+            .setColor("Random");
 
         untis
             .login()
@@ -154,34 +159,42 @@ export class Vertretung {
                         } entfällt der Unterricht für:`
                     );
                     ausfall.map(lesson => {
-                        embed
-                            .addField(
-                                "Stunde",
-                                `\`\`\`${formatLessonTime(lesson)}\`\`\``,
-                                true
-                            )
-                            .addField(
-                                "Fach",
-                                `\`\`\`${
+                        embed.addFields([
+                            {
+                                name: "Stunde",
+                                value: `\`\`\`${formatLessonTime(
+                                    lesson
+                                )}\`\`\``,
+                                inline: true,
+                            },
+                            {
+                                name: "Fach",
+                                value: `\`\`\`${
                                     this.formatLessonName(lesson.sg) ??
                                     lesson.su.map(l => l.name) ??
                                     "N/A"
                                 }\`\`\``,
-                                true
-                            )
-                            // .addField(
-                            //     "Lehrer",
-                            //     `\`\`\`${lesson.te.map(
-                            //         teacher => teacher.name
-                            //     )}\`\`\``,
-                            //     true
-                            // )
-                            .addField(
-                                "Anmerkung",
-                                `\`\`\`${lesson.substText ?? "N/A"}\`\`\``,
-                                true
-                            )
-                            .addField("\u200B", "\u200B");
+                                inline: true,
+                            },
+                            {
+                                name: "Anmerkung",
+                                value: `\`\`\`${
+                                    lesson.substText ?? "N/A"
+                                }\`\`\``,
+                                inline: true,
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                            },
+                        ]);
+                        // .addField(
+                        //     "Lehrer",
+                        //     `\`\`\`${lesson.te.map(
+                        //         teacher => teacher.name
+                        //     )}\`\`\``,
+                        //     true
+                        // )
                         /* Alternative design idea */
                         // embed.addField("Fach", "Grund", true)
                         //     .addField(`\`${lesson.sg ?? ""}\``, `\`${lesson.substText ?? ""}\``, true)
@@ -198,25 +211,28 @@ export class Vertretung {
                 }
 
                 if (raumtausch.length > 0) {
-                    embed.addField(
-                        "Außerdem gibt es Raumtausch für:",
-                        "\u200B"
-                    );
+                    embed.addFields([
+                        {
+                            name: "Außerdem gibt es Raumtausch für:",
+                            value: "\u200B",
+                        },
+                    ]);
                     raumtausch.map(aLesson => {
-                        embed
-                            .addField(
-                                "Fach",
-                                `\`\`\`${
+                        embed.addFields([
+                            {
+                                name: "Fach",
+                                value: `\`\`\`${
                                     this.formatLessonName(aLesson.sg) ??
                                     aLesson.su.map(l => l.name) ??
                                     "N/A"
-                                }\`\`\``
-                            )
-                            .addField(
-                                "Raum",
-                                `\`\`\`${aLesson.ro[0].name} --> ${aLesson.ro[1].name}\`\`\``,
-                                true
-                            );
+                                }\`\`\``,
+                            },
+                            {
+                                name: "Raum",
+                                value: `\`\`\`${aLesson.ro[0].name} --> ${aLesson.ro[1].name}\`\`\``,
+                                inline: true,
+                            },
+                        ]);
                     });
                 }
             })

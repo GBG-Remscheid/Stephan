@@ -1,8 +1,10 @@
 import {
+    ApplicationCommandOptionType,
     CommandInteraction,
+    EmbedBuilder,
     GuildMember,
-    MessageEmbed,
-    Permissions,
+    InteractionResponse,
+    PermissionFlagsBits,
 } from "discord.js";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
@@ -22,24 +24,24 @@ export abstract class Mute {
     async mute(
         @SlashOption("user", {
             description: "The user you'd like to mute",
-            type: "USER",
+            type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         @SlashOption("reason", {
             description: "The reason for your mute",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
         @SlashOption("days", {
             description: "The duration for your mute",
-            type: "NUMBER",
+            type: ApplicationCommandOptionType.Number,
         })
         duration: number,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const { channel, createdAt, guild, member, user } = interaction;
         if (!guild) {
             return interaction.reply({
@@ -84,7 +86,7 @@ export abstract class Mute {
 
         if (
             !(<GuildMember>member).permissions.has(
-                Permissions.FLAGS.MODERATE_MEMBERS
+                PermissionFlagsBits.ModerateMembers
             )
         ) {
             return interaction.reply({
@@ -99,14 +101,14 @@ export abstract class Mute {
 
         await target.timeout(milliseconds, reason);
 
-        const serverEmbed = new MessageEmbed()
+        const serverEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Mute Info",
             })
             .setColor("#FF0C00")
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Mute executed by ${user.username}`,
             })
             .setTimestamp()
@@ -140,33 +142,39 @@ export abstract class Mute {
                 },
             ]);
 
-        const dmEmbed = new MessageEmbed()
+        const dmEmbed = new EmbedBuilder()
             .setAuthor({
-                iconURL: target.user.displayAvatarURL({ dynamic: true }),
+                iconURL: target.user.displayAvatarURL(),
                 name: "Your Mute Info",
             })
             .setColor("#FF0C00")
             .setFooter({
-                iconURL: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
                 text: `Mute executed by ${user.username}`,
             })
             .setTimestamp()
             .setDescription(`**You have been muted on ${guild.name}**\n`)
-            .addField("**Reason:**", `${reason}`)
-            .addField("**Mute Duration:**", `${duration} day(s)`, true)
-            .addField(
-                "**Mute End:**",
-                `${moment(target.communicationDisabledUntil).format(
-                    "DD. MMMM YYYY, HH:mm"
-                )}, ${moment(target.communicationDisabledUntil).fromNow()}`
-            );
+            .addFields([
+                { name: "**Reason:**", value: reason },
+                {
+                    name: "**Mute Duration:**",
+                    value: `${duration} day(s)`,
+                    inline: true,
+                },
+                {
+                    name: "**Mute End:**",
+                    value: `${moment(target.communicationDisabledUntil).format(
+                        "DD. MMMM YYYY, HH:mm"
+                    )}, ${moment(target.communicationDisabledUntil).fromNow()}`,
+                },
+            ]);
 
-        interaction.reply({ embeds: [serverEmbed] });
         target.send({ embeds: [dmEmbed] }).catch(() => {
             interaction.reply(
                 "There was an error while sending a DM to the user."
             );
             setTimeout(() => interaction.deleteReply(), 5000);
         });
+        return interaction.reply({ embeds: [serverEmbed] });
     }
 }
