@@ -39,7 +39,7 @@
     "@discordx/importer": "^1.1.10",
     "@discordx/music": "^4.0.2",
     "@discordx/pagination": "^2.2.2",
-    "@discordx/utilities": "^4.3.3",
+    "@discordx/utilities": "^5.0.0",
     "@pm2/io": "^5.0.0",
     "@prisma/client": "^4.0.0",
     "discord-spams": "^1.3.0",
