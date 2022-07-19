@@ -1,6 +1,6 @@
+import { CommandInteraction, InteractionResponse } from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
-import { CommandInteraction } from "discord.js";
 import { SpamMeta } from "discord-spams";
 
 @Discord()
@@ -17,7 +17,7 @@ export abstract class ReportSpam {
         })
         link: string,
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean>> {
         const urlRegex =
             /https?:\/\/(www\.)?[-a-zA-Z\d@:%._+~#=]{1,256}\.[a-zA-Z\d()]{1,6}\b([-a-zA-Z\d()@:%_+.~#?&/=]*)/;
 

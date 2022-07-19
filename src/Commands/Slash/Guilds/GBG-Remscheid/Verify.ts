@@ -1,21 +1,24 @@
 import {
+    ActionRowBuilder,
+    ApplicationCommandOptionType,
+    ButtonBuilder,
+    ButtonInteraction,
+    ButtonStyle,
+    ChannelType,
+    CommandInteraction,
+    EmbedBuilder,
+    GuildMember,
+    InteractionResponse,
+    Message,
+} from "discord.js";
+import {
     ButtonComponent,
     Discord,
     Guild,
-    Permission,
     Slash,
     SlashChoice,
     SlashOption,
 } from "discordx";
-import {
-    ButtonInteraction,
-    CommandInteraction,
-    GuildMember,
-    Message,
-    MessageActionRow,
-    MessageButton,
-    MessageEmbed,
-} from "discord.js";
 import { Category } from "@discordx/utilities";
 
 const classChoices = [
@@ -47,10 +50,10 @@ const classChoices = [
 let requestUser: GuildMember;
 let aNickname: string;
 let roleChoice: string;
-let embed = new MessageEmbed();
+let embed = new EmbedBuilder();
 let embedMessage: Message;
 let buttonReply: Message;
-let row: MessageActionRow;
+let row: ActionRowBuilder<ButtonBuilder>;
 
 const enum VerificationStatus {
     Accepted = "Accepted ✅",
@@ -59,7 +62,7 @@ const enum VerificationStatus {
 }
 @Discord()
 @Category("Utilities")
-@Permission({ id: "755464917834006678", permission: false, type: "ROLE" })
+// @Permission({ id: "755464917834006678", permission: false, type: "ROLE" })
 // @Permission({ id: "463044315007156224", permission: true, type: "USER" })
 // @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 export abstract class Verify {
@@ -70,24 +73,24 @@ export abstract class Verify {
         firstName: string,
         @SlashOption("nachname", {
             description: "Dein Nachname",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         surname: string,
         @SlashOption("klasse", {
             description: "Deine Klasse/Stufe",
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...classChoices)
         choice: string,
         @SlashOption("spitzname", {
             description: "Dein optionaler Spitzname",
             required: false,
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         nickname: string,
 
         interaction: CommandInteraction
-    ): Promise<void> {
+    ): Promise<InteractionResponse<boolean> | void> {
         const { user } = interaction;
         aNickname = nickname;
         roleChoice = choice;
@@ -111,7 +114,10 @@ export abstract class Verify {
 
         const verificationChannel =
             interaction.guild?.channels.cache.get("863391600687317003");
-        if (!verificationChannel || verificationChannel.type !== "GUILD_TEXT") {
+        if (
+            !verificationChannel ||
+            verificationChannel.type !== ChannelType.GuildText
+        ) {
             return interaction.reply({
                 content:
                     "There was an error while fetching the verification channel.",
@@ -125,17 +131,17 @@ export abstract class Verify {
             ephemeral: true,
         });
 
-        embed = new MessageEmbed()
+        embed = new EmbedBuilder()
             .setTimestamp()
             .setFooter({
                 iconURL:
-                    requestUser.user.avatarURL({ dynamic: true }) ??
+                    requestUser.user.avatarURL() ??
                     requestUser.user.defaultAvatarURL,
                 text: `Request issued by ${requestUser.displayName}`,
             })
             .setColor("#B97425")
             .setThumbnail(
-                requestUser.user.avatarURL({ dynamic: true }) ??
+                requestUser.user.avatarURL() ??
                     requestUser.user.defaultAvatarURL
             )
             .setTitle(`Verification Request by **${firstName} ${surname}**`)
@@ -152,7 +158,7 @@ export abstract class Verify {
                 { name: "Spitzname", value: nickname ?? "-" },
             ]);
 
-        if (verificationChannel.isText()) {
+        if (verificationChannel.type === ChannelType.GuildText) {
             embedMessage = await verificationChannel.send({ embeds: [embed] });
         } else {
             return interaction.reply({
@@ -162,21 +168,24 @@ export abstract class Verify {
             });
         }
 
-        const acceptButton = new MessageButton()
+        const acceptButton = new ButtonBuilder()
             .setCustomId("accept")
             .setDisabled(false)
             .setEmoji("✅")
             .setLabel("Accept")
-            .setStyle("SUCCESS");
+            .setStyle(ButtonStyle.Success);
 
-        const denyButton = new MessageButton()
+        const denyButton = new ButtonBuilder()
             .setCustomId("deny")
             .setDisabled(false)
             .setEmoji("❌")
             .setLabel("Deny")
-            .setStyle("DANGER");
+            .setStyle(ButtonStyle.Danger);
 
-        row = new MessageActionRow().addComponents([acceptButton, denyButton]);
+        row = new ActionRowBuilder<ButtonBuilder>().addComponents([
+            acceptButton,
+            denyButton,
+        ]);
         buttonReply = await embedMessage.reply({
             components: [row],
             content:
@@ -185,7 +194,9 @@ export abstract class Verify {
     }
 
     @ButtonComponent("accept", { guilds: ["755432683579900035"] })
-    accept(interaction: ButtonInteraction): Promise<void> {
+    accept(
+        interaction: ButtonInteraction
+    ): Promise<InteractionResponse<boolean>> {
         if (requestUser) {
             requestUser.roles.add("755464917834006678");
             if (
@@ -242,7 +253,9 @@ export abstract class Verify {
     }
 
     @ButtonComponent("deny", { guilds: ["755432683579900035"] })
-    deny(interaction: ButtonInteraction): Promise<void> {
+    deny(
+        interaction: ButtonInteraction
+    ): Promise<InteractionResponse<boolean>> {
         if (requestUser) {
             requestUser.send(
                 `Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`

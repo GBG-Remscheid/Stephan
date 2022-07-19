@@ -1,4 +1,4 @@
-import { CommandInteraction, MessageEmbed } from "discord.js";
+import { CommandInteraction, EmbedBuilder } from "discord.js";
 import { Discord, Slash, SlashGroup } from "discordx";
 import { container, injectable } from "tsyringe";
 import { Category } from "@discordx/utilities";
@@ -37,11 +37,11 @@ export class Holidays {
                 .asDays()
                 .toFixed(0);
 
-            const embed = new MessageEmbed()
-                .setColor("RANDOM")
+            const embed = new EmbedBuilder()
+                .setColor("Random")
                 .setDescription(`Die Ferien beginnen in ${daysLeft} Tagen`);
 
-            interaction.reply({ embeds: [embed] });
+            return interaction.reply({ embeds: [embed] });
         });
     }
 }

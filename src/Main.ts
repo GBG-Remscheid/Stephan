@@ -1,8 +1,8 @@
 import "reflect-metadata";
+import { ActivityType, GatewayIntentBits } from "discord.js";
 import { Client, DIService } from "discordx";
 import { container, singleton } from "tsyringe";
-import { Intents } from "discord.js";
-import { NotBot } from "./Guards/Global/NotBot.js";
+import { NotBot } from "@discordx/utilities";
 import { config } from "dotenv";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,24 +33,24 @@ export class Main {
             failIfNotExists: true,
             guards: [NotBot],
             intents: [
-                Intents.FLAGS.GUILDS,
-                Intents.FLAGS.GUILD_MESSAGES,
-                Intents.FLAGS.GUILD_VOICE_STATES,
-                Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-                Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-                Intents.FLAGS.DIRECT_MESSAGES,
-                Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-                Intents.FLAGS.GUILD_INTEGRATIONS,
-                Intents.FLAGS.GUILD_PRESENCES,
-                Intents.FLAGS.GUILD_WEBHOOKS,
-                Intents.FLAGS.GUILD_MEMBERS,
-                Intents.FLAGS.GUILD_INVITES,
-                Intents.FLAGS.GUILD_BANS,
+                GatewayIntentBits.Guilds,
+                GatewayIntentBits.GuildMessages,
+                GatewayIntentBits.GuildVoiceStates,
+                GatewayIntentBits.GuildEmojisAndStickers,
+                GatewayIntentBits.DirectMessageReactions,
+                GatewayIntentBits.DirectMessages,
+                GatewayIntentBits.DirectMessageTyping,
+                GatewayIntentBits.GuildIntegrations,
+                GatewayIntentBits.GuildPresences,
+                GatewayIntentBits.GuildWebhooks,
+                GatewayIntentBits.GuildMembers,
+                GatewayIntentBits.GuildInvites,
+                GatewayIntentBits.GuildBans,
             ],
             presence: {
                 activities: [
-                    { name: "the students 👁👁", type: "WATCHING" },
-                    { name: "deine Mum an", type: "WATCHING" },
+                    { name: "the students 👁👁", type: ActivityType.Watching },
+                    { name: "deine Mum an", type: ActivityType.Watching },
                 ],
             },
             silent: false,
