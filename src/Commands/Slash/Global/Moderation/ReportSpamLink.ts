@@ -1,4 +1,8 @@
-import { CommandInteraction, InteractionResponse } from "discord.js";
+import {
+    ApplicationCommandOptionType,
+    CommandInteraction,
+    InteractionResponse,
+} from "discord.js";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
 import { SpamMeta } from "discord-spams";
@@ -13,7 +17,7 @@ export abstract class ReportSpam {
         @SlashOption("link", {
             description: "the link that should be added to them spam list",
             required: true,
-            type: "STRING",
+            type: ApplicationCommandOptionType.String,
         })
         link: string,
         interaction: CommandInteraction
