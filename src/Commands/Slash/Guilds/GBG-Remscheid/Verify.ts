@@ -69,7 +69,10 @@ export abstract class Verify {
     @Slash("verify")
     @Guild("755432683579900035")
     async verify(
-        @SlashOption("vorname", { description: "Dein Vorname", type: "STRING" })
+        @SlashOption("vorname", {
+            description: "Dein Vorname",
+            type: ApplicationCommandOptionType.String,
+        })
         firstName: string,
         @SlashOption("nachname", {
             description: "Dein Nachname",
