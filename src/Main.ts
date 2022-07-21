@@ -1,7 +1,8 @@
 import "reflect-metadata";
 import { ActivityType, GatewayIntentBits } from "discord.js";
-import { Client, DIService } from "discordx";
+import { DIService, tsyringeDependencyRegistryEngine } from "@discordx/di";
 import { container, singleton } from "tsyringe";
+import { Client } from "discordx";
 import { NotBot } from "@discordx/utilities";
 import { config } from "dotenv";
 import { dirname } from "node:path";
@@ -15,7 +16,7 @@ config({
     path: process.env.NODE_ENV === "development" ? ".env" : ".env.production",
 });
 
-DIService.container = container;
+DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 @singleton()
 export class Main {
     private static _client: Client;
