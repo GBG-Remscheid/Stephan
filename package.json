@@ -33,7 +33,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@discordx/di": "^2.0.1",
+    "@discordx/di": "^3.0.0",
     "@discordx/importer": "^1.1.10",
     "@discordx/music": "^4.1.0",
     "@discordx/pagination": "^2.2.2",
