@@ -16,6 +16,8 @@ export const NotBotOwner: GuardFunction<CommandInteraction> = async (
                     "Because this bot is in development mode right now, commands are disabled for non-developers.",
                 ephemeral: true,
             });
+        } else {
+            await next();
         }
     } else {
         await next();
