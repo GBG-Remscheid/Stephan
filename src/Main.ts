@@ -4,6 +4,7 @@ import { DIService, tsyringeDependencyRegistryEngine } from "@discordx/di";
 import { container, singleton } from "tsyringe";
 import { Client } from "discordx";
 import { NotBot } from "@discordx/utilities";
+import { NotBotOwner } from "./Guards/Global/NotBotOwner.js";
 import { config } from "dotenv";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -32,7 +33,7 @@ export class Main {
                     ? ["768975702187704360"]
                     : [],
             failIfNotExists: true,
-            guards: [NotBot],
+            guards: [NotBot, NotBotOwner],
             intents: [
                 GatewayIntentBits.Guilds,
                 GatewayIntentBits.GuildMessages,
