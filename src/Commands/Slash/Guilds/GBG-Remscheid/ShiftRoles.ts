@@ -14,7 +14,7 @@ import { Category } from "@discordx/utilities";
 @Guild("755432683579900035")
 // @Permission({ id: "755432968901754951", permission: true, type: "ROLE" })
 export abstract class RoleShift {
-    @Slash("up", { description: "Shift up the roles of all members." })
+    @Slash({ description: "Shift up the roles of all members.", name: "up" })
     @SlashGroup("role-shift")
     async shiftUp(
         interaction: CommandInteraction
@@ -208,7 +208,7 @@ export abstract class RoleShift {
         return interaction.editReply("All roles got shifted successfully.");
     }
 
-    @Slash("down", { description: "Edit a specific user's roles." })
+    @Slash({ description: "Edit a specific user's roles.", name: "down" })
     @SlashGroup("role-shift")
     /**
      * Shifts down a specific user's roles
@@ -220,34 +220,39 @@ export abstract class RoleShift {
      * @param {CommandInteraction} interaction The interaction of the command
      */
     async shiftDown(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The specific user that should be downshifted.",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         user: Snowflake,
 
-        @SlashOption("remove", {
+        @SlashOption({
             description: "The role, that should be removed.",
+            name: "rem-role",
             type: ApplicationCommandOptionType.Role,
         })
         remRole1: Snowflake,
 
-        @SlashOption("add", {
+        @SlashOption({
             description: "The role, that should be added.",
+            name: "add-role",
             required: false,
             type: ApplicationCommandOptionType.Role,
         })
         addRole1: Snowflake,
 
-        @SlashOption("remove-opt", {
+        @SlashOption({
             description: "A second optional role, that should be removed.",
+            name: "rem-role2",
             required: false,
             type: ApplicationCommandOptionType.Role,
         })
         remRole2: Snowflake,
 
-        @SlashOption("add-opt", {
+        @SlashOption({
             description: "A second optional role, that should be added.",
+            name: "add-role2",
             required: false,
             type: ApplicationCommandOptionType.Role,
         })

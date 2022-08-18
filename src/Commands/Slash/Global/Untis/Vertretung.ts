@@ -74,16 +74,24 @@ export class Vertretung {
         return name?.replace(regex, "");
     };
 
-    @Slash("vertretung")
+    @Slash({ nameLocalizations: { de: "vertretung" } })
     @SlashGroup("untis")
     // FIXME: Raumtausch still doesn't work
     async vertretung(
-        @SlashOption("klasse")
+        @SlashOption({
+            name: "class",
+            nameLocalizations: { de: "klasse" },
+            type: ApplicationCommandOptionType.String,
+        })
         @SlashChoice(...Klassen)
         klasse: string,
 
-        @SlashOption("tag", {
-            description: "Abfragetag (heute oder morgen)",
+        @SlashOption({
+            description:
+                "Day the information should be retrieved for (today or tomorrow)",
+            descriptionLocalizations: { de: "Abfragetag (heute oder morgen)" },
+            name: "day",
+            nameLocalizations: { de: "tag" },
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...Tag)

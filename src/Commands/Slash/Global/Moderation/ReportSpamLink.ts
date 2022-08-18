@@ -11,11 +11,15 @@ import { SpamMeta } from "discord-spams";
 @Category("Moderation")
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class ReportSpam {
-    @Slash("report-spam-link", { description: "Add a link to the spam list" })
+    @Slash({
+        description: "Add a link to the spam list",
+        name: "report-spam-link",
+    })
     @SlashGroup("mod")
     report(
-        @SlashOption("link", {
+        @SlashOption({
             description: "the link that should be added to them spam list",
+            name: "link",
             required: true,
             type: ApplicationCommandOptionType.String,
         })

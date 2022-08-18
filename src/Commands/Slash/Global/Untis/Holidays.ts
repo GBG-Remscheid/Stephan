@@ -12,7 +12,11 @@ import moment from "moment";
 export class Holidays {
     constructor(private readonly env: Env) {}
 
-    @Slash("ferien")
+    @Slash({
+        description: "Get the days util the next holidays",
+        name: "holidays",
+        nameLocalizations: { de: "ferien" },
+    })
     @SlashGroup("untis")
     holidays(interaction: CommandInteraction): void {
         const untis = container.resolve(Env).untis;

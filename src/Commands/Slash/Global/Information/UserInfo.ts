@@ -23,11 +23,12 @@ import type { Snowflake } from "discord-api-types/v10";
 @Guard(NotGuild)
 @SlashGroup({ name: "info" })
 export abstract class UserInfo {
-    @Slash("user")
+    @Slash({ name: "user" })
     @SlashGroup("info")
     async userInfo(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user you want to get information about",
+            name: "user",
             required: false,
             type: ApplicationCommandOptionType.User,
         })

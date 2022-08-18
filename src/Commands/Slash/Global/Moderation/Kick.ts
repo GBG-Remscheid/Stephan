@@ -17,17 +17,19 @@ import moment from "moment";
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Kick {
-    @Slash("kick", { description: "Kick a user from your server" })
+    @Slash({ description: "Kick a user from your server", name: "kick" })
     @SlashGroup("mod")
     async kick(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user you want to kick",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
-        @SlashOption("reason", {
+        @SlashOption({
             description: "Your reason for kicking the user.",
+            name: "reason",
             type: ApplicationCommandOptionType.String,
         })
         reason: string,

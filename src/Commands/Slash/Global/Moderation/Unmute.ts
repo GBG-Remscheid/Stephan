@@ -17,14 +17,16 @@ import type { Snowflake } from "discord-api-types/v10";
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Unmute {
-    @Slash("unmute", {
+    @Slash({
         description:
             "Unmute a previously muted user, who has the 'Muted' role.",
+        name: "unmute",
     })
     @SlashGroup("mod")
     async unmute(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user you're unmuting.",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
