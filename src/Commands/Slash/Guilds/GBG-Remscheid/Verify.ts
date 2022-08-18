@@ -67,7 +67,7 @@ const enum VerificationStatus {
 // @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 export abstract class Verify {
     @Slash({
-        description: "Verify yourself.",
+        description: "Verify yourself",
         descriptionLocalizations: {
             de: "Verifiziere, dass du tatsächlich du bist",
         },
@@ -76,7 +76,7 @@ export abstract class Verify {
     @Guild("755432683579900035")
     async verify(
         @SlashOption({
-            description: "Your first name.",
+            description: "Your first name",
             descriptionLocalizations: { de: "Dein Vorname" },
             name: "firstname",
             nameLocalizations: { de: "vorname" },

@@ -74,7 +74,7 @@ export class Vertretung {
         return name?.replace(regex, "");
     };
 
-    @Slash({ nameLocalizations: { de: "vertretung" } })
+    @Slash({ name: "substitutions", nameLocalizations: { de: "vertretung" } })
     @SlashGroup("untis")
     // FIXME: Raumtausch still doesn't work
     async vertretung(

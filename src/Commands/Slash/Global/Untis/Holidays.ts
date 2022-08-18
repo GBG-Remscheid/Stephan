@@ -14,6 +14,9 @@ export class Holidays {
 
     @Slash({
         description: "Get the days util the next holidays",
+        descriptionLocalizations: {
+            de: "Erfahre die Tage bis zur nächsten Ferien",
+        },
         name: "holidays",
         nameLocalizations: { de: "ferien" },
     })
