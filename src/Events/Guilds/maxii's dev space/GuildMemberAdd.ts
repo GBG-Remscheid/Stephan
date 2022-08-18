@@ -4,7 +4,7 @@ import { ChannelType, PermissionFlagsBits } from "discord.js";
 @Discord()
 @Guild("1003607488928686121")
 export abstract class GuildMemberAdd {
-    @On("guildMemberAdd")
+    @On({ event: "guildMemberAdd" })
     async handler([member]: ArgsOf<"guildMemberAdd">): Promise<void> {
         const { guild } = member;
         const statChannel = guild.channels.cache.find(channel =>

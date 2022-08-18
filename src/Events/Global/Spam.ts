@@ -5,7 +5,7 @@ import { SpamMeta } from "discord-spams";
 export abstract class Spam {
     lastUpdate: number | null = null;
 
-    @On("messageCreate")
+    @On({ event: "messageCreate" })
     async handler([message]: ArgsOf<"messageCreate">): Promise<void> {
         if (!message.guild || !message.member || message.author.bot) {
             return;

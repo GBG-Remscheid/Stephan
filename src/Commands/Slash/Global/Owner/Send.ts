@@ -13,16 +13,18 @@ import type { Snowflake } from "discord-api-types/v10";
 // @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 @Category("Owner")
 export abstract class Send {
-    @Slash("send", { description: "Send a message to a user" })
+    @Slash({ description: "Send a message to a user", name: "send" })
     async send(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user user the message is going to be send to.",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
-        @SlashOption("message", {
+        @SlashOption({
             description: "The message you want to send.",
+            name: "message",
             type: ApplicationCommandOptionType.String,
         })
         message: string,

@@ -17,25 +17,29 @@ import moment from "moment";
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Mute {
-    @Slash("mute", {
+    @Slash({
         description: "Mute a specific user on your server for a specific time.",
+        name: "mute",
     })
     @SlashGroup("mod")
     async mute(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user you'd like to mute",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
-        @SlashOption("reason", {
+        @SlashOption({
             description: "The reason for your mute",
+            name: "reason",
             type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
-        @SlashOption("days", {
+        @SlashOption({
             description: "The duration for your mute",
+            name: "days",
             type: ApplicationCommandOptionType.Number,
         })
         duration: number,

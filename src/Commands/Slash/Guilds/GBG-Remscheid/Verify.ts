@@ -66,27 +66,45 @@ const enum VerificationStatus {
 // @Permission({ id: "463044315007156224", permission: true, type: "USER" })
 // @Permission({ id: "428119121423761410", permission: true, type: "USER" })
 export abstract class Verify {
-    @Slash("verify")
+    @Slash({
+        description: "Verify yourself",
+        descriptionLocalizations: {
+            de: "Verifiziere, dass du tatsächlich du bist",
+        },
+        name: "verify",
+    })
     @Guild("755432683579900035")
     async verify(
-        @SlashOption("vorname", {
-            description: "Dein Vorname",
+        @SlashOption({
+            description: "Your first name",
+            descriptionLocalizations: { de: "Dein Vorname" },
+            name: "firstname",
+            nameLocalizations: { de: "vorname" },
             type: ApplicationCommandOptionType.String,
         })
         firstName: string,
-        @SlashOption("nachname", {
-            description: "Dein Nachname",
+        @SlashOption({
+            description: "Your surname",
+            descriptionLocalizations: { de: "Dein Nachname" },
+            name: "lastname",
+            nameLocalizations: { de: "nachname" },
             type: ApplicationCommandOptionType.String,
         })
         surname: string,
-        @SlashOption("klasse", {
-            description: "Deine Klasse/Stufe",
+        @SlashOption({
+            description: "The current class you're in",
+            descriptionLocalizations: { de: "Deine aktuelle Klasse/Stufe" },
+            name: "class",
+            nameLocalizations: { de: "klasse" },
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...classChoices)
         choice: string,
-        @SlashOption("spitzname", {
-            description: "Dein optionaler Spitzname",
+        @SlashOption({
+            description: "Your optional nickname",
+            descriptionLocalizations: { de: "Dein optionaler Spitzname" },
+            name: "nickname",
+            nameLocalizations: { de: "spitzname" },
             required: false,
             type: ApplicationCommandOptionType.String,
         })
@@ -196,7 +214,7 @@ export abstract class Verify {
         });
     }
 
-    @ButtonComponent("accept", { guilds: ["755432683579900035"] })
+    @ButtonComponent({ guilds: ["755432683579900035"], id: "accept" })
     accept(
         interaction: ButtonInteraction
     ): Promise<InteractionResponse<boolean>> {
@@ -255,7 +273,7 @@ export abstract class Verify {
         });
     }
 
-    @ButtonComponent("deny", { guilds: ["755432683579900035"] })
+    @ButtonComponent({ guilds: ["755432683579900035"], id: "deny" })
     deny(
         interaction: ButtonInteraction
     ): Promise<InteractionResponse<boolean>> {

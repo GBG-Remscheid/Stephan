@@ -17,25 +17,29 @@ import moment from "moment";
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Ban {
-    @Slash("ban", {
+    @Slash({
         description: "Ban a specific user from a server (tmp or infinite).",
+        name: "ban",
     })
     @SlashGroup("mod")
     async ban(
-        @SlashOption("user", {
+        @SlashOption({
             description: "The user that should be banned",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
-        @SlashOption("reason", {
+        @SlashOption({
             description: "The ban reason",
+            name: "reason",
             type: ApplicationCommandOptionType.String,
         })
         reason: string,
 
-        @SlashOption("days", {
+        @SlashOption({
             description: "The optional duration for a temporary ban",
+            name: "days",
             required: false,
             type: ApplicationCommandOptionType.Integer,
         })

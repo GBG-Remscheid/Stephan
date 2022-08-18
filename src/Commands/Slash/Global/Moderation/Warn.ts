@@ -18,17 +18,19 @@ import moment from "moment";
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
 export abstract class Warn {
-    @Slash("warn", { description: "Sends a warning to a user" })
+    @Slash({ description: "Sends a warning to a user", name: "warn" })
     @SlashGroup("mod")
     async warn(
-        @SlashOption("target", {
+        @SlashOption({
             description: "The user that should be warned",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
-        @SlashOption("reason", {
+        @SlashOption({
             description: "The reason for the warning",
+            name: "reason",
             type: ApplicationCommandOptionType.String,
         })
         reason: string,
