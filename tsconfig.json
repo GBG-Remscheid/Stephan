@@ -15,7 +15,7 @@
         "moduleResolution": "NodeNext",
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "lib": ["ESNext", "ESNext.AsyncIterable"]
+        "lib": ["ESNext"]
     },
     "exclude": ["node_modules"]
 }
