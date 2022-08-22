@@ -1,11 +1,7 @@
 .github
-.vscode
 build/
 node_modules/
 .dockerignore
 .env*
-.eslintrc.json
 .gitignore
-.prettierrc.json
-nodemon.json
-package*.json
+package-lock.json
