@@ -1,4 +1,4 @@
-import { CommandInteraction } from "discord.js";
+import type { CommandInteraction } from "discord.js";
 import type { GuardFunction } from "discordx";
 
 export const NotBotOwner: GuardFunction<CommandInteraction> = async (

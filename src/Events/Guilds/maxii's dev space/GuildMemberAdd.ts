@@ -1,5 +1,5 @@
-import { type ArgsOf, Discord, Guild, On } from "discordx";
 import { ChannelType, PermissionFlagsBits } from "discord.js";
+import { type ArgsOf, Discord, Guild, On } from "discordx";
 
 @Discord()
 @Guild("1003607488928686121")

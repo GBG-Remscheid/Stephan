@@ -1,12 +1,9 @@
-import type { APIMessage, Snowflake } from "discord-api-types/v10";
-import {
-    ApplicationCommandOptionType,
-    CommandInteraction,
-    Message,
-    Role,
-} from "discord.js";
-import { Discord, Guild, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
+import type { Message, Role } from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
+import type { APIMessage } from "discord-api-types/v10";
+import { Snowflake } from "discord-api-types/v10";
+import { Discord, Guild, Slash, SlashGroup, SlashOption } from "discordx";
 
 @Discord()
 @Category("Utilities")

@@ -1,6 +1,7 @@
-import Webuntis from "webuntis";
 import { config } from "dotenv";
 import { singleton } from "tsyringe";
+import Webuntis from "webuntis";
+
 config();
 
 @singleton()

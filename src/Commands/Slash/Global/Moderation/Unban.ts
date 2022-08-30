@@ -1,16 +1,16 @@
+import { Category } from "@discordx/utilities";
+import type { GuildMember, InteractionResponse } from "discord.js";
 import {
     ApplicationCommandOptionType,
     Colors,
     CommandInteraction,
     EmbedBuilder,
-    GuildMember,
-    InteractionResponse,
     PermissionFlagsBits,
 } from "discord.js";
+import { Snowflake } from "discord-api-types/v10";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
-import { Category } from "@discordx/utilities";
+
 import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
-import type { Snowflake } from "discord-api-types/v10";
 
 @Discord()
 @Category("Moderation")

@@ -1,3 +1,5 @@
+import { Category } from "@discordx/utilities";
+import type { GuildMember, InteractionResponse, Message } from "discord.js";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
@@ -7,9 +9,6 @@ import {
     ChannelType,
     CommandInteraction,
     EmbedBuilder,
-    GuildMember,
-    InteractionResponse,
-    Message,
 } from "discord.js";
 import {
     ButtonComponent,
@@ -19,7 +18,6 @@ import {
     SlashChoice,
     SlashOption,
 } from "discordx";
-import { Category } from "@discordx/utilities";
 
 const classChoices = [
     { name: "5a", value: "813879297735262299" },

@@ -1,5 +1,5 @@
-import { type ArgsOf, Discord, On } from "discordx";
 import { SpamMeta } from "discord-spams";
+import { type ArgsOf, Discord, On } from "discordx";
 
 @Discord()
 export abstract class Spam {

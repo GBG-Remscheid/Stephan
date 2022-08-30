@@ -1,11 +1,8 @@
-import {
-    ApplicationCommandOptionType,
-    CommandInteraction,
-    InteractionResponse,
-} from "discord.js";
-import { Discord, Slash, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
-import type { Snowflake } from "discord-api-types/v10";
+import type { InteractionResponse } from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
+import { Snowflake } from "discord-api-types/v10";
+import { Discord, Slash, SlashOption } from "discordx";
 
 @Discord()
 // @Permission(false)

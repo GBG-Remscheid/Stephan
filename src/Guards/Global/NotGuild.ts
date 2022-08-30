@@ -1,5 +1,5 @@
-import { CommandInteraction } from "discord.js";
-import { GuardFunction } from "discordx";
+import type { CommandInteraction } from "discord.js";
+import type { GuardFunction } from "discordx";
 
 export const NotGuild: GuardFunction<CommandInteraction> = async (
     interaction,

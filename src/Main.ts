@@ -1,15 +1,17 @@
 import "reflect-metadata";
-import { ActivityType, GatewayIntentBits } from "discord.js";
+
 import { DIService, tsyringeDependencyRegistryEngine } from "@discordx/di";
-import { container, singleton } from "tsyringe";
-import { Client } from "discordx";
+import { importx } from "@discordx/importer";
 import { NotBot } from "@discordx/utilities";
-import { NotBotOwner } from "./Guards/Global/NotBotOwner.js";
+import io from "@pm2/io";
+import { ActivityType, GatewayIntentBits } from "discord.js";
+import { Client } from "discordx";
 import { config } from "dotenv";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { importx } from "@discordx/importer";
-import io from "@pm2/io";
+import { container, singleton } from "tsyringe";
+
+import { NotBotOwner } from "./Guards/Global/NotBotOwner.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

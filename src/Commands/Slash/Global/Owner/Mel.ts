@@ -1,4 +1,5 @@
-import { CommandInteraction, InteractionResponse } from "discord.js";
+import type { InteractionResponse } from "discord.js";
+import { CommandInteraction } from "discord.js";
 import { Discord, Slash } from "discordx";
 /* import moment from "moment"; */
 

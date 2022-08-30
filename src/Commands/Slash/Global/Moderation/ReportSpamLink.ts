@@ -1,11 +1,8 @@
-import {
-    ApplicationCommandOptionType,
-    CommandInteraction,
-    InteractionResponse,
-} from "discord.js";
-import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 import { Category } from "@discordx/utilities";
+import type { InteractionResponse } from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { SpamMeta } from "discord-spams";
+import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 
 @Discord()
 @Category("Moderation")

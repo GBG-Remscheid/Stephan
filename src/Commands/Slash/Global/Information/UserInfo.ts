@@ -1,11 +1,12 @@
+import { Category } from "@discordx/utilities";
+import type { GuildMember, InteractionResponse } from "discord.js";
 import {
     ApplicationCommandOptionType,
+    // UserContextMenuInteraction,
     CommandInteraction,
     EmbedBuilder,
-    GuildMember,
-    InteractionResponse,
-    // UserContextMenuInteraction,
 } from "discord.js";
+import { Snowflake } from "discord-api-types/v10";
 import {
     // ContextMenu,
     Discord,
@@ -14,9 +15,8 @@ import {
     SlashGroup,
     SlashOption,
 } from "discordx";
-import { Category } from "@discordx/utilities";
+
 import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
-import type { Snowflake } from "discord-api-types/v10";
 
 @Discord()
 @Category("Information")
