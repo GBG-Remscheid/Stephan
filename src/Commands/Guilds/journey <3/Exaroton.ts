@@ -155,8 +155,7 @@ export class Exaroton {
         }
 
         const embed = new EmbedBuilder()
-            .setTitle(statusServer.name)
-            .setDescription("Server stats:")
+            .setTitle(`🌐 Server stats: ${statusServer.name}`)
             .addFields([
                 {
                     inline: true,
@@ -171,7 +170,7 @@ export class Exaroton {
                 {
                     inline: true,
                     name: "Software",
-                    value: statusServer.software.toString(),
+                    value: statusServer.software.name.toString(),
                 },
                 {
                     inline: true,
