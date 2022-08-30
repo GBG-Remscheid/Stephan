@@ -11,3 +11,5 @@ updates:
       interval: "daily"
       time: "00:00"
     versioning-strategy: increase
+    reviewers:
+      - "hofmmaxi"
