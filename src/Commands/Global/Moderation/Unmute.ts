@@ -10,26 +10,30 @@ import {
 import { Snowflake } from "discord-api-types/v10";
 import { Discord, Guard, Slash, SlashGroup, SlashOption } from "discordx";
 
-import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
+import { NotGuild } from "../../../Guards/Global/NotGuild.js";
 
 @Discord()
 @Category("Moderation")
 @Guard(NotGuild)
 @SlashGroup({ description: "all kinds of moderation utils", name: "mod" })
-export abstract class Unban {
-    @Slash({ description: "Unban a banned user", name: "unban" })
+export abstract class Unmute {
+    @Slash({
+        description:
+            "Unmute a previously muted user, who has the 'Muted' role.",
+        name: "unmute",
+    })
     @SlashGroup("mod")
-    async unban(
+    async unmute(
         @SlashOption({
-            description: "The user you want to unban",
-            name: "user-id",
+            description: "The user you're unmuting.",
+            name: "user",
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
 
         interaction: CommandInteraction
     ): Promise<InteractionResponse<boolean>> {
-        const { member, guild, user } = interaction;
+        const { guild, member, user } = interaction;
         if (!guild) {
             return interaction.reply({
                 content:
@@ -37,41 +41,49 @@ export abstract class Unban {
                 ephemeral: true,
             });
         }
-        const target = await guild.bans.remove(targetId);
+
+        const target = await guild.members.fetch(targetId);
         if (!target) {
             return interaction.reply({
-                content: "The given user couldn't be fetched.",
+                content: "There was an error while fetching the user.",
                 ephemeral: true,
             });
         }
 
         if (
             !(<GuildMember>interaction.member).permissions.has(
-                PermissionFlagsBits.BanMembers
+                PermissionFlagsBits.ModerateMembers
             )
         ) {
             return interaction.reply({
                 content:
-                    "You don't have `BAN_MEMBERS` permissions to use this command.",
+                    "You don't have `MODERATE_MEMBERS` permissions to use this command.",
                 ephemeral: true,
             });
         }
 
-        if (target.bot) {
+        if (target.user.bot) {
             return interaction.reply({
-                content: "You can't unban a bot",
+                content: "You can't mute a bot.",
                 ephemeral: true,
             });
         }
-        if (target === member?.user) {
+        if (target === member) {
             return interaction.reply({
-                content: "You can't unban yourself.",
+                content: "You can't unmute yourself.",
                 ephemeral: true,
             });
         }
         if (target.id === guild.ownerId) {
             return interaction.reply({
-                content: "You can't unban the server owner.",
+                content: "You can't mute the server owner.",
+                ephemeral: true,
+            });
+        }
+
+        if (!target.isCommunicationDisabled()) {
+            return interaction.reply({
+                content: "That user isn't muted.",
                 ephemeral: true,
             });
         }
@@ -79,22 +91,22 @@ export abstract class Unban {
         const guildEmbed = new EmbedBuilder()
             .setAuthor({
                 iconURL: user.avatarURL() ?? user.defaultAvatarURL,
-                name: `Unbanned by ${user.username}`,
+                name: `Unmuted by ${interaction.user.username}`,
             })
             .setTimestamp()
             .setColor(Colors.Green)
             .setDescription(
-                `${target.username} has been successfully unbanned. ✅`
+                `${target.user.username} has been successfully unmuted. ✅`
             );
 
         const dmEmbed = new EmbedBuilder()
             .setAuthor({
                 iconURL: user.avatarURL() ?? user.defaultAvatarURL,
-                name: `Unbanned by ${user.username}`,
+                name: `Unmuted by ${interaction.user.username}`,
             })
             .setTimestamp()
             .setColor(Colors.Green)
-            .setDescription(`You've been unbanned from **${guild.name}**.`);
+            .setDescription(`You've been unmuted from **${guild.name}**.`);
 
         target.send({ embeds: [dmEmbed] }).catch(() => {
             interaction.reply({
@@ -102,6 +114,7 @@ export abstract class Unban {
             });
             setTimeout(() => interaction.deleteReply(), 5000);
         });
+        target.timeout(null);
         return interaction.reply({ embeds: [guildEmbed] });
     }
 }

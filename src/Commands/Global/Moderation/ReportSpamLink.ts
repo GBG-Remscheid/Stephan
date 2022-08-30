@@ -1,6 +1,6 @@
 import { Category } from "@discordx/utilities";
-import type { InteractionResponse } from "discord.js";
-import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
+import type { CommandInteraction, InteractionResponse } from "discord.js";
+import { ApplicationCommandOptionType } from "discord.js";
 import { SpamMeta } from "discord-spams";
 import { Discord, Slash, SlashGroup, SlashOption } from "discordx";
 

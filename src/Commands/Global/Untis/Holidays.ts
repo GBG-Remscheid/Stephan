@@ -1,10 +1,11 @@
 import { Category } from "@discordx/utilities";
-import { CommandInteraction, EmbedBuilder } from "discord.js";
+import type { CommandInteraction } from "discord.js";
+import { EmbedBuilder } from "discord.js";
 import { Discord, Slash, SlashGroup } from "discordx";
 import moment from "moment";
 import { container, injectable } from "tsyringe";
 
-import { Env } from "../../../../Utils/Env.js";
+import { Env } from "../../../Utils/Env.js";
 
 @Discord()
 @Category("Untis")

@@ -1,10 +1,14 @@
 import { Category } from "@discordx/utilities";
-import type { GuildMember, InteractionResponse, Message } from "discord.js";
+import type {
+    ButtonInteraction,
+    GuildMember,
+    InteractionResponse,
+    Message,
+} from "discord.js";
 import {
     ActionRowBuilder,
     ApplicationCommandOptionType,
     ButtonBuilder,
-    ButtonInteraction,
     ButtonStyle,
     ChannelType,
     CommandInteraction,

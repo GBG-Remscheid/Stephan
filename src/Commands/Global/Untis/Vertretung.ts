@@ -7,7 +7,7 @@ import { Discord, Slash, SlashChoice, SlashGroup, SlashOption } from "discordx";
 import { container, injectable } from "tsyringe";
 import type { Lesson } from "webuntis";
 
-import { Env } from "../../../../Utils/Env.js";
+import { Env } from "../../../Utils/Env.js";
 
 const Klassen = [
     { name: "5a", value: "296" },

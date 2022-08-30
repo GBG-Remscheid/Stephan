@@ -16,7 +16,7 @@ import {
     SlashOption,
 } from "discordx";
 
-import { NotGuild } from "../../../../Guards/Global/NotGuild.js";
+import { NotGuild } from "../../../Guards/Global/NotGuild.js";
 
 @Discord()
 @Category("Information")
