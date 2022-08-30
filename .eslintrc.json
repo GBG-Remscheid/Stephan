@@ -6,7 +6,8 @@
         "typescript-sort-keys",
         "simple-import-sort",
         "import",
-        "deprecation"
+        "deprecation",
+        "prettier"
     ],
     "extends": [
         "plugin:@typescript-eslint/eslint-recommended",

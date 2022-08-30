@@ -7,6 +7,7 @@ config();
 @singleton()
 export class Env {
     untis: Webuntis;
+    exaroton;
 
     constructor() {
         this.untis = new Webuntis(
@@ -15,5 +16,7 @@ export class Env {
             process.env.PASSWORD ?? "",
             process.env.BASEURL ?? ""
         );
+
+        this.exaroton = process.env.EXAROTON_API_TOKEN ?? "";
     }
 }
