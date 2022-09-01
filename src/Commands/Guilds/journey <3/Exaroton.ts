@@ -36,8 +36,8 @@ export class Exaroton {
     @SlashGroup("exaroton")
     async start(
         @SlashOption({
-            required: true,
             name: "server-name",
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...Servers)
@@ -85,8 +85,8 @@ export class Exaroton {
     @SlashGroup("exaroton")
     async stop(
         @SlashOption({
-            required: true,
             name: "server-name",
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...Servers)
@@ -134,8 +134,8 @@ export class Exaroton {
     @SlashGroup("exaroton")
     async status(
         @SlashOption({
-            required: true,
             name: "server-name",
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...Servers)

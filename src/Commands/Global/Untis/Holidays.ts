@@ -1,6 +1,5 @@
 import { Category } from "@discordx/utilities";
-import type { CommandInteraction } from "discord.js";
-import { EmbedBuilder } from "discord.js";
+import { CommandInteraction, EmbedBuilder } from "discord.js";
 import { Discord, Slash, SlashGroup } from "discordx";
 import moment from "moment";
 import { container, injectable } from "tsyringe";
