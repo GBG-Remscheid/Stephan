@@ -1,5 +1,8 @@
 import "reflect-metadata";
 
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { DIService, tsyringeDependencyRegistryEngine } from "@discordx/di";
 import { importx } from "@discordx/importer";
 import { NotBot } from "@discordx/utilities";
@@ -7,8 +10,6 @@ import io from "@pm2/io";
 import { ActivityType, GatewayIntentBits } from "discord.js";
 import { Client } from "discordx";
 import { config } from "dotenv";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import { container, singleton } from "tsyringe";
 
 import { NotBotOwner } from "./Guards/Global/NotBotOwner.js";
