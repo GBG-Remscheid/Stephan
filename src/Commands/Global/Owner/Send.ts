@@ -13,7 +13,7 @@ export abstract class Send {
     @Slash({ description: "Send a message to a user", name: "send" })
     async send(
         @SlashOption({
-            description: "The user user the message is going to be send to.",
+            description: "The user the message is going to be send to.",
             name: "user",
             type: ApplicationCommandOptionType.User,
         })
