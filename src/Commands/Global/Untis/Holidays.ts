@@ -14,7 +14,7 @@ export class Holidays {
     constructor(private readonly env: Env) {}
 
     @Slash({
-        description: "Get the days util the next holidays",
+        description: "Get the days until the next holidays",
         descriptionLocalizations: {
             de: "Erfahre die Tage bis zur nächsten Ferien",
         },
