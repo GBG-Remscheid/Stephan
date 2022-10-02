@@ -1,9 +1,10 @@
 import "reflect-metadata";
 
+import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { DIService, tsyringeDependencyRegistryEngine } from "@discordx/di";
-import { dirname, importx } from "@discordx/importer";
+import { importx } from "@discordx/importer";
 import { NotBot } from "@discordx/utilities";
 import io from "@pm2/io";
 import { ActivityType, GatewayIntentBits } from "discord.js";
