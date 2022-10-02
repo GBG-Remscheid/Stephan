@@ -26,7 +26,7 @@ export class Holidays {
         const untis = container.resolve(Env).untis;
         untis.login().then(async () => {
             let date: Date = new Date();
-            const startDate = (await untis.getHolidays()).at(6)?.startDate;
+            const startDate = (await untis.getHolidays()).at(2)?.startDate;
 
             const dateString = startDate?.toString();
             const year = dateString?.substring(0, 4);
