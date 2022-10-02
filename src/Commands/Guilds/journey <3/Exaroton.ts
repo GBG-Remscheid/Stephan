@@ -32,10 +32,20 @@ export class Exaroton {
     exarotonToken = container.resolve(Env).exaroton;
     client = new Client(this.exarotonToken);
 
-    @Slash({ name: "start" })
+    @Slash({
+        description: "start your server",
+        descriptionLocalizations: {
+            de: "Starte deinen Server",
+        },
+        name: "start",
+    })
     @SlashGroup("exaroton")
     async start(
         @SlashOption({
+            description: "the server you want to start",
+            descriptionLocalizations: {
+                de: "Der Server, den du starten willst",
+            },
             name: "server-name",
             required: true,
             type: ApplicationCommandOptionType.String,
@@ -81,10 +91,20 @@ export class Exaroton {
         interaction.editReply({ embeds: [emdebEdit] });
     }
 
-    @Slash({ name: "stop" })
+    @Slash({
+        description: "Stop your server",
+        descriptionLocalizations: {
+            de: "Stoppe deinen Server",
+        },
+        name: "stop",
+    })
     @SlashGroup("exaroton")
     async stop(
         @SlashOption({
+            description: "the server you want to stop",
+            descriptionLocalizations: {
+                de: "Der Server, den du stoppen willst",
+            },
             name: "server-name",
             required: true,
             type: ApplicationCommandOptionType.String,
@@ -130,10 +150,20 @@ export class Exaroton {
         interaction.editReply({ embeds: [emdebEdit] });
     }
 
-    @Slash({ name: "status" })
+    @Slash({
+        description: "Get status information about your server",
+        descriptionLocalizations: {
+            de: "Erhalte Statusinformationen über deinen Server",
+        },
+        name: "status",
+    })
     @SlashGroup("exaroton")
     async status(
         @SlashOption({
+            description: "the server you want to get the status of",
+            descriptionLocalizations: {
+                de: "Der Server, den du den Status von haben willst",
+            },
             name: "server-name",
             required: true,
             type: ApplicationCommandOptionType.String,

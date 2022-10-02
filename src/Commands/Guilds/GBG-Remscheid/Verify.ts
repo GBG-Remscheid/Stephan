@@ -73,11 +73,14 @@ export abstract class Verify {
     })
     @Guild("755432683579900035")
     async verify(
+        interaction: CommandInteraction,
+
         @SlashOption({
             description: "Your first name",
             descriptionLocalizations: { de: "Dein Vorname" },
             name: "firstname",
             nameLocalizations: { de: "vorname" },
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         firstName: string,
@@ -86,6 +89,7 @@ export abstract class Verify {
             descriptionLocalizations: { de: "Dein Nachname" },
             name: "lastname",
             nameLocalizations: { de: "nachname" },
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         surname: string,
@@ -94,6 +98,7 @@ export abstract class Verify {
             descriptionLocalizations: { de: "Deine aktuelle Klasse/Stufe" },
             name: "class",
             nameLocalizations: { de: "klasse" },
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         @SlashChoice(...classChoices)
@@ -106,12 +111,12 @@ export abstract class Verify {
             required: false,
             type: ApplicationCommandOptionType.String,
         })
-        nickname: string,
-
-        interaction: CommandInteraction
+        nickname?: string
     ): Promise<InteractionResponse<boolean> | void> {
         const { user } = interaction;
-        aNickname = nickname;
+        if (nickname) {
+            aNickname = nickname;
+        }
         roleChoice = choice;
 
         if (interaction.guild) {

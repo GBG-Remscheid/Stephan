@@ -21,20 +21,35 @@ import { NotGuild } from "../../../Guards/Global/NotGuild.js";
 @Discord()
 @Category("Information")
 @Guard(NotGuild)
-@SlashGroup({ name: "info" })
+@SlashGroup({
+    description: "All kinds of information utils",
+    descriptionLocalizations: {
+        de: "Alle möglichen Tools um Informationen zu erhalten",
+    },
+    name: "info",
+})
 export abstract class UserInfo {
-    @Slash({ name: "user" })
+    @Slash({
+        description: "Get information about a specific user or yourself",
+        descriptionLocalizations: {
+            de: "Erhalte Informationen über einen bestimmten Nutzer oder dich selbst",
+        },
+        name: "user",
+    })
     @SlashGroup("info")
     async userInfo(
+        interaction: CommandInteraction,
+
         @SlashOption({
             description: "The user you want to get information about",
+            descriptionLocalizations: {
+                de: "Die Person, über die du Informationen erhalten möchtest",
+            },
             name: "user",
             required: false,
             type: ApplicationCommandOptionType.User,
         })
-        target: Snowflake,
-
-        interaction: CommandInteraction
+        target?: Snowflake
     ): Promise<InteractionResponse<boolean>> {
         const { member, guild } = interaction;
 

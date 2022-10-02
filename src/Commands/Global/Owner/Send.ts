@@ -15,6 +15,7 @@ export abstract class Send {
         @SlashOption({
             description: "The user the message is going to be send to.",
             name: "user",
+            required: true,
             type: ApplicationCommandOptionType.User,
         })
         targetId: Snowflake,
@@ -22,6 +23,7 @@ export abstract class Send {
         @SlashOption({
             description: "The message you want to send.",
             name: "message",
+            required: true,
             type: ApplicationCommandOptionType.String,
         })
         message: string,

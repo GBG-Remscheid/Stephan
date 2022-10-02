@@ -53,14 +53,18 @@ export abstract class RoleShift {
     @Slash({ description: "Shift up the roles of all members.", name: "up" })
     @SlashGroup("role-shift")
     async shiftUp(
+        interaction: CommandInteraction,
+
         @SlashOption({
+            description: "The specific user that should be upshifted.",
+            descriptionLocalizations: {
+                de: "Der spezifische Benutzer, dessen Rollen hochgesetzt werden sollen.",
+            },
             name: "test",
             required: false,
             type: ApplicationCommandOptionType.Boolean,
         })
-        test: boolean,
-
-        interaction: CommandInteraction
+        test?: boolean
     ): Promise<void | APIMessage | Message> {
         if (!interaction.guild) {
             return;
@@ -250,9 +254,12 @@ export abstract class RoleShift {
      * @param {CommandInteraction} interaction The interaction of the command
      */
     async shiftDown(
+        interaction: CommandInteraction,
+
         @SlashOption({
             description: "The specific user that should be downshifted.",
             name: "user",
+            required: true,
             type: ApplicationCommandOptionType.User,
         })
         user: Snowflake,
@@ -260,6 +267,7 @@ export abstract class RoleShift {
         @SlashOption({
             description: "The role, that should be removed.",
             name: "remove",
+            required: true,
             type: ApplicationCommandOptionType.Role,
         })
         remRole1: Snowflake,
@@ -267,7 +275,7 @@ export abstract class RoleShift {
         @SlashOption({
             description: "The role, that should be added.",
             name: "add",
-            required: false,
+            required: true,
             type: ApplicationCommandOptionType.Role,
         })
         addRole1: Snowflake,
@@ -278,7 +286,7 @@ export abstract class RoleShift {
             required: false,
             type: ApplicationCommandOptionType.Role,
         })
-        remRole2: Snowflake,
+        remRole2?: Snowflake,
 
         @SlashOption({
             description: "A second optional role, that should be added.",
@@ -286,9 +294,7 @@ export abstract class RoleShift {
             required: false,
             type: ApplicationCommandOptionType.Role,
         })
-        addRole2: Snowflake,
-
-        interaction: CommandInteraction
+        addRole2?: Snowflake
     ): Promise<void> {
         await interaction.reply("Roles are shifting...");
         try {
