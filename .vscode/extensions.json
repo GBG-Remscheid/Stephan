@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "DeepScan.vscode-deepscan",
+        "arcanis.vscode-zipfs"
+    ]
+}

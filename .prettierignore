@@ -1,7 +1,4 @@
-.github
-build/
+dist/
 node_modules/
-.dockerignore
-.env*
-.gitignore
-package-lock.json
+.yarn/
+.pnp.*js

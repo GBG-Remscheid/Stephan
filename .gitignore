@@ -1,10 +1,25 @@
+# misc
 .idea/
-dist/
-build/
-.vscode/
-.DS_Store
-node_modules/
 **/*.js
+**/*.js.map
+node_modules/
+
+# build dir
+dist/
+
+# system files
+.DS_Store
+
+# dotenv vault
 !.env.project
 .env*
 !.env.vault
+
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

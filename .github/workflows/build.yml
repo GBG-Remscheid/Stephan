@@ -1,43 +1,44 @@
 name: Build
 on:
-  workflow_dispatch:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+    workflow_dispatch:
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
 
 jobs:
-  build:
-    name: Build
+    build:
+        name: Build
 
-    strategy:
-      matrix:
-        node_version: [17, 18]
-        os: [ubuntu-latest, macos-latest]
+        strategy:
+            matrix:
+                node_version: [16, 17, 18, 19]
+                os: [ubuntu-latest, macos-latest]
 
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: check out code 🛎
-        uses: actions/checkout@v3
+        runs-on: ${{ matrix.os }}
+        steps:
+            - name: check out code 🛎
+              uses: actions/checkout@v3
 
-      - name: Install Node v${{ matrix.node_version }} on ${{ matrix.os }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node_version }}
+            - name: Install Node v${{ matrix.node_version }} on ${{ matrix.os }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node_version }}
+                  cache: "yarn"
 
-      - name: install dependencies 🔄
-        run: npm install
+            - name: install dependencies 🔄
+              run: yarn --immutable
 
-      - name: run prettier ✨
-        run: npm run format:check
+            - name: run prettier ✨
+              run: yarn format:check
 
-      - name: run ESLint ⚠️
-        run: npm run lint
+            - name: run ESLint ⚠️
+              run: yarn lint
 
-      - name: Build 👷 🛠
-        run: npm run build
+            - name: Build 👷 🛠
+              run: yarn build
 
-      # - name: Run Tests
-      #   run: npm run test
+            # - name: Run Tests
+            #   run: npm run test

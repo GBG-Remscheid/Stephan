@@ -1,20 +1,20 @@
-FROM node:18 AS builder
+FROM node:19 AS builder
 
 WORKDIR /usr/src/Stephan
 
 COPY . .
 
-RUN npm ci && npm run build
+RUN yarn --immutable && yarn build
 
 FROM node:alpine
 
 WORKDIR /usr/src/Stephan
 
-COPY --from=builder /usr/src/Stephan/build /usr/src/Stephan/package*.json ./
+COPY --from=builder /usr/src/Stephan/build /usr/src/Stephan/package.json ./
 
 RUN apk add --no-cache python3 automake autoconf libtool make gcc g++ && \
-    npm ci --only=production --ignore-scripts && \
-    npm cache clean --force && \
+    yarn workspaces focus --all --production && \
+    # yarn cache clean && \
     apk del python3 automake autoconf libtool make gcc g++
 
 USER node
