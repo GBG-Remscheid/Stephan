@@ -4,7 +4,7 @@ import type { GuardFunction } from "discordx";
 export const NotGuild: GuardFunction<CommandInteraction> = async (
     interaction,
     client,
-    next
+    next,
 ) => {
     if (!interaction.guild) {
         return interaction.reply({

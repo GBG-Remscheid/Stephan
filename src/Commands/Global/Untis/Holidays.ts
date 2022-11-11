@@ -37,7 +37,7 @@ export class Holidays {
                 date = new Date(
                     parseInt(year),
                     parseInt(month) - 1,
-                    parseInt(day)
+                    parseInt(day),
                 );
             }
             const daysLeft = moment

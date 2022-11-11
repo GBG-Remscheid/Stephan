@@ -8,12 +8,12 @@ export abstract class GuildMemberAdd {
     async handler([member]: ArgsOf<"guildMemberAdd">): Promise<void> {
         const { guild } = member;
         const statChannel = guild.channels.cache.find(channel =>
-            channel.name.includes(":bar_chart: members:")
+            channel.name.includes(":bar_chart: members:"),
         );
         if (statChannel?.type !== ChannelType.GuildVoice) {
             console.warn(
                 `There is no voice channel for displaying the members size...
-            Trying to create one...`
+            Trying to create one...`,
             );
         }
 

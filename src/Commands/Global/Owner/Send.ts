@@ -28,7 +28,7 @@ export abstract class Send {
         })
         message: string,
 
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<void | InteractionResponse<boolean>> {
         const { guild } = interaction;
         if (!guild) {
@@ -53,7 +53,7 @@ export abstract class Send {
             setTimeout(() => interaction.deleteReply(), 5000);
         } catch (error) {
             interaction.reply(
-                `There was an error while sending the message:\n ${error}`
+                `There was an error while sending the message:\n ${error}`,
             );
             setTimeout(() => interaction.deleteReply(), 5000);
         }

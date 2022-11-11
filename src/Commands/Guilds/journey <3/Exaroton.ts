@@ -53,7 +53,7 @@ export class Exaroton {
         @SlashChoice(...Servers)
         serverId: string,
 
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<void> {
         const servers = await this.client.getServers();
         const startServer = servers.find(server => server.id === serverId);
@@ -112,7 +112,7 @@ export class Exaroton {
         @SlashChoice(...Servers)
         serverId: string,
 
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<void> {
         const servers = await this.client.getServers();
         const stopServer = servers.find(server => server.id === serverId);
@@ -171,7 +171,7 @@ export class Exaroton {
         @SlashChoice(...Servers)
         serverId: string,
 
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<void> {
         const servers = await this.client.getServers();
         const statusServer = servers.find(server => server.id === serverId);
@@ -211,7 +211,7 @@ export class Exaroton {
             .setColor(
                 statusServer.status === statusServer.STATUS.ONLINE
                     ? Colors.Green
-                    : Colors.Red
+                    : Colors.Red,
             );
 
         interaction.reply({ embeds: [embed] });

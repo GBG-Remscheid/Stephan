@@ -4,7 +4,7 @@ import type { GuardFunction } from "discordx";
 export const NotBotOwner: GuardFunction<CommandInteraction> = async (
     interaction,
     client,
-    next
+    next,
 ) => {
     if (process.env.NODE_ENV === "development") {
         if (

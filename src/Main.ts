@@ -63,7 +63,7 @@ export class Main {
         await importx(`${__dirname}/{Commands,Events}/**/*{.ts,.js}`);
         if (!process.env.BOT_TOKEN) {
             throw new Error(
-                "Could not find BOT_TOKEN in your environment variables! Did you add it to your .env file?"
+                "Could not find BOT_TOKEN in your environment variables! Did you add it to your .env file?",
             );
         }
         await this._client.login(process.env.BOT_TOKEN);
@@ -74,7 +74,7 @@ export class Main {
             // await this._client.initApplicationPermissions(true);
 
             console.log(
-                `Bot is now online. Logged in as ${this._client.user?.username}.`
+                `Bot is now online. Logged in as ${this._client.user?.username}.`,
             );
         });
 

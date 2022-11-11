@@ -111,7 +111,7 @@ export class Vertretung {
         @SlashChoice(...Tag)
         tag: string,
 
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<void> {
         const untis = container.resolve(Env).untis;
 
@@ -141,7 +141,7 @@ export class Vertretung {
                 if (tag === Tag[0].value) {
                     timetable = await untis.getTimetableForToday(
                         parseInt(klasse),
-                        1
+                        1,
                     );
                 } else if (tag === Tag[1].value) {
                     const date = new Date();
@@ -151,7 +151,7 @@ export class Vertretung {
                     timetable = await untis.getTimetableFor(
                         tomorrowDate,
                         parseInt(klasse),
-                        1
+                        1,
                     );
                 } else {
                     interaction.reply({
@@ -163,22 +163,22 @@ export class Vertretung {
 
                 const ausfall = timetable.filter(lesson => lesson.substText);
                 const raumtausch = timetable.filter(
-                    lesson => lesson.ro.length > 1
+                    lesson => lesson.ro.length > 1,
                 );
                 console.log(
                     ausfall.map(
                         lesson =>
                             `${lesson.startTime}: ${lesson.su.map(
-                                subject => subject.name
-                            )}`
-                    )
+                                subject => subject.name,
+                            )}`,
+                    ),
                 );
 
                 if (ausfall.map(lesson => lesson.substText).length > 0) {
                     embed.setTitle(
                         `${
                             tag === Tag[0].value ? "Heute" : "Morgen"
-                        } entfällt der Unterricht für:`
+                        } entfällt der Unterricht für:`,
                     );
                     ausfall.map(lesson => {
                         embed.addFields([
@@ -186,7 +186,7 @@ export class Vertretung {
                                 inline: true,
                                 name: "Stunde",
                                 value: `\`\`\`${formatLessonTime(
-                                    lesson
+                                    lesson,
                                 )}\`\`\``,
                             },
                             {
@@ -227,7 +227,7 @@ export class Vertretung {
                     embed.setDescription(
                         `${
                             tag === Tag[0].value ? "Heute" : "Morgen"
-                        } fällt bei dir nichts aus! 🕙`
+                        } fällt bei dir nichts aus! 🕙`,
                     );
                     interaction.editReply({ embeds: [embed] });
                 }

@@ -14,7 +14,7 @@ export class Env {
             process.env.SCHOOL ?? "",
             process.env.USERNAME ?? "",
             process.env.PASSWORD ?? "",
-            process.env.BASEURL ?? ""
+            process.env.BASEURL ?? "",
         );
 
         this.exaroton = process.env.EXAROTON_API_TOKEN ?? "";

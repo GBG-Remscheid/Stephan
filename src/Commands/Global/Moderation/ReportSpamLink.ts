@@ -21,7 +21,7 @@ export abstract class ReportSpam {
             type: ApplicationCommandOptionType.String,
         })
         link: string,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<InteractionResponse<boolean>> {
         const urlRegex =
             /https?:\/\/(www\.)?[-a-zA-Z\d@:%._+~#=]{1,256}\.[a-zA-Z\d()]{1,6}\b([-a-zA-Z\d()@:%_+.~#?&/=]*)/;

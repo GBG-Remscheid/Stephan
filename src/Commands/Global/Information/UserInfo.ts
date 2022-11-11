@@ -49,7 +49,7 @@ export abstract class UserInfo {
             required: false,
             type: ApplicationCommandOptionType.User,
         })
-        target?: Snowflake
+        target?: Snowflake,
     ): Promise<InteractionResponse<boolean>> {
         const { member, guild } = interaction;
 
@@ -80,7 +80,7 @@ export abstract class UserInfo {
             .setColor("Random")
             .setThumbnail(
                 targetMember.user.displayAvatarURL() ??
-                    targetMember.user.defaultAvatarURL
+                    targetMember.user.defaultAvatarURL,
             )
             .setFooter({
                 iconURL:

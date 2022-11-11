@@ -10,7 +10,7 @@ import { Discord, Slash } from "discordx";
 export abstract class Mel {
     @Slash({ description: "<3", name: "mel" })
     mel(
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
     ): Promise<InteractionResponse<boolean>> {
         // days until 24.02.2022
         /* const daysLeft = moment("2022-02-24").diff(moment(), "days"); */

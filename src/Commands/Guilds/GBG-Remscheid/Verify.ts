@@ -111,7 +111,7 @@ export abstract class Verify {
             required: false,
             type: ApplicationCommandOptionType.String,
         })
-        nickname?: string
+        nickname?: string,
     ): Promise<InteractionResponse<boolean> | void> {
         const { user } = interaction;
         if (nickname) {
@@ -166,7 +166,7 @@ export abstract class Verify {
             .setColor("#B97425")
             .setThumbnail(
                 requestUser.user.avatarURL() ??
-                    requestUser.user.defaultAvatarURL
+                    requestUser.user.defaultAvatarURL,
             )
             .setTitle(`Verification Request by **${firstName} ${surname}**`)
             .setDescription(`Status: ${VerificationStatus.Pending}`)
@@ -176,7 +176,7 @@ export abstract class Verify {
                     name: "Klasse o. Stufe",
                     value:
                         interaction.guild?.roles.cache.find(
-                            r => r.id === choice
+                            r => r.id === choice,
                         )?.name ?? "",
                 },
                 { name: "Spitzname", value: nickname ?? "-" },
@@ -219,7 +219,7 @@ export abstract class Verify {
 
     @ButtonComponent({ guilds: ["755432683579900035"], id: "accept" })
     accept(
-        interaction: ButtonInteraction
+        interaction: ButtonInteraction,
     ): Promise<InteractionResponse<boolean>> {
         if (requestUser) {
             requestUser.roles.add("755464917834006678");
@@ -261,7 +261,7 @@ export abstract class Verify {
             }
 
             requestUser.send(
-                `Your verification request for **${interaction.guild?.name}** has been accepted.`
+                `Your verification request for **${interaction.guild?.name}** has been accepted.`,
             );
         }
 
@@ -278,11 +278,11 @@ export abstract class Verify {
 
     @ButtonComponent({ guilds: ["755432683579900035"], id: "deny" })
     deny(
-        interaction: ButtonInteraction
+        interaction: ButtonInteraction,
     ): Promise<InteractionResponse<boolean>> {
         if (requestUser) {
             requestUser.send(
-                `Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`
+                `Sorry, your verification request for **${interaction.guild?.name}** has been denied.\nIf there's any objection, please try it again or reach out to <@463044315007156224> or <@428119121423761410>.`,
             );
         }
 

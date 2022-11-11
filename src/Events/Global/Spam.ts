@@ -20,7 +20,7 @@ export abstract class Spam {
             await message.delete().catch((error: Error) => {
                 console.error(error);
                 message.channel.send(
-                    "There was an error while deleting the spam message."
+                    "There was an error while deleting the spam message.",
                 );
                 setTimeout(() => message.delete(), 5000);
             });
@@ -28,7 +28,7 @@ export abstract class Spam {
             const isMuted = await message.member
                 .disableCommunicationUntil(
                     Date.now() + 6 * 60 * 60 * 1000,
-                    "Spam message detected"
+                    "Spam message detected",
                 )
                 .catch((error: Error) => {
                     console.error(error);
@@ -36,11 +36,11 @@ export abstract class Spam {
 
             if (isMuted) {
                 message.channel.send(
-                    `:mute: ${message.author} has been muted for 6 hours for sending a spam link.`
+                    `:mute: ${message.author} has been muted for 6 hours for sending a spam link.`,
                 );
             } else {
                 message.channel.send(
-                    `:cold_face: Spam message detected from ${message.author}, please allow me to mute members!`
+                    `:cold_face: Spam message detected from ${message.author}, please allow me to mute members!`,
                 );
             }
         }

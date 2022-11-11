@@ -64,7 +64,7 @@ export abstract class RoleShift {
             required: false,
             type: ApplicationCommandOptionType.Boolean,
         })
-        test?: boolean
+        test?: boolean,
     ): Promise<void | APIMessage | Message> {
         if (!interaction.guild) {
             return;
@@ -203,13 +203,13 @@ export abstract class RoleShift {
                             const abiRole = interaction.guild?.roles.cache.find(
                                 role =>
                                     role.name ===
-                                    `Abi ${new Date().getFullYear()}`
+                                    `Abi ${new Date().getFullYear()}`,
                             );
                             if (
                                 interaction.guild?.roles.cache.find(
                                     role =>
                                         role.name ===
-                                        `Abi ${new Date().getFullYear()}`
+                                        `Abi ${new Date().getFullYear()}`,
                                 )
                             ) {
                                 if (abiRole) {
@@ -228,7 +228,7 @@ export abstract class RoleShift {
                             break;
                         default:
                             return interaction.editReply(
-                                "Roles are shifting..."
+                                "Roles are shifting...",
                             );
                     }
                 });
@@ -236,7 +236,7 @@ export abstract class RoleShift {
         } catch (error) {
             console.error(error);
             return interaction.editReply(
-                "There was an error while shifting the roles."
+                "There was an error while shifting the roles.",
             );
         }
         return interaction.editReply("All roles got shifted successfully.");
@@ -294,7 +294,7 @@ export abstract class RoleShift {
             required: false,
             type: ApplicationCommandOptionType.Role,
         })
-        addRole2?: Snowflake
+        addRole2?: Snowflake,
     ): Promise<void> {
         await interaction.reply("Roles are shifting...");
         try {
@@ -327,7 +327,7 @@ export abstract class RoleShift {
             interaction.editReply("All roles got shifted successfully.");
         } catch (error) {
             interaction.editReply(
-                "There was an error while shifting the roles."
+                "There was an error while shifting the roles.",
             );
             console.error(error);
         }
