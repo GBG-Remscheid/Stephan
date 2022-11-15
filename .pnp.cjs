@@ -44,7 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.28"],\
             ["bufferutil", "npm:4.0.7"],\
-            ["discord-api-types", "npm:0.37.17"],\
+            ["discord-api-types", "npm:0.37.18"],\
             ["discord-spams", "npm:1.3.0"],\
             ["discord.js", "npm:14.6.0"],\
             ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
@@ -1852,6 +1852,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/discord-api-types-npm-0.37.17-72ce41f8ff-784344f70d.zip/node_modules/discord-api-types/",\
           "packageDependencies": [\
             ["discord-api-types", "npm:0.37.17"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.37.18", {\
+          "packageLocation": "./.yarn/cache/discord-api-types-npm-0.37.18-0caa673cae-66f8910f56.zip/node_modules/discord-api-types/",\
+          "packageDependencies": [\
+            ["discord-api-types", "npm:0.37.18"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4560,7 +4567,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.28"],\
             ["bufferutil", "npm:4.0.7"],\
-            ["discord-api-types", "npm:0.37.17"],\
+            ["discord-api-types", "npm:0.37.18"],\
             ["discord-spams", "npm:1.3.0"],\
             ["discord.js", "npm:14.6.0"],\
             ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
