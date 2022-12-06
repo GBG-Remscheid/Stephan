@@ -1394,10 +1394,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discord-api-types@npm:^0.37.12, discord-api-types@npm:^0.37.17":
+"discord-api-types@npm:^0.37.12":
   version: 0.37.17
   resolution: "discord-api-types@npm:0.37.17"
   checksum: 784344f70d66f4926829450f42addeabbf895786419b0d8b5596a395352eea313d64bb057d69f352fd613b88b5b0567205189a95386ce5ed48a5b46c03f69a70
+  languageName: node
+  linkType: hard
+
+"discord-api-types@npm:^0.37.21":
+  version: 0.37.21
+  resolution: "discord-api-types@npm:0.37.21"
+  checksum: 63d64e7574bc15d39d42fda990a655ffe4f95e1918a4ecfb8630501e23266646356a30aeed4931e8606086f41eb3b177a0a16609d3b02b6bbeb99b3a15d11258
   languageName: node
   linkType: hard
 
@@ -3665,7 +3672,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.42.1
     "@yarnpkg/pnpify": ^4.0.0-rc.28
     bufferutil: ^4.0.7
-    discord-api-types: ^0.37.17
+    discord-api-types: ^0.37.21
     discord-spams: ^1.3.0
     discord.js: ^14.6.0
     discordx: ^11.4.0
