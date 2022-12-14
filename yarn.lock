@@ -1721,52 +1721,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.27.0":
-  version: 8.27.0
-  resolution: "eslint@npm:8.27.0"
+"eslint@npm:^8.29.0":
+  version: 8.29.0
+  resolution: "eslint@npm:8.29.0"
   dependencies:
-    "@eslint/eslintrc": "npm:^1.3.3"
-    "@humanwhocodes/config-array": "npm:^0.11.6"
-    "@humanwhocodes/module-importer": "npm:^1.0.1"
-    "@nodelib/fs.walk": "npm:^1.2.8"
-    ajv: "npm:^6.10.0"
-    chalk: "npm:^4.0.0"
-    cross-spawn: "npm:^7.0.2"
-    debug: "npm:^4.3.2"
-    doctrine: "npm:^3.0.0"
-    escape-string-regexp: "npm:^4.0.0"
-    eslint-scope: "npm:^7.1.1"
-    eslint-utils: "npm:^3.0.0"
-    eslint-visitor-keys: "npm:^3.3.0"
-    espree: "npm:^9.4.0"
-    esquery: "npm:^1.4.0"
-    esutils: "npm:^2.0.2"
-    fast-deep-equal: "npm:^3.1.3"
-    file-entry-cache: "npm:^6.0.1"
-    find-up: "npm:^5.0.0"
-    glob-parent: "npm:^6.0.2"
-    globals: "npm:^13.15.0"
-    grapheme-splitter: "npm:^1.0.4"
-    ignore: "npm:^5.2.0"
-    import-fresh: "npm:^3.0.0"
-    imurmurhash: "npm:^0.1.4"
-    is-glob: "npm:^4.0.0"
-    is-path-inside: "npm:^3.0.3"
-    js-sdsl: "npm:^4.1.4"
-    js-yaml: "npm:^4.1.0"
-    json-stable-stringify-without-jsonify: "npm:^1.0.1"
-    levn: "npm:^0.4.1"
-    lodash.merge: "npm:^4.6.2"
-    minimatch: "npm:^3.1.2"
-    natural-compare: "npm:^1.4.0"
-    optionator: "npm:^0.9.1"
-    regexpp: "npm:^3.2.0"
-    strip-ansi: "npm:^6.0.1"
-    strip-json-comments: "npm:^3.1.0"
-    text-table: "npm:^0.2.0"
+    "@eslint/eslintrc": ^1.3.3
+    "@humanwhocodes/config-array": ^0.11.6
+    "@humanwhocodes/module-importer": ^1.0.1
+    "@nodelib/fs.walk": ^1.2.8
+    ajv: ^6.10.0
+    chalk: ^4.0.0
+    cross-spawn: ^7.0.2
+    debug: ^4.3.2
+    doctrine: ^3.0.0
+    escape-string-regexp: ^4.0.0
+    eslint-scope: ^7.1.1
+    eslint-utils: ^3.0.0
+    eslint-visitor-keys: ^3.3.0
+    espree: ^9.4.0
+    esquery: ^1.4.0
+    esutils: ^2.0.2
+    fast-deep-equal: ^3.1.3
+    file-entry-cache: ^6.0.1
+    find-up: ^5.0.0
+    glob-parent: ^6.0.2
+    globals: ^13.15.0
+    grapheme-splitter: ^1.0.4
+    ignore: ^5.2.0
+    import-fresh: ^3.0.0
+    imurmurhash: ^0.1.4
+    is-glob: ^4.0.0
+    is-path-inside: ^3.0.3
+    js-sdsl: ^4.1.4
+    js-yaml: ^4.1.0
+    json-stable-stringify-without-jsonify: ^1.0.1
+    levn: ^0.4.1
+    lodash.merge: ^4.6.2
+    minimatch: ^3.1.2
+    natural-compare: ^1.4.0
+    optionator: ^0.9.1
+    regexpp: ^3.2.0
+    strip-ansi: ^6.0.1
+    strip-json-comments: ^3.1.0
+    text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 153b022d309e1b647a73b1bb0fa98912add699b06e279084155f23c6f2b5fc5abd05411fc1ba81608a24bbfaf044ca079544c16fffa6fc987b8f676c9960a2c4
+  checksum: e05204b05907b82d910983995cb946e0ba62ca514eb2b6791c43f623333b143564a2eee0139909d31c10935c21877d815b1f76dd674a59cb91c471064325c4ab
   languageName: node
   linkType: hard
 
@@ -3671,7 +3671,7 @@ __metadata:
     discordx: ^11.4.0
     dotenv: ^16.0.3
     erlpack: ^0.1.4
-    eslint: ^8.27.0
+    eslint: ^8.29.0
     eslint-plugin-deprecation: ^1.3.2
     eslint-plugin-import: ^2.26.0
     eslint-plugin-prettier: ^4.2.1
