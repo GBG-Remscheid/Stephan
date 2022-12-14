@@ -13,3 +13,4 @@ updates:
       versioning-strategy: increase
       reviewers:
           - "hofmmaxi"
+      open-pull-requests-limit: 15
