@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["discord-api-types", "npm:0.37.22"],\
             ["discord-spams", "npm:1.3.0"],\
             ["discord.js", "npm:14.7.1"],\
-            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
+            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.5.2"],\
             ["dotenv", "npm:16.0.3"],\
             ["erlpack", "npm:0.1.4"],\
             ["eslint", "npm:8.29.0"],\
@@ -295,7 +295,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/discord.js", null],\
             ["@types/discordx", null],\
             ["discord.js", "npm:14.7.1"],\
-            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
+            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.5.2"],\
             ["tslib", "npm:2.4.1"]\
           ],\
           "packagePeers": [\
@@ -1904,17 +1904,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["discordx", [\
-        ["npm:11.4.0", {\
-          "packageLocation": "./.yarn/cache/discordx-npm-11.4.0-a8564032b1-e73daf0124.zip/node_modules/discordx/",\
+        ["npm:11.5.2", {\
+          "packageLocation": "./.yarn/cache/discordx-npm-11.5.2-65fe14c6af-8eaea8d686.zip/node_modules/discordx/",\
           "packageDependencies": [\
-            ["discordx", "npm:11.4.0"]\
+            ["discordx", "npm:11.5.2"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0", {\
-          "packageLocation": "./.yarn/__virtual__/discordx-virtual-5ce14c244c/0/cache/discordx-npm-11.4.0-a8564032b1-e73daf0124.zip/node_modules/discordx/",\
+        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.5.2", {\
+          "packageLocation": "./.yarn/__virtual__/discordx-virtual-a5b909b7e3/0/cache/discordx-npm-11.5.2-65fe14c6af-8eaea8d686.zip/node_modules/discordx/",\
           "packageDependencies": [\
-            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
+            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.5.2"],\
             ["@discordx/di", "npm:3.0.2"],\
             ["@discordx/internal", "npm:1.0.2"],\
             ["@types/discord.js", null],\
@@ -4579,7 +4579,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["discord-api-types", "npm:0.37.22"],\
             ["discord-spams", "npm:1.3.0"],\
             ["discord.js", "npm:14.7.1"],\
-            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.4.0"],\
+            ["discordx", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:11.5.2"],\
             ["dotenv", "npm:16.0.3"],\
             ["erlpack", "npm:0.1.4"],\
             ["eslint", "npm:8.29.0"],\

@@ -1447,17 +1447,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discordx@npm:^11.4.0":
-  version: 11.4.0
-  resolution: "discordx@npm:11.4.0"
+"discordx@npm:^11.5.2":
+  version: 11.5.2
+  resolution: "discordx@npm:11.5.2"
   dependencies:
-    "@discordx/di": "npm:^3.0.2"
-    "@discordx/internal": "npm:^1.0.2"
-    lodash: "npm:^4.17.21"
-    tslib: "npm:^2.4.0"
+    "@discordx/di": ^3.0.2
+    "@discordx/internal": ^1.0.2
+    lodash: ^4.17.21
+    tslib: ^2.4.1
   peerDependencies:
     discord.js: ">=14 || ^14.0.0-dev"
-  checksum: e73daf012465cc00b1fdf0e5ef24f3209a34de21dec08e9492ceefacaa801baf79f4f1dace36c76ace1c0b8f2a640a191c966bb03232f31469fb4970e9343455
+  checksum: 8eaea8d686431707624c4d75349d80284bde7ad5b18d53c235194d788625e8c06e13ca03c97f31ae35b635460f156ec429746c29d5ff38dd05d2bcdcc09c704a
   languageName: node
   linkType: hard
 
@@ -3685,7 +3685,7 @@ __metadata:
     discord-api-types: ^0.37.22
     discord-spams: ^1.3.0
     discord.js: ^14.7.1
-    discordx: ^11.4.0
+    discordx: ^11.5.2
     dotenv: ^16.0.3
     erlpack: ^0.1.4
     eslint: ^8.29.0
