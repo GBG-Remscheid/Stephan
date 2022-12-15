@@ -34,7 +34,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/importer", "npm:1.1.10"],\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
-            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
+            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.2.0"],\
             ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
@@ -281,17 +281,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@discordx/utilities", [\
-        ["npm:5.1.0", {\
-          "packageLocation": "./.yarn/cache/@discordx-utilities-npm-5.1.0-85962bdd79-896bd1c3b6.zip/node_modules/@discordx/utilities/",\
+        ["npm:5.2.0", {\
+          "packageLocation": "./.yarn/cache/@discordx-utilities-npm-5.2.0-ce1043ae7a-f904ecc6ee.zip/node_modules/@discordx/utilities/",\
           "packageDependencies": [\
-            ["@discordx/utilities", "npm:5.1.0"]\
+            ["@discordx/utilities", "npm:5.2.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0", {\
-          "packageLocation": "./.yarn/__virtual__/@discordx-utilities-virtual-15890b4382/0/cache/@discordx-utilities-npm-5.1.0-85962bdd79-896bd1c3b6.zip/node_modules/@discordx/utilities/",\
+        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.2.0", {\
+          "packageLocation": "./.yarn/__virtual__/@discordx-utilities-virtual-f0f39f7103/0/cache/@discordx-utilities-npm-5.2.0-ce1043ae7a-f904ecc6ee.zip/node_modules/@discordx/utilities/",\
           "packageDependencies": [\
-            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
+            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.2.0"],\
             ["@types/discord.js", null],\
             ["@types/discordx", null],\
             ["discord.js", "npm:14.7.1"],\
@@ -4566,7 +4566,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/importer", "npm:1.1.10"],\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
-            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
+            ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.2.0"],\
             ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
