@@ -28,7 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["@discordjs/opus", "npm:0.9.0"],\
             ["@discordjs/voice", "npm:0.13.0"],\
             ["@discordx/di", "npm:3.0.2"],\
             ["@discordx/importer", "npm:1.1.10"],\
@@ -138,10 +138,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@discordjs/opus", [\
-        ["npm:0.8.0", {\
-          "packageLocation": "./.yarn/unplugged/@discordjs-opus-npm-0.8.0-8266dd3478/node_modules/@discordjs/opus/",\
+        ["npm:0.9.0", {\
+          "packageLocation": "./.yarn/unplugged/@discordjs-opus-npm-0.9.0-9d320d2b10/node_modules/@discordjs/opus/",\
           "packageDependencies": [\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["@discordjs/opus", "npm:0.9.0"],\
             ["@discordjs/node-pre-gyp", "npm:0.4.5"],\
             ["node-addon-api", "npm:5.0.0"]\
           ],\
@@ -232,7 +232,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@discordx-music-virtual-72656f7040/0/cache/@discordx-music-npm-4.1.0-5b661b0378-9965bf6af8.zip/node_modules/@discordx/music/",\
           "packageDependencies": [\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["@discordjs/opus", "npm:0.9.0"],\
             ["@discordjs/voice", "npm:0.13.0"],\
             ["@types/discord.js", null],\
             ["@types/discordjs__opus", null],\
@@ -4132,7 +4132,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/prism-media-virtual-7b5d880fa4/0/cache/prism-media-npm-1.3.4-2d8d32b42f-703be28c87.zip/node_modules/prism-media/",\
           "packageDependencies": [\
             ["prism-media", "virtual:72656f7040ae79ca5473f328a04cac0896e0f07134fe526f4c4c7d51ba16ceb5ec6369a4b904370296469bc4ba71e91243796ac7315383e340e77a61f2c8d6ab#npm:1.3.4"],\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["@discordjs/opus", "npm:0.9.0"],\
             ["@types/discordjs__opus", null],\
             ["@types/ffmpeg-static", null],\
             ["@types/node-opus", null],\
@@ -4560,7 +4560,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["stephan", "workspace:."],\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["@discordjs/opus", "npm:0.9.0"],\
             ["@discordjs/voice", "npm:0.13.0"],\
             ["@discordx/di", "npm:3.0.2"],\
             ["@discordx/importer", "npm:1.1.10"],\
