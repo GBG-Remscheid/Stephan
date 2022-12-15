@@ -156,15 +156,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordx/pagination@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "@discordx/pagination@npm:3.3.1"
+"@discordx/pagination@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "@discordx/pagination@npm:3.4.0"
   dependencies:
-    lodash: "npm:^4.17.21"
-    tslib: "npm:^2.4.0"
+    lodash: ^4.17.21
+    tslib: ^2.4.1
   peerDependencies:
     discord.js: ">=14 || ^14.0.0-dev"
-  checksum: cbbd368b9f2943ac0916ee3c41eab0373143a2b29fb612e81bf429793ae5bfce50f07f313401e3e6659ca07aaa27819c21c32ed5627809b51e6f888896e301b5
+  checksum: 4d656c0cccf5e26b9c8eb89d750e88e0e3c7e828030260a6c5b7ee48bd68c5110ef5abd524d2e26ef96a78f838a6ee196a30e699251a89ed5df638fd5011d385
   languageName: node
   linkType: hard
 
@@ -3671,7 +3671,7 @@ __metadata:
     "@discordx/di": ^3.0.2
     "@discordx/importer": ^1.1.10
     "@discordx/music": ^4.1.0
-    "@discordx/pagination": ^3.3.1
+    "@discordx/pagination": ^3.4.0
     "@discordx/utilities": ^5.1.0
     "@prisma/client": 4.6.1
     "@sapphire/shapeshift": ^3.7.0
