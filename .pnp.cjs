@@ -39,7 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
-            ["@types/node", "npm:18.11.9"],\
+            ["@types/node", "npm:18.11.15"],\
             ["@typescript-eslint/eslint-plugin", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@typescript-eslint/parser", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.28"],\
@@ -732,6 +732,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/node", [\
+        ["npm:18.11.15", {\
+          "packageLocation": "./.yarn/cache/@types-node-npm-18.11.15-556d6408a5-cae8692a5c.zip/node_modules/@types/node/",\
+          "packageDependencies": [\
+            ["@types/node", "npm:18.11.15"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:18.11.9", {\
           "packageLocation": "./.yarn/cache/@types-node-npm-18.11.9-d21dd6ec05-cc0aae109e.zip/node_modules/@types/node/",\
           "packageDependencies": [\
@@ -4571,7 +4578,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
-            ["@types/node", "npm:18.11.9"],\
+            ["@types/node", "npm:18.11.15"],\
             ["@typescript-eslint/eslint-plugin", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@typescript-eslint/parser", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.42.1"],\
             ["@yarnpkg/pnpify", "npm:4.0.0-rc.28"],\
@@ -4829,7 +4836,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/node12", "npm:1.0.11"],\
             ["@tsconfig/node14", "npm:1.0.3"],\
             ["@tsconfig/node16", "npm:1.0.3"],\
-            ["@types/node", "npm:18.11.9"],\
+            ["@types/node", "npm:18.11.15"],\
             ["@types/swc__core", null],\
             ["@types/swc__wasm", null],\
             ["@types/typescript", null],\
