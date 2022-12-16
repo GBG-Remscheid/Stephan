@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
             ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
             ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
-            ["@sapphire/shapeshift", "npm:3.7.0"],\
+            ["@sapphire/shapeshift", "npm:3.8.1"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
             ["@types/node", "npm:18.11.9"],\
@@ -551,19 +551,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@sapphire/shapeshift", [\
-        ["npm:3.7.0", {\
-          "packageLocation": "./.yarn/cache/@sapphire-shapeshift-npm-3.7.0-fab602becd-4fed0865ab.zip/node_modules/@sapphire/shapeshift/",\
-          "packageDependencies": [\
-            ["@sapphire/shapeshift", "npm:3.7.0"],\
-            ["fast-deep-equal", "npm:3.1.3"],\
-            ["lodash.uniqwith", "npm:4.5.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:3.8.0", {\
           "packageLocation": "./.yarn/cache/@sapphire-shapeshift-npm-3.8.0-02378c6273-48335f7599.zip/node_modules/@sapphire/shapeshift/",\
           "packageDependencies": [\
             ["@sapphire/shapeshift", "npm:3.8.0"],\
+            ["fast-deep-equal", "npm:3.1.3"],\
+            ["lodash", "npm:4.17.21"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:3.8.1", {\
+          "packageLocation": "./.yarn/cache/@sapphire-shapeshift-npm-3.8.1-5b859ae08d-2a5954c76e.zip/node_modules/@sapphire/shapeshift/",\
+          "packageDependencies": [\
+            ["@sapphire/shapeshift", "npm:3.8.1"],\
             ["fast-deep-equal", "npm:3.1.3"],\
             ["lodash", "npm:4.17.21"]\
           ],\
@@ -3429,15 +3429,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["lodash.uniqwith", [\
-        ["npm:4.5.0", {\
-          "packageLocation": "./.yarn/cache/lodash.uniqwith-npm-4.5.0-61b7322c06-d49a4565ed.zip/node_modules/lodash.uniqwith/",\
-          "packageDependencies": [\
-            ["lodash.uniqwith", "npm:4.5.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["lowercase-keys", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/lowercase-keys-npm-2.0.0-1876065a32-24d7ebd56c.zip/node_modules/lowercase-keys/",\
@@ -4568,7 +4559,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
             ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
             ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
-            ["@sapphire/shapeshift", "npm:3.7.0"],\
+            ["@sapphire/shapeshift", "npm:3.8.1"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
             ["@types/node", "npm:18.11.9"],\
