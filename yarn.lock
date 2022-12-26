@@ -168,15 +168,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@discordx/utilities@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@discordx/utilities@npm:5.1.0"
+"@discordx/utilities@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "@discordx/utilities@npm:5.2.1"
   dependencies:
-    tslib: "npm:^2.4.0"
+    tslib: ^2.4.1
   peerDependencies:
     discord.js: ">=14 || ^14.0.0-dev"
     discordx: ">=10 || ^10.0.0-dev"
-  checksum: 896bd1c3b6027fc1c6ed17de4eb640ce4e461aa28feabc0962c9e8cb1aa15cdb065e69b8b83099d0207449a26ee34d0d6046eda198da41487efea90a9b5021f1
+  checksum: 7783c1e9173299d90d76e584f5f687413170a8f8123f3512d9403ac2e429e7d0f148620cc294b1e5e0a390943810e6256f4e5c8bd5014f0ba5c822c3118018ef
   languageName: node
   linkType: hard
 
@@ -3672,7 +3672,7 @@ __metadata:
     "@discordx/importer": ^1.1.10
     "@discordx/music": ^4.1.0
     "@discordx/pagination": ^3.3.1
-    "@discordx/utilities": ^5.1.0
+    "@discordx/utilities": ^5.2.1
     "@prisma/client": 4.6.1
     "@sapphire/shapeshift": ^3.7.0
     "@types/exaroton": ^1.8.0
