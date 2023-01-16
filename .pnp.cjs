@@ -61,7 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-ci", "npm:3.0.1"],\
             ["moment", "npm:2.29.4"],\
             ["ms", "npm:2.1.3"],\
-            ["prettier", "npm:2.7.1"],\
+            ["prettier", "npm:2.8.3"],\
             ["prisma", "npm:4.6.1"],\
             ["reflect-metadata", "npm:0.1.13"],\
             ["ts-node", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:10.9.1"],\
@@ -2262,7 +2262,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", null],\
             ["eslint", "npm:8.29.0"],\
             ["eslint-config-prettier", null],\
-            ["prettier", "npm:2.7.1"],\
+            ["prettier", "npm:2.8.3"],\
             ["prettier-linter-helpers", "npm:1.0.0"]\
           ],\
           "packagePeers": [\
@@ -4102,10 +4102,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier", [\
-        ["npm:2.7.1", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.7.1-d1f40f5e1a-55a4409182.zip/node_modules/prettier/",\
+        ["npm:2.8.3", {\
+          "packageLocation": "./.yarn/cache/prettier-npm-2.8.3-2c5624c4ca-92f2ceb522.zip/node_modules/prettier/",\
           "packageDependencies": [\
-            ["prettier", "npm:2.7.1"]\
+            ["prettier", "npm:2.8.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4593,7 +4593,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["is-ci", "npm:3.0.1"],\
             ["moment", "npm:2.29.4"],\
             ["ms", "npm:2.1.3"],\
-            ["prettier", "npm:2.7.1"],\
+            ["prettier", "npm:2.8.3"],\
             ["prisma", "npm:4.6.1"],\
             ["reflect-metadata", "npm:0.1.13"],\
             ["ts-node", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:10.9.1"],\
