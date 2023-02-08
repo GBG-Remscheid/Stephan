@@ -62,7 +62,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["moment", "npm:2.29.4"],\
             ["ms", "npm:2.1.3"],\
             ["prettier", "npm:2.7.1"],\
-            ["prisma", "npm:4.6.1"],\
+            ["prisma", "npm:4.10.0"],\
             ["reflect-metadata", "npm:0.1.13"],\
             ["ts-node", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:10.9.1"],\
             ["tslib", "npm:2.4.1"],\
@@ -514,7 +514,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
             ["@prisma/engines-version", "npm:4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32"],\
             ["@types/prisma", null],\
-            ["prisma", "npm:4.6.1"]\
+            ["prisma", "npm:4.10.0"]\
           ],\
           "packagePeers": [\
             "@types/prisma",\
@@ -524,10 +524,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@prisma/engines", [\
-        ["npm:4.6.1", {\
-          "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-4.6.1-3918b67bb0/node_modules/@prisma/engines/",\
+        ["npm:4.10.0", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-engines-npm-4.10.0-9be8b184b7/node_modules/@prisma/engines/",\
           "packageDependencies": [\
-            ["@prisma/engines", "npm:4.6.1"]\
+            ["@prisma/engines", "npm:4.10.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4180,11 +4180,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prisma", [\
-        ["npm:4.6.1", {\
-          "packageLocation": "./.yarn/unplugged/prisma-npm-4.6.1-4a3bd3b67a/node_modules/prisma/",\
+        ["npm:4.10.0", {\
+          "packageLocation": "./.yarn/unplugged/prisma-npm-4.10.0-2a60009d72/node_modules/prisma/",\
           "packageDependencies": [\
-            ["prisma", "npm:4.6.1"],\
-            ["@prisma/engines", "npm:4.6.1"]\
+            ["prisma", "npm:4.10.0"],\
+            ["@prisma/engines", "npm:4.10.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4594,7 +4594,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["moment", "npm:2.29.4"],\
             ["ms", "npm:2.1.3"],\
             ["prettier", "npm:2.7.1"],\
-            ["prisma", "npm:4.6.1"],\
+            ["prisma", "npm:4.10.0"],\
             ["reflect-metadata", "npm:0.1.13"],\
             ["ts-node", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:10.9.1"],\
             ["tslib", "npm:2.4.1"],\
