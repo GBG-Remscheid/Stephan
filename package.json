@@ -51,7 +51,7 @@
         "@discordx/music": "^4.1.0",
         "@discordx/pagination": "^3.3.1",
         "@discordx/utilities": "^5.1.0",
-        "@prisma/client": "4.6.1",
+        "@prisma/client": "4.10.1",
         "@sapphire/shapeshift": "^3.7.0",
         "@yarnpkg/pnpify": "^4.0.0-rc.28",
         "discord-api-types": "^0.37.22",
