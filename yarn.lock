@@ -119,6 +119,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordx/di@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@discordx/di@npm:3.0.3"
+  dependencies:
+    tsyringe: ^4.7.0
+    typedi: ^0.10.0
+  checksum: 9b7405547754789db9ef8b164c370a930535538e35bd108d751b1d5c7f9d1f10cf6ace94bd27d95ab9dec75ddcab113d67f712ae051b75ebd3e41ddc078a6ace
+  languageName: node
+  linkType: hard
+
 "@discordx/importer@npm:^1.1.10":
   version: 1.1.10
   resolution: "@discordx/importer@npm:1.1.10"
@@ -1447,17 +1457,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discordx@npm:^11.4.0":
-  version: 11.4.0
-  resolution: "discordx@npm:11.4.0"
+"discordx@npm:^11.7.0":
+  version: 11.7.0
+  resolution: "discordx@npm:11.7.0"
   dependencies:
-    "@discordx/di": "npm:^3.0.2"
-    "@discordx/internal": "npm:^1.0.2"
-    lodash: "npm:^4.17.21"
-    tslib: "npm:^2.4.0"
+    "@discordx/di": ^3.0.3
+    "@discordx/internal": ^1.0.2
+    lodash: ^4.17.21
+    tslib: ^2.4.1
   peerDependencies:
     discord.js: ">=14 || ^14.0.0-dev"
-  checksum: e73daf012465cc00b1fdf0e5ef24f3209a34de21dec08e9492ceefacaa801baf79f4f1dace36c76ace1c0b8f2a640a191c966bb03232f31469fb4970e9343455
+  checksum: 9479ecff60afaf121ad271d9800ea8c64bf125cdf682aa7ed3ff6c0bee702e7626ca27cec66cc9499b63f2d05332b4c9f1b5c90a92ea0ea6da3e5bdb6a0483fc
   languageName: node
   linkType: hard
 
@@ -3685,7 +3695,7 @@ __metadata:
     discord-api-types: ^0.37.22
     discord-spams: ^1.3.0
     discord.js: ^14.7.1
-    discordx: ^11.4.0
+    discordx: ^11.7.0
     dotenv: ^16.0.3
     erlpack: ^0.1.4
     eslint: ^8.29.0
