@@ -119,6 +119,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@discordx/di@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@discordx/di@npm:3.0.3"
+  dependencies:
+    tsyringe: ^4.7.0
+    typedi: ^0.10.0
+  checksum: 9b7405547754789db9ef8b164c370a930535538e35bd108d751b1d5c7f9d1f10cf6ace94bd27d95ab9dec75ddcab113d67f712ae051b75ebd3e41ddc078a6ace
+  languageName: node
+  linkType: hard
+
 "@discordx/importer@npm:^1.1.10":
   version: 1.1.10
   resolution: "@discordx/importer@npm:1.1.10"
@@ -1447,17 +1457,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"discordx@npm:^11.4.0":
-  version: 11.4.0
-  resolution: "discordx@npm:11.4.0"
+"discordx@npm:^11.7.1":
+  version: 11.7.1
+  resolution: "discordx@npm:11.7.1"
   dependencies:
-    "@discordx/di": "npm:^3.0.2"
-    "@discordx/internal": "npm:^1.0.2"
-    lodash: "npm:^4.17.21"
-    tslib: "npm:^2.4.0"
+    "@discordx/di": ^3.0.3
+    "@discordx/internal": ^1.0.2
+    lodash: ^4.17.21
+    tslib: ^2.5.0
   peerDependencies:
     discord.js: ">=14 || ^14.0.0-dev"
-  checksum: e73daf012465cc00b1fdf0e5ef24f3209a34de21dec08e9492ceefacaa801baf79f4f1dace36c76ace1c0b8f2a640a191c966bb03232f31469fb4970e9343455
+  checksum: 534d0c7e7e4561ccb1ae76930210a035d8ab458748b5e41de35eebd9188923bac724add0bcf4012e7b091ff720185501d8b83582c4ff1fd773cd25195930cbfa
   languageName: node
   linkType: hard
 
@@ -3685,7 +3695,7 @@ __metadata:
     discord-api-types: ^0.37.22
     discord-spams: ^1.3.0
     discord.js: ^14.7.1
-    discordx: ^11.4.0
+    discordx: ^11.7.1
     dotenv: ^16.0.3
     erlpack: ^0.1.4
     eslint: ^8.29.0
@@ -3955,6 +3965,13 @@ __metadata:
   version: 2.4.1
   resolution: "tslib@npm:2.4.1"
   checksum: 19480d6e0313292bd6505d4efe096a6b31c70e21cf08b5febf4da62e95c265c8f571f7b36fcc3d1a17e068032f59c269fab3459d6cd3ed6949eafecf64315fca
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "tslib@npm:2.5.0"
+  checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
   languageName: node
   linkType: hard
 
