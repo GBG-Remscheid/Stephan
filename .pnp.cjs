@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
             ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
-            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
+            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.11.0"],\
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
@@ -501,18 +501,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@prisma/client", [\
-        ["npm:4.6.1", {\
-          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-d6805ba15f/node_modules/@prisma/client/",\
+        ["npm:4.11.0", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-8057e65881/node_modules/@prisma/client/",\
           "packageDependencies": [\
-            ["@prisma/client", "npm:4.6.1"]\
+            ["@prisma/client", "npm:4.11.0"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1", {\
-          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-d6805ba15f/node_modules/@prisma/client/",\
+        ["virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.11.0", {\
+          "packageLocation": "./.yarn/unplugged/@prisma-client-virtual-8057e65881/node_modules/@prisma/client/",\
           "packageDependencies": [\
-            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
-            ["@prisma/engines-version", "npm:4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32"],\
+            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.11.0"],\
+            ["@prisma/engines-version", "npm:4.11.0-57.8fde8fef4033376662cad983758335009d522acb"],\
             ["@types/prisma", null],\
             ["prisma", "npm:4.6.1"]\
           ],\
@@ -533,10 +533,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@prisma/engines-version", [\
-        ["npm:4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32", {\
-          "packageLocation": "./.yarn/cache/@prisma-engines-version-npm-4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32-dc1d194d7b-6375e3e893.zip/node_modules/@prisma/engines-version/",\
+        ["npm:4.11.0-57.8fde8fef4033376662cad983758335009d522acb", {\
+          "packageLocation": "./.yarn/cache/@prisma-engines-version-npm-4.11.0-57.8fde8fef4033376662cad983758335009d522acb-815118988f-f040b93d09.zip/node_modules/@prisma/engines-version/",\
           "packageDependencies": [\
-            ["@prisma/engines-version", "npm:4.6.1-3.694eea289a8462c80264df36757e4fdc129b1b32"]\
+            ["@prisma/engines-version", "npm:4.11.0-57.8fde8fef4033376662cad983758335009d522acb"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4567,7 +4567,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
             ["@discordx/pagination", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:3.3.1"],\
             ["@discordx/utilities", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:5.1.0"],\
-            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.6.1"],\
+            ["@prisma/client", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.11.0"],\
             ["@sapphire/shapeshift", "npm:3.7.0"],\
             ["@types/exaroton", "npm:1.8.0"],\
             ["@types/ms", "npm:0.7.31"],\
