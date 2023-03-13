@@ -29,7 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@discordjs/opus", "npm:0.8.0"],\
-            ["@discordjs/voice", "npm:0.13.0"],\
+            ["@discordjs/voice", "npm:0.15.0"],\
             ["@discordx/di", "npm:3.0.2"],\
             ["@discordx/importer", "npm:1.1.10"],\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
@@ -175,15 +175,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@discordjs/voice", [\
-        ["npm:0.13.0", {\
-          "packageLocation": "./.yarn/cache/@discordjs-voice-npm-0.13.0-84a2339a3f-4d3da879cb.zip/node_modules/@discordjs/voice/",\
+        ["npm:0.15.0", {\
+          "packageLocation": "./.yarn/cache/@discordjs-voice-npm-0.15.0-5c9871dfb7-caf16a0f42.zip/node_modules/@discordjs/voice/",\
           "packageDependencies": [\
-            ["@discordjs/voice", "npm:0.13.0"],\
-            ["@types/ws", "npm:8.5.3"],\
-            ["discord-api-types", "npm:0.37.17"],\
-            ["prism-media", "virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:1.3.4"],\
-            ["tslib", "npm:2.4.1"],\
-            ["ws", "virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:8.11.0"]\
+            ["@discordjs/voice", "npm:0.15.0"],\
+            ["@types/ws", "npm:8.5.4"],\
+            ["discord-api-types", "npm:0.37.35"],\
+            ["prism-media", "virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:1.3.5"],\
+            ["tslib", "npm:2.5.0"],\
+            ["ws", "virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:8.13.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -233,7 +233,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
             ["@discordjs/opus", "npm:0.8.0"],\
-            ["@discordjs/voice", "npm:0.13.0"],\
+            ["@discordjs/voice", "npm:0.15.0"],\
             ["@types/discord.js", null],\
             ["@types/discordjs__opus", null],\
             ["@types/discordjs__voice", null],\
@@ -773,6 +773,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-ws-npm-8.5.3-ae52c483f1-0ce46f850d.zip/node_modules/@types/ws/",\
           "packageDependencies": [\
             ["@types/ws", "npm:8.5.3"],\
+            ["@types/node", "npm:18.11.9"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:8.5.4", {\
+          "packageLocation": "./.yarn/cache/@types-ws-npm-8.5.4-c0237574ef-fefbad20d2.zip/node_modules/@types/ws/",\
+          "packageDependencies": [\
+            ["@types/ws", "npm:8.5.4"],\
             ["@types/node", "npm:18.11.9"]\
           ],\
           "linkType": "HARD"\
@@ -1857,17 +1865,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["discord-api-types", [\
-        ["npm:0.37.17", {\
-          "packageLocation": "./.yarn/cache/discord-api-types-npm-0.37.17-72ce41f8ff-784344f70d.zip/node_modules/discord-api-types/",\
-          "packageDependencies": [\
-            ["discord-api-types", "npm:0.37.17"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
         ["npm:0.37.22", {\
           "packageLocation": "./.yarn/cache/discord-api-types-npm-0.37.22-e301c35034-67110d877d.zip/node_modules/discord-api-types/",\
           "packageDependencies": [\
             ["discord-api-types", "npm:0.37.22"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.37.35", {\
+          "packageLocation": "./.yarn/cache/discord-api-types-npm-0.37.35-8de69c140e-0a65234eef.zip/node_modules/discord-api-types/",\
+          "packageDependencies": [\
+            ["discord-api-types", "npm:0.37.35"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1898,7 +1906,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lodash.snakecase", "npm:4.1.1"],\
             ["tslib", "npm:2.4.1"],\
             ["undici", "npm:5.14.0"],\
-            ["ws", "virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:8.11.0"]\
+            ["ws", "virtual:85505ab7e7b582b78950ec0852ea92c077c0337f6f620be03682dd6558ec78eca4f18be1837204260860e01bb383e654c8f0a9ea6ca66d4e420c9d6eed01ed47#npm:8.11.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4128,11 +4136,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:72656f7040ae79ca5473f328a04cac0896e0f07134fe526f4c4c7d51ba16ceb5ec6369a4b904370296469bc4ba71e91243796ac7315383e340e77a61f2c8d6ab#npm:1.3.4", {\
-          "packageLocation": "./.yarn/__virtual__/prism-media-virtual-7b5d880fa4/0/cache/prism-media-npm-1.3.4-2d8d32b42f-703be28c87.zip/node_modules/prism-media/",\
+        ["npm:1.3.5", {\
+          "packageLocation": "./.yarn/cache/prism-media-npm-1.3.5-f727c60102-a4fbe5c91f.zip/node_modules/prism-media/",\
           "packageDependencies": [\
-            ["prism-media", "virtual:72656f7040ae79ca5473f328a04cac0896e0f07134fe526f4c4c7d51ba16ceb5ec6369a4b904370296469bc4ba71e91243796ac7315383e340e77a61f2c8d6ab#npm:1.3.4"],\
-            ["@discordjs/opus", "npm:0.8.0"],\
+            ["prism-media", "npm:1.3.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:1.3.5", {\
+          "packageLocation": "./.yarn/__virtual__/prism-media-virtual-e0cf209482/0/cache/prism-media-npm-1.3.5-f727c60102-a4fbe5c91f.zip/node_modules/prism-media/",\
+          "packageDependencies": [\
+            ["prism-media", "virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:1.3.5"],\
+            ["@discordjs/opus", null],\
             ["@types/discordjs__opus", null],\
             ["@types/ffmpeg-static", null],\
             ["@types/node-opus", null],\
@@ -4153,11 +4168,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:1.3.4", {\
-          "packageLocation": "./.yarn/__virtual__/prism-media-virtual-cd5b1379ac/0/cache/prism-media-npm-1.3.4-2d8d32b42f-703be28c87.zip/node_modules/prism-media/",\
+        ["virtual:72656f7040ae79ca5473f328a04cac0896e0f07134fe526f4c4c7d51ba16ceb5ec6369a4b904370296469bc4ba71e91243796ac7315383e340e77a61f2c8d6ab#npm:1.3.4", {\
+          "packageLocation": "./.yarn/__virtual__/prism-media-virtual-7b5d880fa4/0/cache/prism-media-npm-1.3.4-2d8d32b42f-703be28c87.zip/node_modules/prism-media/",\
           "packageDependencies": [\
-            ["prism-media", "virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:1.3.4"],\
-            ["@discordjs/opus", null],\
+            ["prism-media", "virtual:72656f7040ae79ca5473f328a04cac0896e0f07134fe526f4c4c7d51ba16ceb5ec6369a4b904370296469bc4ba71e91243796ac7315383e340e77a61f2c8d6ab#npm:1.3.4"],\
+            ["@discordjs/opus", "npm:0.8.0"],\
             ["@types/discordjs__opus", null],\
             ["@types/ffmpeg-static", null],\
             ["@types/node-opus", null],\
@@ -4561,7 +4576,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["stephan", "workspace:."],\
             ["@discordjs/opus", "npm:0.8.0"],\
-            ["@discordjs/voice", "npm:0.13.0"],\
+            ["@discordjs/voice", "npm:0.15.0"],\
             ["@discordx/di", "npm:3.0.2"],\
             ["@discordx/importer", "npm:1.1.10"],\
             ["@discordx/music", "virtual:01fbf5e6a7d1f94fb44e0896f92326f2b16f65288fb5c4c1894cc438f184cba32b9fdc827182085df2476bd9256f1ebd4b807051305d025777560b2cd650943d#npm:4.1.0"],\
@@ -4882,6 +4897,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["tslib", "npm:2.4.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:2.5.0", {\
+          "packageLocation": "./.yarn/cache/tslib-npm-2.5.0-bb364efebd-ae3ed5f9ce.zip/node_modules/tslib/",\
+          "packageDependencies": [\
+            ["tslib", "npm:2.5.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["tsutils", [\
@@ -5167,6 +5189,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:8.13.0", {\
+          "packageLocation": "./.yarn/cache/ws-npm-8.13.0-26ffa3016a-53e991bbf9.zip/node_modules/ws/",\
+          "packageDependencies": [\
+            ["ws", "npm:8.13.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:8.13.0", {\
+          "packageLocation": "./.yarn/__virtual__/ws-virtual-c8bfce3ef8/0/cache/ws-npm-8.13.0-26ffa3016a-53e991bbf9.zip/node_modules/ws/",\
+          "packageDependencies": [\
+            ["ws", "virtual:5c9871dfb72525513d4401dfe2075a410c6015edb170d24bb03cf131e8fc423e49abec6a986a3a83c2b54a64c969aa50a3747b9cbd80b3172786154a9425780a#npm:8.13.0"],\
+            ["@types/bufferutil", null],\
+            ["@types/utf-8-validate", null],\
+            ["bufferutil", null],\
+            ["utf-8-validate", null]\
+          ],\
+          "packagePeers": [\
+            "@types/bufferutil",\
+            "@types/utf-8-validate",\
+            "bufferutil",\
+            "utf-8-validate"\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["virtual:5f960462ca31013555a281a0262fe139cdc4f88db2bdec50abfaed3981e3910bcc9c12ddae840b0ffe9cde8a056020020cef1d8d6c36d99c87b92ee1c6630644#npm:7.5.9", {\
           "packageLocation": "./.yarn/__virtual__/ws-virtual-752a8d8e29/0/cache/ws-npm-7.5.9-26f12a5ed6-c3c100a181.zip/node_modules/ws/",\
           "packageDependencies": [\
@@ -5184,10 +5230,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:8.11.0", {\
-          "packageLocation": "./.yarn/__virtual__/ws-virtual-19c930027b/0/cache/ws-npm-8.11.0-ab72116a01-316b33aba3.zip/node_modules/ws/",\
+        ["virtual:85505ab7e7b582b78950ec0852ea92c077c0337f6f620be03682dd6558ec78eca4f18be1837204260860e01bb383e654c8f0a9ea6ca66d4e420c9d6eed01ed47#npm:8.11.0", {\
+          "packageLocation": "./.yarn/__virtual__/ws-virtual-a045c3aaf9/0/cache/ws-npm-8.11.0-ab72116a01-316b33aba3.zip/node_modules/ws/",\
           "packageDependencies": [\
-            ["ws", "virtual:84a2339a3fe0de9023bbfc35f7c4b4d2e7cd035805463c43af35774ed80d49c928b98808879437bdd3d26714275cccc4c9010d26bbb73ac13bf4a5c532d6e8cd#npm:8.11.0"],\
+            ["ws", "virtual:85505ab7e7b582b78950ec0852ea92c077c0337f6f620be03682dd6558ec78eca4f18be1837204260860e01bb383e654c8f0a9ea6ca66d4e420c9d6eed01ed47#npm:8.11.0"],\
             ["@types/bufferutil", null],\
             ["@types/utf-8-validate", null],\
             ["bufferutil", null],\
